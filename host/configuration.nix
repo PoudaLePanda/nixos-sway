@@ -8,7 +8,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./gnome.nix
-      ./sddm/default.nix
+      # ./sddm/default.nix
       ./pkgs/nix.nix
       ./pkgs/ghostty.nix
       ./pkgs/zed-editor.nix
@@ -38,7 +38,7 @@ in
                 theme = "stylish";
                 footer = true;
                 customResolution = "1920x1080";  # Optional: Set a custom resolution
-                splashImage = ../background.jpg;
+                splashImage = "${./background.jpg}";
             };
         };
         plymouth.enable = true;
@@ -89,7 +89,7 @@ in
             variant = "mac";
           };
           displayManager.gdm = {
-            enable = false;
+            enable = true;
           };
         };
 
@@ -151,7 +151,7 @@ in
     # Set User's avatar
     system.activationScripts.script.text = ''
       mkdir -p /var/lib/AccountsService/{icons,users}
-      cp ../avatar.png /var/lib/AccountsService/icons/lmlab
+      cp ${./avatar.png} /var/lib/AccountsService/icons/lmlab
 
       touch /var/lib/AccountsService/users/lmlab
 
@@ -161,6 +161,11 @@ in
         fi
         echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
       fi
+    '';
+
+    environment.etc."profile.d/zz-custom.sh".text = ''
+        eval "$(starship init bash)"
+        fastfetch
     '';
 
     system.stateVersion = "24.11";

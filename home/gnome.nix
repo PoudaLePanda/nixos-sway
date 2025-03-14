@@ -101,9 +101,9 @@ in
                 "Vitals@CoreCoding.com"
             ];
             "favorite-apps" = [
-              "Zen-Browser.desktop"
-              "Ghostty.desktop"
-              "Zed.desktop"
+              "zen-browser.desktop"
+              "zed.desktop"
+              "ghostty.desktop"
               "org.gnome.Nautilus.desktop"
             ];
         };

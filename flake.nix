@@ -12,9 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Global catppuccin theme
-    catppuccin.url = "github:catppuccin/nix";
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     grub2-themes = {
@@ -22,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, grub2-themes, zen-browser, home-manager, catppuccin }@ inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, grub2-themes, zen-browser, home-manager }@ inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

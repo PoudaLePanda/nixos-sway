@@ -4,7 +4,6 @@
   # Starship configuration
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
     settings = {
       add_newline = false;
       directory = {
@@ -61,7 +60,4 @@
       right_format = "$kubernetes";
     };
   };
-
-  # Enable catppuccin theming for starship.
-  catppuccin.starship.enable = true;
 }
