@@ -1,4 +1,5 @@
-{ pkgs, config, ... }:
+# ./host/pkgs/ghostty.nix
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     ghostty

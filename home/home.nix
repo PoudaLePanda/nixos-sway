@@ -1,12 +1,15 @@
-{ config, lib, pkgs, ... }:
+# ./home/home.nix
+{ pkgs, inputs, ... }:
 {
     home.username = "lmlab";
     home.homeDirectory = "/home/lmlab";
 
     imports = [
-      ./gnome.nix
-      ./wallpaper/default.nix
+      inputs.catppuccin.homeManagerModules.catppuccin
+      ./pkgs/default.nix
       ./ulauncher/default.nix
+      ./wallpaper/default.nix
+      ./gnome.nix
     ];
 
     # basic configuration of git, please change to your own
@@ -21,8 +24,8 @@
 
     # Configuration XDG
     xdg.enable = true;
-    xdg.configFile."backgrounds/background.jpg".source = ./background.jpg;
-    xdg.configFile."avatars/avatar.png".source = ./avatar.png;
+    xdg.configFile."backgrounds/background.jpg".source = ../background.jpg;
+    xdg.configFile."avatars/avatar.png".source = ../avatar.png;
 
     # GTK Configuration (gardez la même que GNOME pour la cohérence)
     gtk = {
@@ -58,10 +61,12 @@
 
     # Enable catppuccin theming for GTK apps.
     catppuccin = {
-      gtk = {
-        enable = true;
-        gnomeShellTheme = true;
-      };
+        gtk = {
+            enable = true;
+            gnomeShellTheme = true;
+        };
+        flavor = "mocha";
+        accent = "lavender";
     };
 
     # Cursor settings

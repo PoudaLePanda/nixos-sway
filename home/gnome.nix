@@ -1,9 +1,13 @@
+# ./home/gnome.nix
 { config, lib, pkgs, ... }:
+let
+  # Import des fonctions nécessaires pour dconf
+  inherit (lib.hm.gvariant) mkUint32 mkVariant mkDictionaryEntry;
+in
 {
     # Paquets spécifiques à GNOME
     home.packages = with pkgs; [
         gnome-tweaks
-        gnomeExtensions.tiling-shell
         gnomeExtensions.appindicator
         gnomeExtensions.user-themes
         gnomeExtensions.vitals
@@ -82,9 +86,9 @@
             picture-options = "zoom";
         };
 
-        "org/gnome/desktop/account-photo" = {
-            picture-uri = "file://${config.home.homeDirectory}/.config/avatars/avatar.png";
-        };
+        # "org/gnome/desktop/account-photo" = {
+        #   picture-uri = "file://${config.home.homeDirectory}/.config/avatars/${../avatar.png}";
+        # };
 
         "org/gnome/shell" = {
             "disable-user-extensions" = false;
@@ -97,10 +101,10 @@
                 "Vitals@CoreCoding.com"
             ];
             "favorite-apps" = [
+              "Zen-Browser.desktop"
+              "Ghostty.desktop"
+              "Zed.desktop"
               "org.gnome.Nautilus.desktop"
-              "zen-browser.desktop"
-              "ghostty.desktop"
-              "zed.desktop"
             ];
         };
 
@@ -118,16 +122,16 @@
 
         "org/gnome/shell/extensions/rounded-window-corners-reborn" = {
             "blacklist" = ["ulauncher"];
-            "border-color" = mkTuple [0.71764707565307617 0.74117660522460938 0.97254902124404907 1.0];
+            "border-color" = "#4F057D";
             "border-width" = 1;
             global-rounded-corner-settings = [
             (mkDictionaryEntry [
                 "padding"
                 (mkVariant [
-                (mkDictionaryEntry ["left" (mkVariant 1)])
-                (mkDictionaryEntry ["right" (mkVariant 1)])
-                (mkDictionaryEntry ["top" (mkVariant 1)])
-                (mkDictionaryEntry ["bottom" (mkVariant 1)])
+                (mkDictionaryEntry ["left" (mkVariant 5)])
+                (mkDictionaryEntry ["right" (mkVariant 5)])
+                (mkDictionaryEntry ["top" (mkVariant 5)])
+                (mkDictionaryEntry ["bottom" (mkVariant 5)])
                 ])
             ])
 
@@ -145,11 +149,13 @@
             ];
             "settings-version" = mkUint32 6;
             "skip-libadwaita-app" = false;
+            "keepRoundedCornersForMaximized" = true;
         };
 
         "org/gnome/shell/extensions/caffeine" = {
             show-indicator = true;
             auto-enable = true;
+
         };
 
         "org/gnome/shell/extensions/vitals" = {

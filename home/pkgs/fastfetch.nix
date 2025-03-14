@@ -1,4 +1,5 @@
-{ pkgs, config, ... }:
+# ./home/pkgs/fastfetch.nix
+{ ... }:
 {
   # Install and configure fastfetch via home-manager module
   programs.fastfetch = {

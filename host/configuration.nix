@@ -1,5 +1,5 @@
 # ./host/configuration.nix
-{ config, pkgs, inputs,... }:
+{ pkgs, inputs,... }:
 let
     system = "x86_64-linux";
 in
@@ -10,8 +10,6 @@ in
       ./gnome.nix
       ./sddm/default.nix
       ./pkgs/nix.nix
-      ./pkgs/fastfetch.nix
-      ./pkgs/starship.nix
       ./pkgs/ghostty.nix
       ./pkgs/zed-editor.nix
       ./pkgs/proton-vpn.nix
@@ -118,6 +116,10 @@ in
 
     # Paquets système
     environment.systemPackages = with pkgs; [
+        nix
+        nil
+        nixf
+        nixpkgs-fmt
        	wget
        	git
         git-lfs

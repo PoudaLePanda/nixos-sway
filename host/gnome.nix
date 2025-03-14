@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+# ./host/gnome.nix
+{ pkgs, ... }:
 {
   services.xserver.desktopManager.gnome.enable = true;
 

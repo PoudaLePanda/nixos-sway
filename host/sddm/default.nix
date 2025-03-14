@@ -1,8 +1,9 @@
-{ pkgs, inputs, config, lib, ... }:
+# ./host/sddm/default.nix
+{ pkgs, lib, ... }:
 let
-    image = ./background.jpg;
+    image = ./pixel_sakura.gif;
   sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "purple_leaves";
+    embeddedTheme = "sakura";
     themeConfig = {
       Background = "${toString image}";  # Utilise votre image locale
     };

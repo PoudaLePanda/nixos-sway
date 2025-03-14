@@ -1,4 +1,6 @@
-{...}: {
+# ./home/pkgs/starship.nix
+{ ... }:
+{
   # Starship configuration
   programs.starship = {
     enable = true;

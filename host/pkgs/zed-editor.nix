@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+# ./host/pkgs/zed-editor.nix
+{ pkgs, ... }:
 {
     environment.systemPackages = with pkgs; [
         zed-editor
