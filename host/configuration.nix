@@ -7,19 +7,16 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # WM manager
-       ./sddm/default.nix
-      ./pkgs/nix.nix
-      # Importer la configuration GNOME
       ./gnome.nix
-      ./pkgs/fastfetch/default.nix
-      ./pkgs/ghostty.nix
+      ./sddm/default.nix
+      ./pkgs/nix.nix
+      ./pkgs/fastfetch.nix
       ./pkgs/starship.nix
+      ./pkgs/ghostty.nix
       ./pkgs/zed-editor.nix
       ./pkgs/proton-vpn.nix
       # ./pkgs/zathura.nix
       # ./pkgs/btop/default.nix
-      # Gaming
       # ./pkgs/minecraft.nix
       # ./pkgs/steam.nix
     ];
@@ -43,9 +40,10 @@ in
                 theme = "stylish";
                 footer = true;
                 customResolution = "1920x1080";  # Optional: Set a custom resolution
-                splashImage = ./background.jpg;
+                splashImage = ../background.jpg;
             };
         };
+        plymouth.enable = true;
     };
 
     # Réseau & localisation
@@ -125,22 +123,43 @@ in
         git-lfs
        	cowsay
        	htop
+        btop
        	curl
        	zip
        	xz
        	github-desktop
        	ags
        	gcc
+        glib
+        gnumake
+        killall
+        mesa
         chromium
         inputs.zen-browser.packages."${system}".default
         zathura
-        btop
     ];
 
-    programs.sway.enable = true;
-    programs.bash.promptInit = ''fastfetch'';
+    # PATH configuration
+    environment.localBinInPath = true;
+    # Enable devmon for device management
+    services.devmon.enable = true;
 
     nixpkgs.config.allowUnfree = true;
+
+    # Set User's avatar
+    system.activationScripts.script.text = ''
+      mkdir -p /var/lib/AccountsService/{icons,users}
+      cp ../avatar.png /var/lib/AccountsService/icons/lmlab
+
+      touch /var/lib/AccountsService/users/lmlab
+
+      if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
+        if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
+        echo "[User]" >> /var/lib/AccountsService/users/lmlab
+        fi
+        echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
+      fi
+    '';
 
     system.stateVersion = "24.11";
 }
