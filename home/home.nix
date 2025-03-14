@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 {
-    home.username = "leodev";
-    home.homeDirectory = "/home/leodev";
+    home.username = "lmlab";
+    home.homeDirectory = "/home/lmlab";
 
     imports = [
       ./gnome.nix

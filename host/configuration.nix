@@ -109,9 +109,9 @@ in
     };
 
     # Utilisateur
-    users.users.leodev = {
+    users.users.lmlab = {
         isNormalUser = true;
-        description = "leodev";
+        description = "lmlab";
         extraGroups = [ "networkmanager" "wheel" ];
     };
 
