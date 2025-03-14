@@ -76,7 +76,7 @@ in
         LC_TELEPHONE = "fr_FR.UTF-8";
         LC_TIME = "fr_FR.UTF-8";
     };
-    console.keyMap = "fr";
+    console.keyMap = "us";
     security.rtkit.enable = true;
 
     services = {
@@ -89,8 +89,8 @@ in
           excludePackages = [ pkgs.xterm ];
           videoDrivers = [ "amdgpu" ];
           xkb = {
-            layout = "fr";
-            variant = "";
+            layout = "us";
+            variant = "mac";
           };
           displayManager.gdm = {
             enable = false;
@@ -122,6 +122,7 @@ in
     environment.systemPackages = with pkgs; [
        	wget
        	git
+        git-lfs
        	cowsay
        	htop
        	curl
@@ -136,6 +137,7 @@ in
         btop
     ];
 
+    programs.sway.enable = true;
     programs.bash.promptInit = ''fastfetch'';
 
     nixpkgs.config.allowUnfree = true;
