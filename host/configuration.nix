@@ -163,5 +163,6 @@ in
       fi
     '';
 
+home-manager.backupFileExtension = "backup";
     system.stateVersion = "24.11";
 }

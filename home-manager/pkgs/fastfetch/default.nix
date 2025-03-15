@@ -1,4 +1,4 @@
-# ./home/pkgs/fastfetch.nix
+# ./home/pkgs/fastfetch/default.nix
 { ... }:
 {
   programs.fastfetch = {

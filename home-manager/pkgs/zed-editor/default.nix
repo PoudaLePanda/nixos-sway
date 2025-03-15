@@ -1,12 +1,6 @@
-# ./host/pkgs/zed-editor.nix
+# ./host/pkgs/zed-editor/default.nix
 { pkgs, ... }:
 {
-    environment.systemPackages = with pkgs; [
-        zed-editor
-    ];
-
-    programs.zed-editor = {
-        enable = true;
-        settings = (builtins.readFile ./settings.jsonc);
-    };
+  home.packages = [ pkgs.zed ];
+  xdg.configFile."zed/settings.json".source = ./settings.jsonc;
 }
