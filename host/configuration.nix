@@ -11,7 +11,7 @@ in
       # ./sddm/default.nix
       ./pkgs/nix.nix
       ./pkgs/ghostty.nix
-      ./pkgs/proton-vpn.nix
+      ./pkgs/vpn/proton-vpn.nix
       ./pkgs/firewall.nix
       ./pkgs/amd-drivers.nix
       # ./pkgs/zathura.nix
@@ -117,10 +117,11 @@ in
 
     # Paquets système
     environment.systemPackages = with pkgs; [
+        home-manager
         nix
         nil
-        nixf
-        nixpkgs-fmt
+        nixd
+        package-version-server
        	wget
        	git
         git-lfs
@@ -131,7 +132,6 @@ in
        	zip
        	xz
        	github-desktop
-        home-manager
        	ags
        	gcc
         glib

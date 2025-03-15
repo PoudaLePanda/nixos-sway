@@ -1,16 +1,16 @@
 { pkgs, ... }:
-let
-  jonathanharty.gruvbox-material-icon-theme =
-    pkgs.vscode-utils.buildVscodeMarketplaceExtension
-      {
-        mktplcRef = {
-          name = "gruvbox-material-icon-theme";
-          publisher = "JonathanHarty";
-          version = "1.1.5";
-          hash = "sha256-86UWUuWKT6adx4hw4OJw3cSZxWZKLH4uLTO+Ssg75gY=";
-        };
-      };
-in
+# let
+#   jonathanharty.gruvbox-material-icon-theme =
+#     pkgs.vscode-utils.buildVscodeMarketplaceExtension
+#       {
+#         mktplcRef = {
+#           name = "gruvbox-material-icon-theme";
+#           publisher = "JonathanHarty";
+#           version = "1.1.5";
+#           hash = "sha256-86UWUuWKT6adx4hw4OJw3cSZxWZKLH4uLTO+Ssg75gY=";
+#         };
+#       };
+# in
 {
   programs.vscode = {
     enable = true;
@@ -30,10 +30,10 @@ in
         # Zig
         ziglang.vscode-zig
 
-        # Color theme
-        jdinhlife.gruvbox
-        # sainnhe.gruvbox-material
-        jonathanharty.gruvbox-material-icon-theme
+        # # Color theme
+        # jdinhlife.gruvbox
+        # # sainnhe.gruvbox-material
+        # jonathanharty.gruvbox-material-icon-theme
       ];
       userSettings = {
         "update.mode" = "none";
@@ -44,8 +44,8 @@ in
         "editor.fontFamily" = "'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
         "terminal.integrated.fontFamily" = "'Maple Mono', 'SymbolsNerdFont'";
         "editor.fontSize" = 18;
-        "workbench.colorTheme" = "Gruvbox Dark Hard";
-        "workbench.iconTheme" = "gruvbox-material-icon-theme";
+        # "workbench.colorTheme" = "Gruvbox Dark Hard";
+        # "workbench.iconTheme" = "gruvbox-material-icon-theme";
         "material-icon-theme.folders.theme" = "classic";
         "vsicons.dontShowNewVersionMessage" = true;
         "explorer.confirmDragAndDrop" = false;
