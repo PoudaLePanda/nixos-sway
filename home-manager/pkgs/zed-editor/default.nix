@@ -12,14 +12,14 @@
     theme = {
       # System theme switching doesn't seem to work on Linux
       mode = "dark";
-      dark = "Ayu Mirage";
-      light = "Ayu Light";
+      dark = "nord";
+      light = "nord";
     };
     current_line_highlight = "none";
-    vim_mode = true;
+    vim_mode = false;
     scrollbar.show = "never";
     ui_font_size = 18;
-    buffer_font_family = "BerkeleyMono Nerd Font";
+    buffer_font_family = "Noto Nerd Font";
     buffer_font_size = 18;
     inlay_hints.enabled = true;
   };

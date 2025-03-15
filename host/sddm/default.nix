@@ -1,7 +1,7 @@
 # ./host/sddm/default.nix
 { pkgs, lib, ... }:
 let
-    image = ./background.jpg;
+    image = ./background.png;
   sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "sakura";
     themeConfig = {

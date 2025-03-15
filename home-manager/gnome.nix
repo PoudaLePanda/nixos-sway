@@ -87,8 +87,8 @@
         };
 
         "org/gnome/desktop/background" = {
-            picture-uri = "file://${config.home.homeDirectory}/.config/backgrounds/background.jpg";
-            picture-uri-dark = "file://${config.home.homeDirectory}/.config/backgrounds/background.jpg";
+            picture-uri = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
+            picture-uri-dark = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
             picture-options = "zoom";
         };
 
