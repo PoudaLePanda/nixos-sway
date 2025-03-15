@@ -29,50 +29,74 @@
         # ocamllabs.ocaml-platform
         # Zig
         ziglang.vscode-zig
-
+        dbaeumer.vscode-eslint
+        esbenp.prettier-vscode
+        formulahendry.auto-close-tag
+        kief.material-icon-theme
         # # Color theme
         # jdinhlife.gruvbox
         # # sainnhe.gruvbox-material
         # jonathanharty.gruvbox-material-icon-theme
       ];
       userSettings = {
-        "update.mode" = "none";
-        "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
-        "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
+        "[css]".editor.defaultFormatter = "esbenp.prettier-vscode";
+        "[javascript]".editor.defaultFormatter = "esbenp.prettier-vscode";
+        "[typescript]".editor.defaultFormatter = "esbenp.prettier-vscode";
+        "[typescriptreact]".editor.defaultFormatter = "esbenp.prettier-vscode";
+        editor = {
+          fontFamily = "'Noto Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+          fontLigatures = true;
+          formatOnPaste = true;
+          formatOnSave = true;
+          formatOnType = true;
+          minimap.enabled = false;
+          renderWhitespace = "trailing";
+          smoothScrolling = true;
+          tabSize = 4;
+          fontSize = 16;
+        };
+        evenBetterToml.formatter.alignComments = false;
+        files = {
+          associations."*.css" = "tailwindcss";
+          autoSave = "onWindowChange";
+          insertFinalNewline = true;
+          trimFinalNewlines = true;
+          trimTrailingWhitespace = true;
+        };
+        terminal.integrated = {
+          cursorBlinking = true;
+          cursorStyle = "line";
+          smoothScrolling = true;
+          fontFamily = "'Noto Nerd Font', 'SymbolsNerdFont'";
+        };
+        update.mode = "none";
+        window = {
+          menuBarVisibility = "toggle";
+        };
+        workbench = {
+          colorTheme = "One Dark Pro Darker";
+          iconTheme = "material-icon-theme";
+          list.smoothScrolling = true;
+          startupEditor = "none";
+          tips.enabled = false;
+        };
+        "extensions.autoUpdate" = false;
+        "window.titleBarStyle" = "custom";
 
-        "window.menuBarVisibility" = "toggle";
-        "editor.fontFamily" = "'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
-        "terminal.integrated.fontFamily" = "'Maple Mono', 'SymbolsNerdFont'";
-        "editor.fontSize" = 18;
         # "workbench.colorTheme" = "Gruvbox Dark Hard";
         # "workbench.iconTheme" = "gruvbox-material-icon-theme";
+        #
         "material-icon-theme.folders.theme" = "classic";
         "vsicons.dontShowNewVersionMessage" = true;
         "explorer.confirmDragAndDrop" = false;
-        "editor.fontLigatures" = true;
-        "editor.minimap.enabled" = false;
-        "workbench.startupEditor" = "none";
 
-        "editor.formatOnSave" = true;
-        "editor.formatOnType" = true;
-        "editor.formatOnPaste" = true;
-
-        "workbench.layoutControl.type" = "menu";
-        "workbench.editor.limit.enabled" = true;
-        "workbench.editor.limit.value" = 10;
-        "workbench.editor.limit.perEditorGroup" = true;
-        "workbench.editor.showTabs" = "none";
-        "files.autoSave" = "onWindowChange";
         "explorer.openEditors.visible" = 0;
         "breadcrumbs.enabled" = false;
         "editor.renderControlCharacters" = false;
-        "workbench.activityBar.location" = "hidden";
-        "workbench.statusBar.visible" = false;
         "editor.scrollbar.verticalScrollbarSize" = 2;
         "editor.scrollbar.horizontalScrollbarSize" = 2;
         "editor.scrollbar.vertical" = "hidden";
         "editor.scrollbar.horizontal" = "hidden";
-        "workbench.layoutControl.enabled" = false;
 
         "editor.mouseWheelZoom" = true;
 
@@ -98,14 +122,6 @@
         "C_Cpp.workspaceParsingPriority" = "medium";
         "C_Cpp.clang_format_sortIncludes" = true;
         "C_Cpp.doxygen.generatedStyle" = "/**";
-
-        # Zig
-        "zig.initialSetupDone" = true;
-        "zig.checkForUpdate" = false;
-        "zig.zls.path" = "zls";
-        "zig.path" = "zig";
-        "zig.revealOutputChannelOnFormattingError" = false;
-        "zig.zls.enableInlayHints" = false;
 
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;

@@ -10,7 +10,6 @@ in
       ./gnome.nix
       # ./sddm/default.nix
       ./pkgs/nix.nix
-      ./pkgs/ghostty.nix
       ./pkgs/vpn/proton-vpn.nix
       ./pkgs/firewall.nix
       ./pkgs/amd-drivers.nix
@@ -118,6 +117,7 @@ in
     # Paquets système
     environment.systemPackages = with pkgs; [
         home-manager
+        foot
         nix
         nil
         nixd

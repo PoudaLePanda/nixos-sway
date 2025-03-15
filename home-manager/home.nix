@@ -1,17 +1,15 @@
 # ./home/home.nix
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
     home.username = "lmlab";
     home.homeDirectory = "/home/lmlab";
-    
 
     imports = [
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
       ./pkgs/zed-editor/default.nix
       ./pkgs/vscodium.nix
-      ./ulauncher/default.nix
-      ./wallpaper/default.nix
+      ./pkgs/ghostty.nix
       ./gnome.nix
     ];
 
