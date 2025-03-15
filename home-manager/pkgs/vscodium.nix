@@ -27,8 +27,6 @@
         ms-vscode.cpptools
         # OCaml
         # ocamllabs.ocaml-platform
-        # Zig
-        ziglang.vscode-zig
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         formulahendry.auto-close-tag

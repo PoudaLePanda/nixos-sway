@@ -23,6 +23,7 @@ in
     imports = [
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
+      ./pkgs/vscodium.nix
       ./gnome.nix
     ];
 

@@ -15,7 +15,6 @@ in
         ./pkgs/firewall.nix
         ./pkgs/amd-drivers.nix
         ./pkgs/zed-editor.nix
-        ./pkgs/vscodium.nix
         ./pkgs/ghostty.nix
         # ./pkgs/btop/default.nix
         ./pkgs/minecraft.nix
