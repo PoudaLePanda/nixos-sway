@@ -7,7 +7,7 @@
     imports = [
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
-      ./pkgs/zed-editor/default.nix
+      ./pkgs/zed-editor.nix
       ./pkgs/vscodium.nix
       ./pkgs/ghostty.nix
       ./gnome.nix

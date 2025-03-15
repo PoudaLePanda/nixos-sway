@@ -1,5 +1,5 @@
 
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [ pkgs.zed-editor ];
 

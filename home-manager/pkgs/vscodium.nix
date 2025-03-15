@@ -32,7 +32,6 @@
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         formulahendry.auto-close-tag
-        kief.material-icon-theme
         # # Color theme
         # jdinhlife.gruvbox
         # # sainnhe.gruvbox-material

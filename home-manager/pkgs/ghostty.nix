@@ -1,7 +1,7 @@
 # ./host/pkgs/ghostty.nix
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     ghostty
   ];
 
@@ -17,7 +17,7 @@
 
     # Theme
     theme = "nord"
-    background-opacity = 0.66
+    background-opacity = 0.80
     background-blur = true
     unfocused-split-opacity = 0.96
 
@@ -26,8 +26,8 @@
     adjust-cursor-thickness = 1
     cursor-click-to-move = true
 
-    resize-overlay = never
-    copy-on-select = false
+    # resize-overlay = never
+    copy-on-select = true
     confirm-close-surface = false
     mouse-hide-while-typing = true
 
@@ -38,47 +38,21 @@
     window-padding-color = background
     window-inherit-working-directory = true
     window-inherit-font-size = true
-    window-decoration = false
+    window-decoration = true
 
-    gtk-titlebar = false
-    gtk-single-instance = false
-    gtk-tabs-location = bottom
-    gtk-wide-tabs = false
+    # gtk-titlebar = true
+    # gtk-single-instance = false
+    # gtk-tabs-location = bottom
+    # gtk-wide-tabs = false
 
-    auto-update = off
-    term = ghostty
+    # auto-update = false
+    term = xterm
     clipboard-paste-protection = false
 
-    keybind = shift+end=unbind
-    keybind = shift+home=unbind
-    keybind = ctrl+shift+left=unbind
-    keybind = ctrl+shift+right=unbind
-    keybind = shift+enter=text:\n
+    # keybind = shift+end=unbind
+    # keybind = shift+home=unbind
+    # keybind = ctrl+shift+left=unbind
+    # keybind = ctrl+shift+right=unbind
+    # keybind = shift+enter=text:\n
   '';
-  # xdg.configFile."ghostty/themes/nord".text = ''
-  #   background = #1d2021
-  #   foreground = #fbf1c7
-
-  #   palette = 0=#3c3836
-  #   palette = 1=#cc241d
-  #   palette = 2=#98971a
-  #   palette = 3=#d79921
-  #   palette = 4=#458588
-  #   palette = 5=#b16286
-  #   palette = 6=#689d6a
-  #   palette = 7=#a89984
-  #   palette = 8=#928374
-  #   palette = 9=#fb4934
-  #   palette = 10=#b8bb26
-  #   palette = 11=#fabd2f
-  #   palette = 12=#83a598
-  #   palette = 13=#d3869b
-  #   palette = 14=#8ec07c
-  #   palette = 15=#fbf1c7
-
-  #   cursor-color = #D5C4A1
-
-  #   selection-foreground = #282828
-  #   selection-background = #98971A
-  # '';
 }

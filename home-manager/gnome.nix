@@ -1,5 +1,8 @@
 # ./home/gnome.nix
 { config, pkgs, ... }:
+let
+  backgroundImage = ./background.png;
+in
 {
     # Paquets spécifiques à GNOME
     home.packages = with pkgs; [
@@ -9,20 +12,21 @@
         gnomeExtensions.vitals
         gnomeExtensions.caffeine
         gnomeExtensions.dash-to-dock
+        gnomeExtensions.tiling-assistant
     ];
 
     programs.bash = {
         enable = true;
-
         # Ajout des commandes à la fin du fichier bashrc
         initExtra = ''
-        # Initialisation de starship
-        eval "$(starship init bash)"
-
-        # Exécution de nerdfetch au démarrage
-        nerdfetch
+            eval "$(starship init bash)"
+            nerdfetch
         '';
     };
+
+    # Copiez l'image dans ~/.config/backgrounds/
+    home.file.".config/backgrounds/background.png".source = backgroundImage;
+
     # Configuration GNOME avec dconf
     dconf.settings = {
         "org/gnome/desktop/interface" = {
@@ -87,9 +91,9 @@
         };
 
         "org/gnome/desktop/background" = {
-            picture-uri = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-            picture-uri-dark = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-            picture-options = "zoom";
+          "picture-uri" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
+          "picture-uri-dark" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
+          "picture-options" = "zoom";
         };
 
         "org/gnome/shell" = {
@@ -99,11 +103,14 @@
                 "dash-to-dock@micxgx.gmail.com"
                 "caffeine@patapon.info"
                 "Vitals@CoreCoding.com"
+                "tiling-assistant@leleat-on-github"
             ];
             "favorite-apps" = [
                 "zen.desktop"
-                "zed-editor.desktop"
+                "zed.desktop"
                 "ghostty.desktop"
+                "vscodium.desktop"
+                "foot.desktop"
                 "github-desktop.desktop"
                 "org.gnome.Nautilus.desktop"
             ];
@@ -122,6 +129,17 @@
             show-indicator = true;
             auto-enable = true;
 
+        };
+
+        # Configuration de Tiling Assistant
+        "org/gnome/shell/extensions/tiling-assistant" = {
+            "window-gap" = 15;  # Espace entre les fenêtres (en pixels)
+            "enable-tiling-popup" = false;  # Activer le popup de tiling
+            "enable-tile-animations" = false;  # Désactiver les animations pour plus de performance
+            "tiling-popup-all-workspace" = true;  # Afficher toutes les fenêtres dans le popup
+            "active-window-hint" = true;  # Indiquer la fenêtre active
+            "active-window-hint-color" = "rgba(53, 132, 228, 0.3)";  # Couleur de l'indication
+            "enable-dynamic-keybinding-workspace" = true;  # Raccourcis dynamiques par workspace
         };
 
         "org/gnome/shell/extensions/vitals" = {
