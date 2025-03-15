@@ -1,11 +1,7 @@
 
-{ pkgs, ... }:
+{ ... }:
 {
-  environment.systemPackages = with pkgs; [
-    zed-editor
-  ];
-
-  environment.etc."xdg/zed/settings.json".text = builtins.toJSON {
+  xdg.configFile."zed/settings.json".text = builtins.toJSON {
     auto_update = false;
     telemetry = {
       diagnostics = false;

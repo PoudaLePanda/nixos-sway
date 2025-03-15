@@ -163,6 +163,8 @@ in
         killall
         mesa
         chromium
+        ghostty
+        zed-editor
         brave
         inputs.zen-browser.packages."${system}".default
         zathura

@@ -1,11 +1,7 @@
 # ./host/pkgs/ghostty.nix
-{ pkgs, ... }:
+{ ... }:
 {
-    environment.systemPackages = with pkgs; [
-      ghostty
-    ];
-
-    environment.etc."ghostty/config".text = ''
+    xdg.configFile."ghostty/config".text = ''
         # Font
         font-family = "Noto Nerd Font"
         font-size = 11
