@@ -31,7 +31,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.lmlab = import ./home/home.nix;
+            home-manager.users.lmlab = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
           grub2-themes.nixosModules.default

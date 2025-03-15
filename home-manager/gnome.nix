@@ -11,7 +11,6 @@ in
         gnomeExtensions.appindicator
         gnomeExtensions.user-themes
         gnomeExtensions.vitals
-        gnomeExtensions.pop-shell
         gnomeExtensions.rounded-window-corners-reborn
         gnomeExtensions.caffeine
         gnomeExtensions.dash-to-dock
@@ -86,15 +85,11 @@ in
             picture-options = "zoom";
         };
 
-        # "org/gnome/desktop/account-photo" = {
-        #   picture-uri = "file://${config.home.homeDirectory}/.config/avatars/${../avatar.png}";
-        # };
-
         "org/gnome/shell" = {
             "disable-user-extensions" = false;
             enabled-extensions = [
                 "user-theme@gnome-shell-extensions.gcampax.github.com"
-                "pop-shell@system76.com"
+                # "pop-shell@system76.com"
                 "rounded-window-corners@fxgn"
                 "dash-to-dock@micxgx.gmail.com"
                 "caffeine@patapon.info"
@@ -108,11 +103,8 @@ in
             ];
         };
 
-        "org/gnome/shell/extensions/pop-shell" = {
-          "active-hint" = false;
-          "gap-inner" = mkUint32 1;
-          "gap-outer" = mkUint32 1;
-          "tile-by-default" = true;
+        "org/gnome/shell/extensions/user-theme" = {
+          "name" = "Graphite-teal-Dark-nord";
         };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
@@ -163,22 +155,4 @@ in
             memory = true;
         };
     };
-
-      # pop-shell settings
-      xdg.configFile = {
-        "pop-shell/config.json".text = ''
-          {
-            "float": [
-              {
-                "class": "ulauncher"
-              },
-              {
-                "class": "org.gnome.Calculator"
-              }
-            ],
-            "skiptaskbarhidden": [],
-            "log_on_focus": false
-          }
-        '';
-      };
 }

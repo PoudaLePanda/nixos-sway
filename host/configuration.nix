@@ -37,7 +37,7 @@ in
                 enable = true;
                 theme = "stylish";
                 footer = true;
-                customResolution = "1920x1080";  # Optional: Set a custom resolution
+                customResolution = "3440x1440";  # Optional: Set a custom resolution
                 splashImage = "${./background.jpg}";
             };
         };
@@ -130,6 +130,7 @@ in
        	zip
        	xz
        	github-desktop
+        home-manager
        	ags
        	gcc
         glib
