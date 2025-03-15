@@ -1,101 +1,104 @@
 {
-  "display": {
-    "separator": "->   "
-  },
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "none"
+    "padding": {
+      "top": 0,
+      "left": 5,
+      "right": 5
+    }
+  },
+  "display": {
+    "separator": "",
+    "binaryPrefix": "si",
+    "size": {
+      "ndigits": 0
+    },
+    "keyWidth": 4
   },
   "modules": [
+    "break",
+    "break",
     {
-      "format": "┌───────────────────────────── {6}{7}{8} ─────────────────────────────┐",
-      "type": "custom"
+      "type": "title",
+      "key": "",
+      "color": {
+        "user": "34",
+        "host": "34"
+      },
+      "keyColor": "32"
+    },
+    {
+      "type": "os",
+      "key": "",
+      "format": "{3} ({12})",
+      "keyColor": "32"
+    },
+    {
+      "type": "kernel",
+      "key": "",
+      "format": "{1} {2}",
+      "keyColor": "32"
     },
     "break",
     {
-      "key": "     OS           ",
-      "keyColor": "red",
-      "type": "os"
+      "type": "cpu",
+      "key": "",
+      "keyColor": "34",
+      "freqNdigits": 1
     },
     {
-      "key": "    󰌢 Machine      ",
-      "keyColor": "green",
-      "type": "host"
+      "type": "board",
+      "key": "󱤓",
+      "keyColor": "34"
     },
     {
-      "key": "     Kernel       ",
-      "keyColor": "magenta",
-      "type": "kernel"
+      "type": "gpu",
+      "key": "󰢮",
+      "keyColor": "34",
+      "format": "{2}",
+      "forceVulkan": true,
+      "hideType": "integrated"
     },
     {
-      "key": "    󰏖 Packages     ",
-      "type": "packages"
-    },
-    {
-      "key": "    󰅐 Uptime       ",
-      "keyColor": "red",
-      "type": "uptime"
-    },
-    {
-      "compactType": "original-with-refresh-rate",
-      "key": "    󰍹 Resolution   ",
-      "keyColor": "yellow",
-      "type": "display"
-    },
-    {
-      "key": "     WM           ",
-      "keyColor": "blue",
-      "type": "wm"
-    },
-    {
-      "key": "     DE           ",
-      "keyColor": "green",
-      "type": "de"
-    },
-    {
-      "key": "     Shell        ",
-      "keyColor": "cyan",
-      "type": "shell"
-    },
-    {
-      "key": "     Terminal     ",
-      "keyColor": "red",
-      "type": "terminal"
-    },
-    {
-      "key": "    󰻠 CPU          ",
-      "keyColor": "yellow",
-      "type": "cpu"
-    },
-    {
-      "key": "    󰍛 GPU          ",
-      "keyColor": "blue",
-      "type": "gpu"
-    },
-    {
-      "key": "    󰑭 Memory       ",
-      "keyColor": "magenta",
-      "type": "memory"
-    },
-    {
-      "key": "    󰩟 Local IP     ",
-      "keyColor": "red",
-      "type": "localip"
-    },
-    {
-      "key": "    󰩠 Public IP    ",
-      "keyColor": "cyan",
-      "type": "publicip"
+      "type": "memory",
+      "key": "",
+      "keyColor": "34",
+      "format": "{1} / {2}"
     },
     "break",
     {
-      "format": "└──────────────────────────────────────────────────────────────────────────────┘",
-      "type": "custom"
+      "type": "wm",
+      "key": "",
+      "keyColor": "33"
+    },
+    {
+      "type": "theme",
+      "key": "󰉼",
+      "keyColor": "33"
+    },
+    {
+      "type": "terminal",
+      "key": "",
+      "format": "{3}",
+      "keyColor": "33"
+    },
+    {
+      "type": "shell",
+      "key": "$",
+      "format": "{1} {4}",
+      "keyColor": "33"
+    },
+    {
+      "type": "display",
+      "key": "󰹑",
+      "keyColor": "33",
+      "compactType": "original"
     },
     "break",
     {
-      "paddingLeft": 34,
-      "symbol": "circle",
-      "type": "colors"
-    }
+      "type": "colors",
+      "symbol": "circle"
+    },
+    "break"
   ]
 }

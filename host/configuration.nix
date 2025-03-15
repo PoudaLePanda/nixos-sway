@@ -12,6 +12,8 @@ in
       ./pkgs/nix.nix
       ./pkgs/ghostty.nix
       ./pkgs/proton-vpn.nix
+      ./pkgs/firewall.nix
+      ./pkgs/amd-drivers.nix
       # ./pkgs/zathura.nix
       # ./pkgs/btop/default.nix
       # ./pkgs/minecraft.nix
