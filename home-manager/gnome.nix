@@ -1,7 +1,7 @@
 # ./home/gnome.nix
 { config, pkgs, ... }:
 let
-  backgroundImage = ./background.png;
+  backgroundImage = ../background.png;
 in
 {
     # Paquets spécifiques à GNOME
@@ -29,6 +29,26 @@ in
 
     # Configuration GNOME avec dconf
     dconf.settings = {
+        "org/gnome/shell" = {
+            "disable-user-extensions" = false;
+            enabled-extensions = [
+                "user-theme@gnome-shell-extensions.gcampax.github.com"
+                "dash-to-dock@micxgx.gmail.com"
+                "caffeine@patapon.info"
+                "Vitals@CoreCoding.com"
+                "tiling-assistant@leleat-on-github"
+            ];
+            "favorite-apps" = [
+                "zen.desktop"
+                "zed-editor.desktop"
+                "ghostty.desktop"
+                "VSCodium.desktop"
+                "github-desktop.desktop"
+                "steam.desktop"
+                "org.gnome.Nautilus.desktop"
+            ];
+        };
+
         "org/gnome/desktop/interface" = {
             "color-scheme" = "prefer-dark";
             "enable-animations" = false;
@@ -36,6 +56,10 @@ in
             "font-antialiasing" = "grayscale";
             "font-hinting" = "slight";
             "toolkit-accessibility" = false;
+            "gtk-theme" = "Nordic";
+            "icon-theme" = "Nordzy";
+            "cursor-theme" = "Nordzy-cursors";
+            "font-name" = "Noto Nerd Font 12";
         };
 
         "org/gnome/tweaks" = {
@@ -94,26 +118,6 @@ in
           "picture-uri" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
           "picture-uri-dark" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
           "picture-options" = "zoom";
-        };
-
-        "org/gnome/shell" = {
-            "disable-user-extensions" = false;
-            enabled-extensions = [
-                "user-theme@gnome-shell-extensions.gcampax.github.com"
-                "dash-to-dock@micxgx.gmail.com"
-                "caffeine@patapon.info"
-                "Vitals@CoreCoding.com"
-                "tiling-assistant@leleat-on-github"
-            ];
-            "favorite-apps" = [
-                "zen.desktop"
-                "zed.desktop"
-                "ghostty.desktop"
-                "vscodium.desktop"
-                "foot.desktop"
-                "github-desktop.desktop"
-                "org.gnome.Nautilus.desktop"
-            ];
         };
 
         "org/gnome/shell/extensions/user-theme" = {

@@ -1,9 +1,11 @@
 
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.zed-editor ];
+  environment.systemPackages = with pkgs; [
+    zed-editor
+  ];
 
-  xdg.configFile."zed/settings.json".source = (pkgs.formats.json { }).generate "settings.json" {
+  environment.etc."xdg/zed/settings.json".text = builtins.toJSON {
     auto_update = false;
     telemetry = {
       diagnostics = false;

@@ -1,15 +1,28 @@
 # ./home/home.nix
 { pkgs, ... }:
+let
+  NordicTheme = pkgs.nordic;
+  gtk4ThemeDir = "${NordicTheme}/share/themes/Nordic";
+in
 {
-    home.username = "lmlab";
-    home.homeDirectory = "/home/lmlab";
+    home = {
+        username = "lmlab";
+        homeDirectory = "/home/lmlab";
+        activation = {
+            createDirectories = ''
+                $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \
+                $HOME/DEV \
+            '';
+        };
+        file.".config/gtk-3.0/bookmarks".text = ''
+            file:///home/lmlab/DEV DEV
+            file:///home/lmlab/DOTFILES DOTFILES
+          '';
+    };
 
     imports = [
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
-      ./pkgs/zed-editor.nix
-      ./pkgs/vscodium.nix
-      ./pkgs/ghostty.nix
       ./gnome.nix
     ];
 
@@ -58,6 +71,12 @@
         theme = {
             name = "Nordic";
         };
+        gtk3.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
+        gtk4.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+        };
     };
 
     # Cursor settings
@@ -66,6 +85,13 @@
         size = 24;
         package = pkgs.nordzy-cursor-theme;
     };
+
+    # Ajoutez ceci pour GTK4
+    home.file.".config/gtk-4.0/assets".source = "${gtk4ThemeDir}/gtk-4.0/assets";
+    home.file.".config/gtk-4.0/gtk.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk.css";
+    home.file.".config/gtk-4.0/gtk-dark.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk-dark.css";
+    # Si ce fichier existe dans le thème
+    home.file.".config/gtk-4.0/thumbnail.png".source = "${gtk4ThemeDir}/gtk-4.0/thumbnail.png";
 
     home.stateVersion = "24.11"; # Version de compatibilité Home Manager
 }

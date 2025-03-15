@@ -2,21 +2,24 @@
 { pkgs, inputs,... }:
 let
     system = "x86_64-linux";
+    backgroundImage = ../background.png;
+    avatarImage = ../avatar.png;
 in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./gnome.nix
-      # ./sddm/default.nix
-      ./pkgs/nix.nix
-      ./pkgs/vpn/proton-vpn.nix
-      ./pkgs/firewall.nix
-      ./pkgs/amd-drivers.nix
-      # ./pkgs/zathura.nix
-      # ./pkgs/btop/default.nix
-      # ./pkgs/minecraft.nix
-      # ./pkgs/steam.nix
+        ./hardware-configuration.nix
+        ./gnome.nix
+        ./pkgs/nix.nix
+        ./pkgs/vpn/proton-vpn.nix
+        ./pkgs/firewall.nix
+        ./pkgs/amd-drivers.nix
+        ./pkgs/zed-editor.nix
+        ./pkgs/vscodium.nix
+        ./pkgs/ghostty.nix
+        # ./pkgs/btop/default.nix
+        ./pkgs/minecraft.nix
+        ./pkgs/steam.nix
     ];
 
     # Boot & EFI
@@ -38,7 +41,7 @@ in
                 theme = "stylish";
                 footer = true;
                 customResolution = "3440x1440";  # Optional: Set a custom resolution
-                splashImage = "${./background.png}";
+                splashImage = "${backgroundImage}";
             };
         };
         plymouth.enable = true;
@@ -60,6 +63,7 @@ in
     };
 
     time.timeZone = "Europe/Paris";
+    console.keyMap = "us";
     i18n.defaultLocale = "fr_FR.UTF-8";
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "fr_FR.UTF-8";
@@ -72,7 +76,6 @@ in
         LC_TELEPHONE = "fr_FR.UTF-8";
         LC_TIME = "fr_FR.UTF-8";
     };
-    console.keyMap = "us";
     security.rtkit.enable = true;
 
     services = {
@@ -83,13 +86,35 @@ in
         xserver = {
           enable = true;
           excludePackages = [ pkgs.xterm ];
-          videoDrivers = [ "amdgpu" ];
           xkb = {
             layout = "us";
             variant = "mac";
           };
-          displayManager.gdm = {
-            enable = true;
+          displayManager = {
+            defaultSession = "gnome";
+            gdm = {
+                enable = false;
+            };
+            lightdm = {
+                enable = true;
+                background = backgroundImage;
+                greeters = {
+                  gtk = {
+                        theme = {
+                            name = "Nordic";
+                            package = pkgs.nordic;
+                        };
+                        iconTheme = {
+                            name = "Nordzy";
+                            package = pkgs.nordzy-icon-theme;
+                        };
+                        cursorTheme = {
+                            name = "Nordzy-cursors";
+                            package = pkgs.nordzy-cursor-theme;
+                        };
+                    };
+                };
+            };
           };
         };
 
@@ -116,8 +141,8 @@ in
 
     # Paquets système
     environment.systemPackages = with pkgs; [
+        glib
         home-manager
-        foot
         nix
         nil
         nixd
@@ -139,6 +164,7 @@ in
         killall
         mesa
         chromium
+        brave
         inputs.zen-browser.packages."${system}".default
         zathura
     ];
@@ -151,20 +177,20 @@ in
     nixpkgs.config.allowUnfree = true;
 
     # Set User's avatar
-    system.activationScripts.script.text = ''
-      mkdir -p /var/lib/AccountsService/{icons,users}
-      cp ${./avatar.png} /var/lib/AccountsService/icons/lmlab
-
-      touch /var/lib/AccountsService/users/lmlab
-
-      if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
-        if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
-        echo "[User]" >> /var/lib/AccountsService/users/lmlab
+    system.activationScripts = {
+      script.text = ''
+        mkdir -p /var/lib/AccountsService/{icons,users}
+        cp ${avatarImage} /var/lib/AccountsService/icons/lmlab
+        touch /var/lib/AccountsService/users/lmlab
+        if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
+            if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
+            echo "[User]" >> /var/lib/AccountsService/users/lmlab
+            fi
+            echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
         fi
-        echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
-      fi
-    '';
+      '';
+    };
 
-home-manager.backupFileExtension = "backup";
+    home-manager.backupFileExtension = "backup";
     system.stateVersion = "24.11";
 }

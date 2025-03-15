@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}:
+{ lib, pkgs, config, ... }:
 with lib;
 let
   cfg = config.drivers.amdgpu;
@@ -14,13 +9,27 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+    boot.initrd.kernelModules = [ "amdgpu" ];
+    services.xserver.enable = true;
     services.xserver.videoDrivers = [ "amdgpu" ];
-    # OpenGL
+
     hardware.opengl = {
-      ## amdvlk: an open-source Vulkan driver from AMD
+      enable = true;
       extraPackages = [ pkgs.amdvlk ];
-      extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+    };
+
+    nixpkgs.config.rocmSupport = true;
+
+    environment.systemPackages = with pkgs; [ lact ];
+
+    systemd.services.lactd = {
+      enable = true;
+      description = "Radeon GPU monitor";
+      after = [ "syslog.target" "systemd-modules-load.service" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.lact}/bin/lact daemon";
+      };
+      wantedBy = [ "multi-user.target" ];
     };
   };
 }
