@@ -19,8 +19,8 @@
         # Initialisation de starship
         eval "$(starship init bash)"
 
-        # Exécution de fastfetch au démarrage
-        fastfetch
+        # Exécution de nerdfetch au démarrage
+        nerdfetch
         '';
     };
     # Configuration GNOME avec dconf
