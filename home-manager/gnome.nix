@@ -101,11 +101,11 @@
                 "Vitals@CoreCoding.com"
             ];
             "favorite-apps" = [
-              "zen.desktop"
-              "zed-editor.desktop"
-              "Ghostty.desktop"
-              "github-desktop.desktop"
-              "org.gnome.Nautilus.desktop"
+                "zen.desktop"
+                "zed-editor.desktop"
+                "ghostty.desktop"
+                "github-desktop.desktop"
+                "org.gnome.Nautilus.desktop"
             ];
         };
 
