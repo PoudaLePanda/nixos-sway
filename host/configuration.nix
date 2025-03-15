@@ -11,7 +11,7 @@ in
       # ./sddm/default.nix
       ./pkgs/nix.nix
       ./pkgs/ghostty.nix
-      ./pkgs/zed-editor.nix
+      ./pkgs/zed-editor/default.nix
       ./pkgs/proton-vpn.nix
       # ./pkgs/zathura.nix
       # ./pkgs/btop/default.nix
@@ -162,11 +162,6 @@ in
         fi
         echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
       fi
-    '';
-
-    environment.etc."profile.d/zz-custom.sh".text = ''
-        eval "$(starship init bash)"
-        fastfetch
     '';
 
     system.stateVersion = "24.11";

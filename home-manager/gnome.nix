@@ -1,9 +1,5 @@
 # ./home/gnome.nix
-{ config, lib, pkgs, ... }:
-let
-  # Import des fonctions nécessaires pour dconf
-  inherit (lib.hm.gvariant) mkUint32 mkVariant mkDictionaryEntry;
-in
+{ config, pkgs, ... }:
 {
     # Paquets spécifiques à GNOME
     home.packages = with pkgs; [
@@ -11,11 +7,22 @@ in
         gnomeExtensions.appindicator
         gnomeExtensions.user-themes
         gnomeExtensions.vitals
-        gnomeExtensions.rounded-window-corners-reborn
         gnomeExtensions.caffeine
         gnomeExtensions.dash-to-dock
     ];
 
+    programs.bash = {
+        enable = true;
+
+        # Ajout des commandes à la fin du fichier bashrc
+        initExtra = ''
+        # Initialisation de starship
+        eval "$(starship init bash)"
+
+        # Exécution de fastfetch au démarrage
+        fastfetch
+        '';
+    };
     # Configuration GNOME avec dconf
     dconf.settings = {
         "org/gnome/desktop/interface" = {
@@ -68,7 +75,7 @@ in
         };
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-            "binding" = "<Shift><Super>Return";
+            "binding" = "<Shift><Super>t";
             "command" = "ghostty";
             "name" = "Ghostty";
         };
@@ -89,16 +96,14 @@ in
             "disable-user-extensions" = false;
             enabled-extensions = [
                 "user-theme@gnome-shell-extensions.gcampax.github.com"
-                # "pop-shell@system76.com"
-                "rounded-window-corners@fxgn"
                 "dash-to-dock@micxgx.gmail.com"
                 "caffeine@patapon.info"
                 "Vitals@CoreCoding.com"
             ];
             "favorite-apps" = [
-              "zen-browser.desktop"
-              "zed.desktop"
-              "ghostty.desktop"
+              "zen.desktop"
+              "zed-editor.desktop"
+              "Ghostty.desktop"
               "org.gnome.Nautilus.desktop"
             ];
         };
@@ -110,38 +115,6 @@ in
         "org/gnome/shell/extensions/dash-to-dock" = {
             dock-position = "BOTTOM";
             dash-max-icon-size = 48;
-        };
-
-        "org/gnome/shell/extensions/rounded-window-corners-reborn" = {
-            "blacklist" = ["ulauncher"];
-            "border-color" = "#4F057D";
-            "border-width" = 1;
-            global-rounded-corner-settings = [
-            (mkDictionaryEntry [
-                "padding"
-                (mkVariant [
-                (mkDictionaryEntry ["left" (mkVariant 5)])
-                (mkDictionaryEntry ["right" (mkVariant 5)])
-                (mkDictionaryEntry ["top" (mkVariant 5)])
-                (mkDictionaryEntry ["bottom" (mkVariant 5)])
-                ])
-            ])
-
-            (mkDictionaryEntry [
-                "keepRoundedCorners"
-                (mkVariant [
-                (mkDictionaryEntry ["maximized" (mkVariant true)])
-                (mkDictionaryEntry ["fullscreen" (mkVariant false)])
-                ])
-            ])
-
-            (mkDictionaryEntry ["borderRadius" (mkVariant 8)])
-            (mkDictionaryEntry ["smoothing" (mkVariant 0)])
-            (mkDictionaryEntry ["enabled" (mkVariant true)])
-            ];
-            "settings-version" = mkUint32 6;
-            "skip-libadwaita-app" = false;
-            "keepRoundedCornersForMaximized" = true;
         };
 
         "org/gnome/shell/extensions/caffeine" = {
