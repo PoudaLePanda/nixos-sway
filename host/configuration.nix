@@ -11,7 +11,6 @@ in
       # ./sddm/default.nix
       ./pkgs/nix.nix
       ./pkgs/ghostty.nix
-      ./pkgs/zed-editor/default.nix
       ./pkgs/proton-vpn.nix
       # ./pkgs/zathura.nix
       # ./pkgs/btop/default.nix

@@ -104,6 +104,7 @@
               "zen.desktop"
               "zed-editor.desktop"
               "Ghostty.desktop"
+              "github-desktop.desktop"
               "org.gnome.Nautilus.desktop"
             ];
         };

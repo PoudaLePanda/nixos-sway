@@ -5,8 +5,9 @@
     home.homeDirectory = "/home/lmlab";
 
     imports = [
-      ./pkgs/fastfetch.nix
-      ./pkgs/starship.nix
+      ./pkgs/fastfetch/default.nix
+      ./pkgs/starship/default.nix
+      ./pkgs/zed-editor/default.nix
       ./ulauncher/default.nix
       ./wallpaper/default.nix
       ./gnome.nix

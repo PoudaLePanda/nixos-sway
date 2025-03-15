@@ -7,6 +7,6 @@
 
     programs.zed-editor = {
         enable = true;
-        settings = builtins.fromJSONC (builtins.readFile ./settings.jsonc);
+        settings = (builtins.readFile ./settings.jsonc);
     };
 }
