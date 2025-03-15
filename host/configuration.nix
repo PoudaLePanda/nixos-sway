@@ -14,7 +14,6 @@ in
       ./pkgs/proton-vpn.nix
       ./pkgs/firewall.nix
       ./pkgs/amd-drivers.nix
-      ./pkgs/lsp.nix
       # ./pkgs/zathura.nix
       # ./pkgs/btop/default.nix
       # ./pkgs/minecraft.nix
