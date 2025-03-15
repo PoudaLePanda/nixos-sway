@@ -14,8 +14,6 @@ in
         ./pkgs/vpn/proton-vpn.nix
         ./pkgs/firewall.nix
         ./pkgs/amd-drivers.nix
-        ./pkgs/zed-editor.nix
-        ./pkgs/ghostty.nix
         # ./pkgs/btop/default.nix
         ./pkgs/minecraft.nix
         ./pkgs/steam.nix
