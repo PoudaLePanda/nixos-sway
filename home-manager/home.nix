@@ -37,12 +37,13 @@ in
       ./pkgs/ghostty.nix
       ./gnome.nix
       ./pkgs/conky/default.nix
-      ./pkgs/cava/default.nix
-      ./pkgs/impulse/default.nix
+      # ./pkgs/cava/default.nix
+      # ./pkgs/impulse/default.nix
       # ./pkgs/glava/default.nix
     ];
 
     home.packages = with pkgs; [
+      blanket
         nerd-fonts.zed-mono
         nerd-fonts.noto
         nerd-fonts.hack
