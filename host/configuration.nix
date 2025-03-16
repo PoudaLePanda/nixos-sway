@@ -13,7 +13,6 @@ in
         ./gnome.nix
         ./pkgs/nix.nix
         ./pkgs/proton-vpn.nix
-        ./pkgs/firewall.nix
         ./pkgs/amd-drivers.nix
         # ./pkgs/btop/default.nix
         ./pkgs/minecraft.nix
@@ -140,6 +139,9 @@ in
        	curl
        	zip
        	xz
+        jq         # Pour traiter le JSON (utilisé dans tes scripts)
+        coreutils  # Fournit cat, awk, etc.
+        playerctl
        	github-desktop
        	ags
        	gcc

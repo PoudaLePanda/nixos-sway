@@ -36,6 +36,8 @@ in
       ./pkgs/vscodium.nix
       ./pkgs/ghostty.nix
       ./gnome.nix
+      ./pkgs/conky/default.nix
+      ./pkgs/cava/default.nix
     ];
 
     home.packages = with pkgs; [
@@ -46,10 +48,10 @@ in
         nordic
         nordzy-icon-theme
         nordzy-cursor-theme
-        (pkgs.graphite-gtk-theme.override {
-            themeVariants = ["teal"];
-            tweaks = ["float" "colorful" "nord" "rimless"];
-        })
+        # (pkgs.graphite-gtk-theme.override {
+        #     themeVariants = ["teal"];
+        #     tweaks = ["float" "colorful" "nord" "rimless"];
+        # })
     ];
 
     xdg.enable = true;

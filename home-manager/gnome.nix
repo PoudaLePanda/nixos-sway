@@ -12,6 +12,7 @@ in
         gnomeExtensions.caffeine
         gnomeExtensions.dash-to-dock
         gnomeExtensions.tiling-assistant
+        gnomeExtensions.blur-my-shell
     ];
 
     programs.bash = {
@@ -33,6 +34,7 @@ in
                 "caffeine@patapon.info"
                 "Vitals@CoreCoding.com"
                 "tiling-assistant@leleat-on-github"
+                "blur-my-shell@aunetx"
             ];
             "favorite-apps" = [
                 "zen.desktop"
@@ -44,6 +46,17 @@ in
                 "protonvpn-app.desktop"
                 "org.gnome.Nautilus.desktop"
             ];
+        };
+
+        "org/gnome/shell/extensions/blur-my-shell" = {
+            "blacklist"="@as []";
+           	"blur-on-overview"=false;
+           	"brightness"="1.0";
+           	"customize"=true;
+           	"enable-all"=true;
+           	"opacity"="250";
+           	"sigma"="59";
+           	"blur"=true;
         };
 
         "org/gnome/desktop/interface" = {
@@ -118,7 +131,8 @@ in
         };
 
         "org/gnome/shell/extensions/user-theme" = {
-          "name" = "Graphite-teal-Dark-nord";
+          "name" = "Nordic";
+          # "name" = "Graphite-teal-Dark-nord";
         };
 
         "org/gnome/shell/extensions/dash-to-dock" = {

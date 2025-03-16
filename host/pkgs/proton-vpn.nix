@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     environment.systemPackages = with pkgs; [
       protonvpn-gui
     ];
+
+    # Résolution DNS fiable quand le VPN est activé
+    networking.networkmanager.dns = lib.mkForce "none";
 
     # Configurer le pare-feu pour permettre le trafic VPN
     networking.firewall = {
@@ -24,8 +27,6 @@
       "net.ipv6.conf.all.forwarding" = 1;
     };
 
-    # Résolution DNS fiable quand le VPN est activé
-    networking.networkmanager.dns = "none";
     services.resolved = {
       enable = true;
       fallbackDns = [ "1.1.1.1" "8.8.8.8" ];
