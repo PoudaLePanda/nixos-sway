@@ -5,14 +5,8 @@
     conky
   ];
 
-  # xdg.configFile."conky/conky.conf".source = ./conky.conf;
-  # xdg.configFile."conky/mini_clock.lua".source = ./mini_clock.lua;
-  # xdg.configFile."conky/Circle.png".source = ./Circle.png;
-
-  # xdg.configFile."conky/conky2.conf".source = ./conky2.conf;
-
-  xdg.configFile."conky/conky3.conf".source = ./conky3.conf;
-  xdg.configFile."conky/Circle.png".source = ./box.png;
+  xdg.configFile."conky/conky.conf".source = ./conky.conf;
+  xdg.configFile."conky/conky2.conf".source = ./conky2.conf;
 
   # Autostart de Conky (optionnel)
   xdg.configFile."autostart/conky.desktop".text = ''
