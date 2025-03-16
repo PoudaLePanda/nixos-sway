@@ -12,7 +12,7 @@ in
         ./hardware-configuration.nix
         ./gnome.nix
         ./pkgs/nix.nix
-        ./pkgs/vpn/default.nix
+        ./pkgs/proton-vpn.nix
         ./pkgs/firewall.nix
         ./pkgs/amd-drivers.nix
         # ./pkgs/btop/default.nix
