@@ -6,12 +6,13 @@ let
     avatarImage = ../avatar.png;
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
+    home-manager.backupFileExtension = "backup";
+
+    imports = [
         ./hardware-configuration.nix
         ./gnome.nix
         ./pkgs/nix.nix
-        ./pkgs/vpn/proton-vpn.nix
+        ./pkgs/vpn/default.nix
         ./pkgs/firewall.nix
         ./pkgs/amd-drivers.nix
         # ./pkgs/btop/default.nix
@@ -19,14 +20,11 @@ in
         ./pkgs/steam.nix
     ];
 
-    # Boot & EFI
     boot = {
         initrd.kernelModules = [ "amdgpu" ];
         loader = {
-            # systemd-boot.enable = true;
             timeout = 10;
             efi.canTouchEfiVariables = true;
-
             grub = {
                 enable = true;
                 device = "nodev";
@@ -37,14 +35,13 @@ in
                 enable = true;
                 theme = "stylish";
                 footer = true;
-                customResolution = "3440x1440";  # Optional: Set a custom resolution
+                customResolution = "3440x1440";
                 splashImage = "${backgroundImage}";
             };
         };
         plymouth.enable = true;
     };
 
-    # Réseau & localisation
     networking = {
       hostName = "nixos";
       networkmanager.enable = true;
@@ -73,13 +70,11 @@ in
         LC_TELEPHONE = "fr_FR.UTF-8";
         LC_TIME = "fr_FR.UTF-8";
     };
-    security.rtkit.enable = true;
 
     services = {
         dbus.enable = true;
-        # Impression
         printing.enable = true;
-
+        displayManager.defaultSession = "gnome";
         xserver = {
           enable = true;
           excludePackages = [ pkgs.xterm ];
@@ -88,7 +83,6 @@ in
             variant = "mac";
           };
           displayManager = {
-            defaultSession = "gnome";
             gdm = {
                 enable = false;
             };
@@ -114,8 +108,6 @@ in
             };
           };
         };
-
-        # Son via PipeWire
         pulseaudio.enable = false;
         pipewire = {
             enable = true;
@@ -126,17 +118,12 @@ in
         };
     };
 
-    # Utilisateur
     users.users.lmlab = {
         isNormalUser = true;
         description = "lmlab";
         extraGroups = [ "networkmanager" "wheel" ];
     };
 
-    # Paquets système
-    programs.firefox.enable = true;
-
-    # Paquets système
     environment.systemPackages = with pkgs; [
         glib
         home-manager
@@ -164,18 +151,16 @@ in
         ghostty
         zed-editor
         brave
+        firefox
         inputs.zen-browser.packages."${system}".default
         zathura
     ];
 
-    # PATH configuration
     environment.localBinInPath = true;
-    # Enable devmon for device management
     services.devmon.enable = true;
-
+    security.rtkit.enable = true;
     nixpkgs.config.allowUnfree = true;
 
-    # Set User's avatar
     system.activationScripts = {
       script.text = ''
         mkdir -p /var/lib/AccountsService/{icons,users}
@@ -190,6 +175,9 @@ in
       '';
     };
 
-    home-manager.backupFileExtension = "backup";
+    environment.variables = {
+      HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
+    };
+
     system.stateVersion = "24.11";
 }

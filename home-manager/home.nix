@@ -20,6 +20,15 @@ in
           '';
     };
 
+    programs.git = {
+        enable = true;
+        userName = "PoudaLePanda";
+        userEmail = "leo.meyniel@proton.me";
+        extraConfig = {
+            init.defaultBranch = "main";
+        };
+    };
+
     imports = [
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
@@ -28,7 +37,6 @@ in
       ./pkgs/ghostty.nix
       ./gnome.nix
     ];
-
 
     home.packages = with pkgs; [
         nerd-fonts.zed-mono
@@ -44,20 +52,8 @@ in
         })
     ];
 
-    # basic configuration of git, please change to your own
-    programs.git = {
-        enable = true;
-        userName = "PoudaLePanda";
-        userEmail = "leo.meyniel@proton.me";
-        extraConfig = {
-            init.defaultBranch = "main";
-        };
-    };
-
-    # Configuration XDG
     xdg.enable = true;
 
-    # GTK Configuration (gardez la même que GNOME pour la cohérence)
     gtk = {
         enable = true;
         font = {
@@ -82,19 +78,17 @@ in
         };
     };
 
-    # Cursor settings
     home.pointerCursor = {
         name = "Nordzy-cursors";
         size = 24;
         package = pkgs.nordzy-cursor-theme;
     };
 
-    # Ajoutez ceci pour GTK4
     home.file.".config/gtk-4.0/assets".source = "${gtk4ThemeDir}/gtk-4.0/assets";
     home.file.".config/gtk-4.0/gtk.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk.css";
     home.file.".config/gtk-4.0/gtk-dark.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk-dark.css";
-    # Si ce fichier existe dans le thème
     home.file.".config/gtk-4.0/thumbnail.png".source = "${gtk4ThemeDir}/gtk-4.0/thumbnail.png";
 
-    home.stateVersion = "24.11"; # Version de compatibilité Home Manager
+    nixpkgs.config.allowUnfree = true;
+    home.stateVersion = "24.11";
 }

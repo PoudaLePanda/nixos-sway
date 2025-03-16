@@ -3,7 +3,6 @@
 {
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Remove decorations for QT applications
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -15,7 +14,7 @@
     epiphany
     geary
     seahorse
-    cheese # webcam tool
+    cheese
     totem
     gnome-maps
     gnome-music
@@ -24,7 +23,6 @@
     gnome-contacts
     gnome-calendar
     gnome-clocks
-    # Games
     aisleriot
     five-or-more
     four-in-a-row
@@ -44,8 +42,6 @@
     tali
   ];
 
-  # Activer dconf pour gérer les réglages GNOME au niveau du système
   programs.dconf.enable = true;
-
   services.xserver.excludePackages = with pkgs; [xterm];
 }

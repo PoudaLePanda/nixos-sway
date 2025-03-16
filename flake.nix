@@ -17,7 +17,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, grub2-themes, zen-browser, home-manager }@ inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    grub2-themes,
+    zen-browser,
+    home-manager
+  }@ inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -27,7 +34,6 @@
           }
           ./host/configuration.nix
           home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.lmlab = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };

@@ -8,7 +8,6 @@
       metrics = false;
     };
     theme = {
-      # System theme switching doesn't seem to work on Linux
       mode = "system";
       dark = "nord";
       light = "nord";
@@ -58,5 +57,4 @@
         };
     };
   };
-
 }

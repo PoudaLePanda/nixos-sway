@@ -4,7 +4,6 @@ let
   backgroundImage = ../background.png;
 in
 {
-    # Paquets spécifiques à GNOME
     home.packages = with pkgs; [
         gnome-tweaks
         gnomeExtensions.appindicator
@@ -17,17 +16,14 @@ in
 
     programs.bash = {
         enable = true;
-        # Ajout des commandes à la fin du fichier bashrc
         initExtra = ''
             eval "$(starship init bash)"
             nerdfetch
         '';
     };
 
-    # Copiez l'image dans ~/.config/backgrounds/
     home.file.".config/backgrounds/background.png".source = backgroundImage;
 
-    # Configuration GNOME avec dconf
     dconf.settings = {
         "org/gnome/shell" = {
             "disable-user-extensions" = false;
@@ -40,11 +36,12 @@ in
             ];
             "favorite-apps" = [
                 "zen.desktop"
-                "zed-editor.desktop"
-                "ghostty.desktop"
+                "dev.zed.Zed.desktop"
+                "com.mitchellh.ghostty.desktop"
                 "VSCodium.desktop"
                 "github-desktop.desktop"
                 "steam.desktop"
+                "protonvpn-app.desktop"
                 "org.gnome.Nautilus.desktop"
             ];
         };
@@ -135,15 +132,14 @@ in
 
         };
 
-        # Configuration de Tiling Assistant
         "org/gnome/shell/extensions/tiling-assistant" = {
-            "window-gap" = 15;  # Espace entre les fenêtres (en pixels)
-            "enable-tiling-popup" = false;  # Activer le popup de tiling
-            "enable-tile-animations" = false;  # Désactiver les animations pour plus de performance
-            "tiling-popup-all-workspace" = true;  # Afficher toutes les fenêtres dans le popup
-            "active-window-hint" = true;  # Indiquer la fenêtre active
-            "active-window-hint-color" = "rgba(53, 132, 228, 0.3)";  # Couleur de l'indication
-            "enable-dynamic-keybinding-workspace" = true;  # Raccourcis dynamiques par workspace
+            "window-gap" = 15;
+            "enable-tiling-popup" = false;
+            "enable-tile-animations" = false;
+            "tiling-popup-all-workspace" = true;
+            "active-window-hint" = true;
+            "active-window-hint-color" = "rgba(53, 132, 228, 0.3)";
+            "enable-dynamic-keybinding-workspace" = true;
         };
 
         "org/gnome/shell/extensions/vitals" = {
