@@ -6,7 +6,8 @@
   ];
 
   xdg.configFile."conky/conky.conf".source = ./conky.conf;
-  xdg.configFile."conky/res".source = ./res;
+  xdg.configFile."conky/mini_clock.lua".source = ./mini_clock.lua;
+  xdg.configFile."conky/Circle.png".source = ./Circle.png;
 
 #   xdg.configFile."conky/config".text = ''
 #     conky.config = {
