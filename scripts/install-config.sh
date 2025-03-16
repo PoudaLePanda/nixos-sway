@@ -2,7 +2,7 @@
 
 # exxecuter sudo ./install-config.sh
 # Définir les chemins source et destination
-SOURCE_DIR="./.config/conky"
+SOURCE_DIR="./config/conky"
 DEST_DIR="~/.config/conky"
 
 # Vérifier si le dossier source existe
