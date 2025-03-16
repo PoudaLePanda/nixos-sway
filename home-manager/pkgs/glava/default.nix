@@ -18,7 +18,7 @@
   xdg.configFile."glava/graph.glsl".source = ./graph.glsl;
   xdg.configFile."glava/radial.glsl".source = ./radial.glsl;
   xdg.configFile."glava/radial_aurora_01.glsl".source = ./radial_aurora_01.glsl;
-  xdg.configFile."glava/radial_frost_01".source = ./radial_frost_01;
+  xdg.configFile."glava/radial_frost_01".source = ./radial_frost_01.glsl;
   xdg.configFile."glava/rc.glsl".source = ./rc.glsl;
   xdg.configFile."glava/rc.glsl.00".source = ./rc.glsl.00;
   xdg.configFile."glava/test_rc.glsl".source = ./test_rc.glsl;
