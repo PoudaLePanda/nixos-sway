@@ -5,15 +5,6 @@
     conky
   ];
 
-  # Configuration de Conky via un fichier externe
-  xdg.configFile."conky/Porrima.conf".source = ./Porrima.conf;
-
-
-  # Ajout des scripts utilisés par Conky
-  xdg.configFile."conky/Porrima/scripts".source = ./scripts;
-  xdg.configFile."conky/Porrima/res".source = ./res;
-  xdg.configFile."conky/Porrima/fonts".source = ./fonts;
-
   # Autostart de Conky (optionnel)
   xdg.configFile."autostart/conky.desktop".text = ''
     [Desktop Entry]

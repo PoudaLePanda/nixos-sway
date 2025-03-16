@@ -139,6 +139,7 @@ in
        	curl
        	zip
        	xz
+        dos2unix
         jq         # Pour traiter le JSON (utilisé dans tes scripts)
         coreutils  # Fournit cat, awk, etc.
         playerctl
