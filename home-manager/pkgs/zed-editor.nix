@@ -27,13 +27,6 @@
     vim_mode = false;
     scrollbar.show = "never";
     inlay_hints.enabled = true;
-    assistant = {
-        default_model = {
-            provider = "copilot_chat";
-            model = "gpt-4o";
-        };
-        version = "2";
-    };
     terminal = {
       blinking = "on";
       copy_on_select = true;

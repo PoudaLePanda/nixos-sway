@@ -157,6 +157,7 @@ in
         firefox
         inputs.zen-browser.packages."${system}".default
         zathura
+        gnome-screenshot
     ];
 
     environment.localBinInPath = true;

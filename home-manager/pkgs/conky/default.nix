@@ -6,16 +6,13 @@
   ];
 
   xdg.configFile."conky/conky.conf".source = ./conky.conf;
-  xdg.configFile."conky/conky2.conf".source = ./conky2.conf;
 
   # Autostart de Conky (optionnel)
   xdg.configFile."autostart/conky.desktop".text = ''
     [Desktop Entry]
     Type=Application
     Name=Conky
-    # Exec=conky --daemonize --pause=2
-    # Exec=sh -c "conky --daemonize --pause=2 --config=${"$HOME"}/.config/conky/conky.conf & conky --daemonize --pause=3 --config=${"$HOME"}/.config/conky/conky2.conf"
-    Exec=sh -c "conky --daemonize --pause=2 --config=${"$HOME"}/.config/conky/conky3.conf &"
+    Exec=conky --daemonize --pause=2
     StartupNotify=false
     Terminal=false
   '';
