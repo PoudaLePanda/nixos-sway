@@ -38,6 +38,7 @@ in
       ./gnome.nix
       ./pkgs/conky/default.nix
       ./pkgs/cava/default.nix
+      ./pkgs/glava/default.nix
     ];
 
     home.packages = with pkgs; [
