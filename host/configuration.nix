@@ -83,7 +83,7 @@ in
             };
             sddm = {
               enable = true;
-              theme = "${import ./pkgs/sddm/default.nix {inherit pkgs;}}";
+              theme = "${import ./pkgs/sddm-theme.nix {inherit pkgs;}}";
             };
           };
         };
