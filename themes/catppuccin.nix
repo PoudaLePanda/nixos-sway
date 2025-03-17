@@ -1,7 +1,8 @@
 { dir, ...}:
 {
-    themeName = "catppuccin";
+    themeName = "catppuccin-mocha";
     wallpaper = ../assets/wallpapers/dark-cat-rosewater.png;
+
     # Stylix palette override.
     override = {
         base00 = "11111b";

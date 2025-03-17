@@ -12,19 +12,8 @@ rec {
 
     dotfilesDir = "/home/${username}/DOTFILES"; # Absolute path of the local repo
 
-    themeAdw = "nord"; # everforest, catppuccin, nord, gruvbox
+    themeAdw = "everforest"; # everforest, catppuccin, nord, gruvbox
     themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
-
-    # theme = "Colloid-Teal-Dark-Nord";
-    # themePkg = (pkgs.colloid-gtk-theme.override {
-    #   colorVariants = [ "dark" ];
-    #   themeVariants = [ "teal" ];
-    #   tweaks = [
-    #     "nord"
-    #     "rimless"
-    #     "float"
-    #   ];
-    # });
 
     font = "Noto Nerd Font";
     fontSize = 13;

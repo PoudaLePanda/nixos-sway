@@ -1,6 +1,6 @@
 { dir }:
 {
-    themeName = "everforest";
+    themeName = "everforest-dark-hard";
     wallpaper = ../assets/wallpapers/mist_forest_2.png;
     override = null;
 

@@ -36,8 +36,9 @@
       ./pkgs/starship/default.nix
       ./pkgs/conky/default.nix
       ./pkgs/zed-editor.nix
-      ./pkgs/ghostty.nix
-      ./pkgs/btop/default.nix
+      ./pkgs/superfile.nix
+      # ./pkgs/ghostty.nix
+      # ./pkgs/btop/default.nix
     ];
 
     home.packages = with pkgs; [
@@ -45,6 +46,7 @@
         nerd-fonts.noto
         nerd-fonts.hack
         nerd-fonts.jetbrains-mono
+        btop
     ];
 
     xdg.enable = true;
@@ -55,10 +57,10 @@
             name = settings.icons;
             package = settings.iconsPkg;
         };
-        # theme = {
-        #     name = lib.mkDefault settings.themeAdw;
-        #     package = pkgs.adw-gtk3;
-        # };
+        theme = {
+            name = lib.mkForce "adw-gtk3";
+            package = lib.mkForce pkgs.adw-gtk3;
+        };
     };
 
     home.file = {

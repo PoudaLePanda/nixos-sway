@@ -79,12 +79,12 @@ in
           };
           displayManager = {
             gdm = {
-                enable = false;
+                enable = true;
             };
-            sddm = {
-              enable = true;
-              theme = "${import ./pkgs/sddm-theme.nix {inherit pkgs;}}";
-            };
+            # sddm = {
+            #   enable = true;
+            #   theme = "${import ./pkgs/sddm-theme.nix {inherit pkgs settings;}}";
+            # };
           };
         };
         pulseaudio.enable = false;
@@ -104,8 +104,8 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-        libsforqt5.qt5.qtquickcontrols2
-        libsforqt5.qt5.qtgraphicaleffects
+        libsForQt5.qt5.qtquickcontrols2
+        libsForQt5.qt5.qtgraphicaleffects
         blanket
         glib
         home-manager

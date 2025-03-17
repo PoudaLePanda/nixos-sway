@@ -1,3 +1,4 @@
+# host/pkgs/sddm-theme.nix
 { pkgs, settings }:
 let
     details = settings.themeDetails;

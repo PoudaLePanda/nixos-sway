@@ -17,6 +17,7 @@
     };
 
     superfile.url = "github:yorukot/superfile";
+
     stylix.url = "github:danth/stylix";
   };
 
