@@ -23,8 +23,9 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
-      settings = import (./. + "/settings.nix") {inherit pkgs;};
-      pkgs = import nixpkgs {system = settings.system;};
+    basePkgs = import nixpkgs { system = "x86_64-linux"; };
+    settings = import ./settings.nix { pkgs = basePkgs; };
+    pkgs = import nixpkgs { system = settings.system; };
   in
   {
     nixosConfigurations = {
@@ -36,6 +37,7 @@
               # Add Home Manager as a NixOS module
               home-manager.nixosModules.home-manager
               {
+                home.activationPackage = null;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${settings.username} = {

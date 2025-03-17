@@ -1,5 +1,5 @@
 # ./home/home.nix
-{ config, inputs, pkgs, settings, ... }:
+{ config, inputs, lib, pkgs, settings, ... }:
 # let
 #   gtk4ThemeDir = "${settings.themePkg}/share/themes/${settings.theme}";
 # in

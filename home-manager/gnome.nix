@@ -1,5 +1,5 @@
 # ./home/gnome.nix
-{ config, pkgs, settings,  ... }:
+{ config, inputs, lib, pkgs, settings, ... }:
 {
     home.packages = with pkgs; [
         gnome-tweaks

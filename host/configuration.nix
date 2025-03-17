@@ -1,5 +1,5 @@
 # ./host/configuration.nix
-{ inputs, pkgs, settings,... }:
+{ config, inputs, lib, pkgs, settings, ... }:
 let
     details = settings.themeDetails;
 in
