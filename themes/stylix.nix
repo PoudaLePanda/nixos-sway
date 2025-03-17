@@ -18,5 +18,10 @@ in {
         };
 
         targets.btop.enable = lib.mkIf (settings.themeDetails.btopTheme != null) false;
+        targets.gnome.enable = true;
+        targets.gtk.enable = true;
+        targets.ghostty.enable = true;
+        targets.gedit.enable = true;
+        targets.zed.enable = true;
     };
 }

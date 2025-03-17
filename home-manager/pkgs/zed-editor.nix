@@ -9,11 +9,6 @@
       diagnostics = false;
       metrics = false;
     };
-    theme = {
-      mode = "system";
-      dark = "nord";
-      light = "nord";
-    };
     icon_theme = "Charmed Icons";
     ui_font_size = 16;
     ui_font_family = settings.font;

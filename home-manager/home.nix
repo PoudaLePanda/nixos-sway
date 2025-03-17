@@ -2,7 +2,7 @@
 { config, inputs, lib, pkgs, settings, ... }:
 {
     home.sessionVariables = {
-        HOME_MANAGER_CONFIG = "$HOME/DOTFILES/nixos-config/home-manager/home.nix";
+        HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
     };
 
     home = {
@@ -36,6 +36,7 @@
       ./pkgs/starship/default.nix
       ./pkgs/conky/default.nix
       ./pkgs/zed-editor.nix
+      ./pkgs/cava.nix
       # ./pkgs/superfile.nix
       # ./pkgs/ghostty.nix
       # ./pkgs/btop/default.nix
