@@ -1,20 +1,15 @@
 # ./host/configuration.nix
-{ pkgs, inputs,... }:
+{ inputs, pkgs, settings,... }:
 let
-    system = "x86_64-linux";
-    backgroundImage = ../background.png;
-    avatarImage = ../avatar.png;
+    details = settings.themeDetails;
 in
 {
-    home-manager.backupFileExtension = "backup";
-
     imports = [
         ./hardware-configuration.nix
         ./gnome.nix
         ./pkgs/nix.nix
         ./pkgs/proton-vpn.nix
         ./pkgs/amd-drivers.nix
-        # ./pkgs/btop/default.nix
         ./pkgs/minecraft.nix
         ./pkgs/steam.nix
     ];
@@ -35,7 +30,7 @@ in
                 theme = "stylish";
                 footer = true;
                 customResolution = "3440x1440";
-                splashImage = "${backgroundImage}";
+                splashImage = "${details.wallpaper}";
             };
         };
         plymouth.enable = true;
@@ -56,8 +51,8 @@ in
     };
 
     time.timeZone = "Europe/Paris";
-    console.keyMap = "us";
-    i18n.defaultLocale = "fr_FR.UTF-8";
+    console.keyMap = settings.keyMap;
+    i18n.defaultLocale = settings.locale;
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "fr_FR.UTF-8";
         LC_IDENTIFICATION = "fr_FR.UTF-8";
@@ -78,8 +73,8 @@ in
           enable = true;
           excludePackages = [ pkgs.xterm ];
           xkb = {
-            layout = "us";
-            variant = "mac";
+            layout = settings.keyMap;
+            variant = settings.variant;
           };
           displayManager = {
             gdm = {
@@ -87,20 +82,20 @@ in
             };
             lightdm = {
                 enable = true;
-                background = backgroundImage;
+                background = details.wallpaper;
                 greeters = {
                   gtk = {
-                        theme = {
-                            name = "Nordic";
-                            package = pkgs.nordic;
+                    theme = {
+                        name = settings.theme;
+                            package = settings.themePkg;
                         };
                         iconTheme = {
-                            name = "Nordzy";
-                            package = pkgs.nordzy-icon-theme;
+                            name = settings.icons;
+                            package = settings.iconsPkg;
                         };
                         cursorTheme = {
-                            name = "Nordzy-cursors";
-                            package = pkgs.nordzy-cursor-theme;
+                            name = settings.icons;
+                            package = settings.iconsPkg;
                         };
                     };
                 };
@@ -119,7 +114,7 @@ in
 
     users.users.lmlab = {
         isNormalUser = true;
-        description = "lmlab";
+        description = settings.username;
         extraGroups = [ "networkmanager" "wheel" ];
     };
 
@@ -130,22 +125,21 @@ in
         nil
         nixd
         package-version-server
-       	wget
-       	git
+        wget
+        git
         git-lfs
-       	cowsay
-       	htop
-        btop
-       	curl
-       	zip
-       	xz
+        cowsay
+        htop
+        curl
+        zip
+        xz
         dos2unix
         jq         # Pour traiter le JSON (utilisé dans tes scripts)
         coreutils  # Fournit cat, awk, etc.
         playerctl
-       	github-desktop
-       	ags
-       	gcc
+        github-desktop
+        ags
+        gcc
         glib
         gnumake
         killall
@@ -168,7 +162,7 @@ in
     system.activationScripts = {
       script.text = ''
         mkdir -p /var/lib/AccountsService/{icons,users}
-        cp ${avatarImage} /var/lib/AccountsService/icons/lmlab
+        cp ${settings.avatarImage} /var/lib/AccountsService/icons/lmlab
         touch /var/lib/AccountsService/users/lmlab
         if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
             if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
@@ -177,10 +171,6 @@ in
             echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
         fi
       '';
-    };
-
-    environment.variables = {
-      HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
     };
 
     system.stateVersion = "24.11";

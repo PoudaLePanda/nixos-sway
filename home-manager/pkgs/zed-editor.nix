@@ -1,7 +1,9 @@
 
-{ ... }:
+{ settings, ... }:
 {
-  xdg.configFile."zed/settings.json".text = builtins.toJSON {
+  xdg.configFile."zed/settings.json" = {
+
+    text = builtins.toJSON {
     auto_update = false;
     telemetry = {
       diagnostics = false;
@@ -14,13 +16,10 @@
     };
     icon_theme = "Charmed Icons";
     ui_font_size = 16;
-    ui_font_family = "Noto Nerd Font";
-    font_family = "Noto Nerd Font";
-    buffer_font_size = 16;
-    features = {
-      inline_completion_provider = "none";
-    };
-    buffer_font_family = "Noto Nerd Font";
+    ui_font_family = settings.font;
+    font_family = settings.font;
+    buffer_font_size = 14;
+    buffer_font_family = settings.font;
     buffer_font_fallbacks = ["Nerd Font"];
     relative_line_numbers = true;
     current_line_highlight = "none";
@@ -30,9 +29,15 @@
     terminal = {
       blinking = "on";
       copy_on_select = true;
-      font_family = "Noto Nerd Font";
-      font_size = 14;
+      font_family = settings.font;
+      font_size = settings.fontSize;
     };
+    soft_wrap = "preferred_line_length";
+    preferred_line_length= 120;
+    show_wrap_guides = true;
+    tab_size = 2;
+    show_edit_predictions = true;
+    show_completions_on_input = true;
     languages = {
         Nix = {
             language_servers = ["nixd"];
@@ -43,11 +48,27 @@
                 };
             };
         };
+        JavaScript= {
+          tab_size= 2;
+          formatter= {
+            external= {
+              command= "prettier";
+              arguments= ["--stdin-filepath" "{buffer_path}"];
+            };
+          };
+        };
     };
     lsp = {
         nil= {
             initialization_options.formatting.command = [ "nixfmt" ];
         };
     };
+  };
+
+  onChange = ''
+    if [ -f "$HOME/.config/zed/settings.json" ]; then
+      chmod u+w "$HOME/.config/zed/settings.json"
+    fi
+  '';
   };
 }

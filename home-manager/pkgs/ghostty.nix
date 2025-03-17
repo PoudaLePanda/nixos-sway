@@ -1,10 +1,10 @@
 # ./host/pkgs/ghostty.nix
-{ ... }:
+{ settings, ... }:
 {
     xdg.configFile."ghostty/config".text = ''
         # Font
-        font-family = "Noto Nerd Font"
-        font-size = 11
+        font-family = ${settings.font}
+        font-size = ${toString settings.fontSize}
         font-thicken = true
         font-feature = -liga,-dlig,-calt
 

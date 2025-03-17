@@ -1,36 +1,50 @@
-# Guide d'utilisation de NixOS
+# ❄️ NixOS FAF DEV ❄️
 
-Ce guide vous présente les commandes essentielles pour gérer votre système NixOS efficacement.
+<p align="center">
+    <a href="https://nixos.org/">
+        <img src="https://img.shields.io/badge/NixOS-24.11-informational.svg?style=for-the-badge&logo=nixos&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41">
+    </a>
+    <a href="https://nixos.wiki/wiki/Flakes">
+        <img src="https://img.shields.io/badge/Nix-Flakes-informational.svg?style=for-the-badge&logo=nixos&color=89B4FA&logoColor=1E66F5&labelColor=313244">
+    </a>
+    <a href="https://nix-community.github.io/home-manager/">
+        <img src="https://img.shields.io/badge/Home%20Manager-Enabled-informational.svg?style=for-the-badge&logo=nixos&color=89B4FA&logoColor=1E66F5&labelColor=313244">
+    </a>
+</p>
 
-## Table des matières
-- [Introduction](#introduction)
-- [Configuration système](#configuration-système)
-- [Gestion des paquets](#gestion-des-paquets)
-- [Mises à jour](#mises-à-jour)
-- [Environnements de développement](#environnements-de-développement)
-- [Gestion de services](#gestion-de-services)
-- [Dépannage](#dépannage)
+## ✨ Table des matières
+- [💻 Introduction](#introduction)
+- [⚙️ Configuration système](#configuration-système)
+- [📦 Gestion des paquets](#gestion-des-paquets)
+- [🛠️ Mises à jour](#mises-à-jour)
+- [❄️ Environnements de développement](#environnements-de-développement)
+- [🧊 Gestion de services](#gestion-de-services)
+- [🚧 Dépannage](#dépannage)
+- [📗 Ressources utiles](#ressources-utiles)
+- [🔥 Notice d'installation de NixOS FAF DEV avec dotfiles](#etapes-d-installation)
+- [🪛 Mise à jour future](#mise-à-jour-future)
+- [❗ Notes importantes](#notes-importantes)
 
-## Introduction
+![Screen](./assets/preview.png)
+
+## 💻 Introduction
 
 NixOS est une distribution Linux basée sur le gestionnaire de paquets Nix, qui offre une approche déclarative de la configuration système, des déploiements reproductibles et la possibilité de revenir à des configurations antérieures.
 
-## Configuration système
+## ⚙️ Configuration système
 
 La configuration de NixOS est centralisée dans un fichier principal:
 
 ```bash
-# Éditer la configuration principale
+# Apres installation classic depuis une image
+# Éditer la configuration principale et ajouter git aux pkgs
 sudo nano /etc/nixos/configuration.nix
-
-# Éditer la configuration hardware
-sudo nano /etc/nixos/hardware-configuration.nix
 
 # Appliquer la configuration
 sudo nixos-rebuild switch
 ```
 
-## Gestion des paquets
+## 📦 Gestion des paquets
 
 ### Commandes Nix de base
 
@@ -62,7 +76,7 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
-## Mises à jour
+## 🛠️ Mises à jour
 
 ```bash
 # Mettre à jour les canaux Nix
@@ -75,7 +89,7 @@ sudo nixos-rebuild switch --upgrade
 sudo nix-collect-garbage -d
 ```
 
-## Environnements de développement
+## ❄️ Environnements de développement
 
 ### Shells temporaires avec nix-shell
 
@@ -112,7 +126,7 @@ echo "use nix" > .envrc
 direnv allow
 ```
 
-## Gestion de services
+## 🧊 Gestion de services
 
 ```bash
 # Vérifier le statut d'un service
@@ -128,7 +142,7 @@ sudo systemctl enable/disable service_name
 journalctl -u service_name
 ```
 
-## Dépannage
+## 🚧 Dépannage
 
 ```bash
 # Revenir à une configuration précédente (après un boot)
@@ -144,22 +158,18 @@ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 nix path-info -Sh /run/current-system
 ```
 
-## Ressources utiles
+## 📗 Ressources utiles
 
 - [Manuel NixOS](https://nixos.org/manual/nixos/stable/)
 - [Wiki NixOS](https://nixos.wiki/)
 - [Options NixOS](https://search.nixos.org/options)
 - [Paquets disponibles](https://search.nixos.org/packages)
 
-# Notice d'installation de NixOS avec dotfiles
+---
+
+# 🔥 Notice d'installation de NixOS FAF DEV avec dotfiles
 
 Cette notice explique comment installer NixOS en utilisant une configuration gérée par git dans un dossier DOTFILES.
-
-## Prérequis
-- Avoir NixOS déjà installé (installation de base)
-- Avoir un dépôt git contenant votre configuration NixOS
-
-## Étapes d'installation
 
 ### 1. Créer le dossier DOTFILES dans votre répertoire utilisateur
 
@@ -170,25 +180,25 @@ mkdir -p ~/DOTFILES
 ### 2. Cloner votre configuration depuis git
 
 ```bash
-git clone https://votre-depot-git.com/votre-config.git ~/DOTFILES
+git clone https://git.fafpro.fr/leo.meyniel/nixos-config.git ~/DOTFILES/nixos-config
 ```
 
 ### 3. Sauvegarder et déplacer la configuration hardware générée par NixOS
 
 ```bash
 # Copier le fichier hardware-configuration.nix généré par l'installateur
-sudo cp /etc/nixos/hardware-configuration.nix ~/DOTFILES/nixos-config/nixos
+sudo cp /etc/nixos/hardware-configuration.nix ~/DOTFILES/nixos-config/host
 
 # Si votre dépôt a une structure spécifique, ajustez le chemin de destination
 # Par exemple, si vous avez un dossier 'nixos' dans votre dépôt:
-# sudo cp /etc/nixos/hardware-configuration.nix ~/DOTFILES/nixos/
+# sudo cp /etc/nixos/hardware-configuration.nix ~/DOTFILES/...
 ```
 
 ### 4. Sauvegarder l'ancienne configuration (optionnel mais recommandé)
 
 ```bash
 # Créer une sauvegarde de la configuration d'origine
-sudo cp -r /etc/nixos /etc/nixos.backup
+sudo cp -r /etc/nixos ~/DOTFILES/nixos.backup
 ```
 
 ### 5. Supprimer la configuration existante dans /etc/nixos
@@ -207,6 +217,9 @@ sudo ln -s ~/DOTFILES/nixos-config/* /etc/nixos/
 ### 7. Reconstruire le système avec la nouvelle configuration
 
 ```bash
+# Avant de build n'oublier pas de modifier le fichier settings.nix avec vos preferences
+sudo nano ~/DOTFILES/nixos-config/settings.nix
+
 # Appliquer la configuration
 sudo nixos-rebuild switch
 
@@ -214,7 +227,7 @@ sudo nixos-rebuild switch
 # sudo nixos-rebuild switch --rollback
 ```
 
-## Mise à jour future
+## 🪛 Mise à jour future
 
 Pour mettre à jour votre configuration:
 
@@ -229,8 +242,24 @@ git pull
 sudo nixos-rebuild switch
 ```
 
-## Notes importantes
+## ❗ Notes importantes
 
 - Assurez-vous que votre `hardware-configuration.nix` correspond bien à votre matériel actuel
 - Si vous effectuez des modifications locales, pensez à les committer et à les pousser vers votre dépôt
 - N'oubliez pas de mettre à jour régulièrement votre dépôt git si vous modifiez la configuration directement sur votre système
+
+## 🎛️ Packages Inclus
+
+| **Catégorie**       | 🚀 **Logiciels** |
+|----------------------|----------------------------|
+| **Système**         | nix, home-manager, glib, nil, nixd, package-version-server, coreutils, cowsay, killall |
+| **Développement**   | git, git-lfs, gcc, gnumake, vscodium, [zed-editor](https://zed.dev/) |
+| **Outils CLI**      | wget, curl, zip, xz, dos2unix, jq, htop, playerctl, starship, nerdfetch |
+| **Navigateur Web**  | brave, firefox, chromium [zen-browser](https://zen-browser.app/) |
+| **Bureautique**     | zathura, gnome-screenshot |
+| **Productivité**    | protonvpn-gui, ['ghostty'](https://ghostty.org/), conky, ags |
+| **Thèmes & Icônes** | [colloid-gtk-theme](https://github.com/vinceliuice/Colloid-gtk-theme), [nordzy-icon-theme](https://github.com/alvatip/Nordzy-icon), [bibata-cursors](https://github.com/ful1e5/Bibata_Cursor),  [nerd-fonts.zed-mono, nerd-fonts.noto, nerd-fonts.hack, nerd-fonts.jetbrains-mono](https://www.nerdfonts.com/) |
+| **GNOME Extensions** | gnome-tweaks, gnomeExtensions.appindicator, gnomeExtensions.user-themes, gnomeExtensions.vitals, gnomeExtensions.caffeine, gnomeExtensions.dash-to-dock |
+| **Multimédia**      | blanket, mesa |
+
+📜 **Fichier de configuration** : [`configuration.nix`](./host/configuration.nix)

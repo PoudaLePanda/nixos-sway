@@ -1,99 +1,110 @@
 # ./home/home.nix
-{ pkgs, ... }:
-let
-  NordicTheme = pkgs.nordic;
-  gtk4ThemeDir = "${NordicTheme}/share/themes/Nordic";
-in
+{ config, inputs, pkgs, settings, ... }:
+# let
+#   gtk4ThemeDir = "${settings.themePkg}/share/themes/${settings.theme}";
+# in
 {
+    home.sessionVariables = {
+        HOME_MANAGER_CONFIG = "$HOME/DOTFILES/nixos-config/home-manager/home.nix";
+    };
+
     home = {
-        username = "lmlab";
-        homeDirectory = "/home/lmlab";
+        username = settings.username;
+        homeDirectory = "/home/${settings.username}";
         activation = {
             createDirectories = ''
                 $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \
                 $HOME/DEV \
             '';
         };
+        file.".config/gtk-3.0/bookmarks".force = true;
         file.".config/gtk-3.0/bookmarks".text = ''
-            file:///home/lmlab/DEV DEV
-            file:///home/lmlab/DOTFILES DOTFILES
+            file:///home/leodev/DEV DEV
+            file:///home/leodev/DOTFILES DOTFILES
+            file:///home/leodev/Téléchargements Téléchargements
           '';
     };
 
     programs.git = {
         enable = true;
-        userName = "PoudaLePanda";
-        userEmail = "leo.meyniel@proton.me";
+        userName = settings.name;
+        userEmail = settings.email;
         extraConfig = {
             init.defaultBranch = "main";
         };
     };
 
     imports = [
+      ./gnome.nix
+      ../themes/stylix.nix
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
-      ./pkgs/zed-editor.nix
-      ./pkgs/vscodium.nix
-      ./pkgs/ghostty.nix
-      ./gnome.nix
       ./pkgs/conky/default.nix
-      # ./pkgs/cava/default.nix
-      # ./pkgs/impulse/default.nix
-      # ./pkgs/glava/default.nix
+      ./pkgs/zed-editor.nix
+      ./pkgs/ghostty.nix
+      ./pkgs/btop/default.nix
     ];
 
     home.packages = with pkgs; [
-      blanket
+        blanket
         nerd-fonts.zed-mono
         nerd-fonts.noto
         nerd-fonts.hack
         nerd-fonts.jetbrains-mono
-        nordic
-        nordzy-icon-theme
-        nordzy-cursor-theme
-        # (pkgs.graphite-gtk-theme.override {
-        #     themeVariants = ["teal"];
-        #     tweaks = ["float" "colorful" "nord" "rimless"];
-        # })
     ];
 
     xdg.enable = true;
+    # xdg.userDirs = {
+    #     enable = true;
+    #     createDirectories = true;
+    #     musique = "${config.home.homeDirectory}/Media/Musique";
+    #     videos = "${config.home.homeDirectory}/Media/Vidéos";
+    #     images = "${config.home.homeDirectory}/Media/Images";
+    #     download = "${config.home.homeDirectory}/Téléchargement";
+    #     documents = "${config.home.homeDirectory}/Documents";
+    #     templates = null;
+    #     desktop = null;
+    #     publicShare = null;
+    #     extraConfig = {
+    #         XDG_DOTFILES_DIR = "${settings.dotfilesDir}";
+    #         XDG_DEV_DIR = "${config.home.homeDirectory}/DEV";
+    #     };
+    # };
 
-    gtk = {
-        enable = true;
-        font = {
-            name = "Noto Nerd Font";
-            size = 12;
-        };
-        iconTheme = {
-            name = "Nordzy";
-        };
-        cursorTheme = {
-            name = "Nordzy-cursors";
-            size = 24;
-        };
-        theme = {
-            name = "Nordic";
-        };
-        gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = true;
-        };
-        gtk4.extraConfig = {
-          gtk-application-prefer-dark-theme = true;
-        };
-    };
+    # gtk = {
+    #     enable = true;
+    #     font = {
+    #         name = settings.font;
+    #         size = settings.fontSize;
+    #     };
+    #     iconTheme = {
+    #       name = settings.icons;
+    #     };
+    #     cursorTheme = {
+    #         name = settings.cursor;
+    #         size = 24;
+    #     };
+    #     theme = {
+    #         name = settings.theme;
+    #     };
+    #     gtk3.extraConfig = {
+    #       gtk-application-prefer-dark-theme = true;
+    #     };
+    #     gtk4.extraConfig = {
+    #       gtk-application-prefer-dark-theme = true;
+    #     };
+    # };
 
-    home.pointerCursor = {
-        name = "Nordzy-cursors";
-        size = 24;
-        package = pkgs.nordzy-cursor-theme;
-    };
+    # home.pointerCursor = {
+    #     size = 24;
+    #     name = settings.cursor;
+    #     package = settings.cursorPkg;
+    # };
 
-    home.file.".config/gtk-4.0/assets".source = "${gtk4ThemeDir}/gtk-4.0/assets";
-    home.file.".config/gtk-4.0/gtk.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk.css";
-    home.file.".config/gtk-4.0/gtk-dark.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk-dark.css";
-    home.file.".config/gtk-4.0/thumbnail.png".source = "${gtk4ThemeDir}/gtk-4.0/thumbnail.png";
+    # home.file.".config/gtk-4.0/assets".source = "${gtk4ThemeDir}/gtk-4.0/assets";
+    # home.file.".config/gtk-4.0/gtk.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk.css";
+    # home.file.".config/gtk-4.0/gtk-dark.css".source = "${gtk4ThemeDir}/gtk-4.0/gtk-dark.css";
+    # home.file.".config/gtk-4.0/thumbnail.png".source = "${gtk4ThemeDir}/gtk-4.0/thumbnail.png";
 
-    nixpkgs.config.allowUnfree = true;
     home.stateVersion = "24.11";
 }

@@ -1,8 +1,5 @@
 # ./home/gnome.nix
-{ config, pkgs, ... }:
-let
-  backgroundImage = ../background.png;
-in
+{ config, pkgs, settings,  ... }:
 {
     home.packages = with pkgs; [
         gnome-tweaks
@@ -11,8 +8,6 @@ in
         gnomeExtensions.vitals
         gnomeExtensions.caffeine
         gnomeExtensions.dash-to-dock
-        gnomeExtensions.tiling-assistant
-        gnomeExtensions.blur-my-shell
     ];
 
     programs.bash = {
@@ -23,7 +18,7 @@ in
         '';
     };
 
-    home.file.".config/backgrounds/background.png".source = backgroundImage;
+    # home.file.".config/backgrounds/background.png".source = settings.backgroundImage;
 
     dconf.settings = {
         "org/gnome/shell" = {
@@ -33,44 +28,33 @@ in
                 "dash-to-dock@micxgx.gmail.com"
                 "caffeine@patapon.info"
                 "Vitals@CoreCoding.com"
-                "tiling-assistant@leleat-on-github"
-                "blur-my-shell@aunetx"
             ];
             "favorite-apps" = [
                 "zen.desktop"
                 "dev.zed.Zed.desktop"
                 "com.mitchellh.ghostty.desktop"
-                "VSCodium.desktop"
                 "github-desktop.desktop"
-                "steam.desktop"
                 "protonvpn-app.desktop"
                 "org.gnome.Nautilus.desktop"
             ];
         };
 
-        "org/gnome/shell/extensions/blur-my-shell" = {
-            "blacklist"="@as []";
-           	"blur-on-overview"=false;
-           	"brightness"="1.0";
-           	"customize"=true;
-           	"enable-all"=true;
-           	"opacity"="250";
-           	"sigma"="59";
-           	"blur"=true;
-        };
+        # "org/gnome/desktop/interface" = {
+        #     "color-scheme" = "prefer-dark";
+        #     "enable-animations" = false;
+        #     "enable-hot-corners" = true;
+        #     "font-antialiasing" = "grayscale";
+        #     "font-hinting" = "slight";
+        #     "toolkit-accessibility" = false;
+        #     "gtk-theme" = settings.theme;
+        #     "icon-theme" = settings.icons;
+        #     "cursor-theme" = settings.cursor;
+        #     "font-name" = "${settings.font} ${toString settings.fontSize}";
+        # };
 
-        "org/gnome/desktop/interface" = {
-            "color-scheme" = "prefer-dark";
-            "enable-animations" = false;
-            "enable-hot-corners" = true;
-            "font-antialiasing" = "grayscale";
-            "font-hinting" = "slight";
-            "toolkit-accessibility" = false;
-            "gtk-theme" = "Nordic";
-            "icon-theme" = "Nordzy";
-            "cursor-theme" = "Nordzy-cursors";
-            "font-name" = "Noto Nerd Font 12";
-        };
+        # "org/gnome/shell/extensions/user-theme" = {
+        #     "name" = settings.theme;
+        # };
 
         "org/gnome/tweaks" = {
           "show-extensions-notice" = false;
@@ -106,34 +90,11 @@ in
             "search-view" = "list-view";
         };
 
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-          "binding" = "<Control>space";
-          "command" = "ulauncher-toggle";
-          "name" = "Ulauncher";
-        };
-
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-            "binding" = "<Shift><Super>t";
-            "command" = "ghostty";
-            "name" = "Ghostty";
-        };
-
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
-            "binding" = "<Shift><Super>f";
-            "command" = "nautilus";
-            "name" = "Files";
-        };
-
-        "org/gnome/desktop/background" = {
-          "picture-uri" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-          "picture-uri-dark" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-          "picture-options" = "zoom";
-        };
-
-        "org/gnome/shell/extensions/user-theme" = {
-          "name" = "Nordic";
-          # "name" = "Graphite-teal-Dark-nord";
-        };
+        # "org/gnome/desktop/background" = {
+        #   "picture-uri" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
+        #   "picture-uri-dark" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
+        #   "picture-options" = "zoom";
+        # };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
             dock-position = "BOTTOM";
@@ -144,16 +105,6 @@ in
             show-indicator = true;
             auto-enable = true;
 
-        };
-
-        "org/gnome/shell/extensions/tiling-assistant" = {
-            "window-gap" = 15;
-            "enable-tiling-popup" = false;
-            "enable-tile-animations" = false;
-            "tiling-popup-all-workspace" = true;
-            "active-window-hint" = true;
-            "active-window-hint-color" = "rgba(53, 132, 228, 0.3)";
-            "enable-dynamic-keybinding-workspace" = true;
         };
 
         "org/gnome/shell/extensions/vitals" = {
