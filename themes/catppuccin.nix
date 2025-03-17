@@ -1,13 +1,13 @@
-{ dir, settings, pkgs }:
+{ dir }:
 {
     themeName = "catppuccin-mocha";
     wallpaper = ../assets/wallpapers/dark-cat-rosewater.png;
 
-    # cursor = {
-    #   size = 32;
-    #   name = "Captaine Cursors";
+    cursor = {
+      size = 32;
+      name = "Captaine Cursors";
     #   package = pkgs.capitaine-cursors-themed;
-    # };
+    };
 
     iconTheme = {
       enable = true;

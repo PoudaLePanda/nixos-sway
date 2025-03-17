@@ -104,6 +104,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+        capitaine-cursors-themed
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         blanket

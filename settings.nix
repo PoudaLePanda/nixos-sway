@@ -17,6 +17,8 @@ rec {
 
     font = "Noto Nerd Font";
     fontSize = 13;
+
+
     icons = "Nordzy";
     iconsPkg = pkgs.nordzy-icon-theme;
 

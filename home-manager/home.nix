@@ -36,7 +36,7 @@
       ./pkgs/starship/default.nix
       ./pkgs/conky/default.nix
       ./pkgs/zed-editor.nix
-      ./pkgs/superfile.nix
+      # ./pkgs/superfile.nix
       # ./pkgs/ghostty.nix
       # ./pkgs/btop/default.nix
     ];

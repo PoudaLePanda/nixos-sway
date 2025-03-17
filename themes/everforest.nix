@@ -1,13 +1,13 @@
-{ dir, settings, pkgs }:
+{ dir }:
 {
     themeName = "everforest-dark-hard";
     wallpaper = ../assets/wallpapers/mist_forest_2.png;
 
-    # cursor = {
-    #   size = 32;
-    #   name = "Captaine Cursors";
+    cursor = {
+      size = 32;
+      name = "Captaine Cursors";
     #   package = pkgs.capitaine-cursors-themed;
-    # };
+    };
 
     override = null;
     # Override stylix theme of btop.
