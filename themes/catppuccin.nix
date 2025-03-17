@@ -1,7 +1,20 @@
-{ dir, ...}:
+{ dir, settings, pkgs }:
 {
     themeName = "catppuccin-mocha";
     wallpaper = ../assets/wallpapers/dark-cat-rosewater.png;
+
+    # cursor = {
+    #   size = 32;
+    #   name = "Captaine Cursors";
+    #   package = pkgs.capitaine-cursors-themed;
+    # };
+
+    iconTheme = {
+      enable = true;
+      dark = "";
+      light = "";
+      package = "";
+    };
 
     # Stylix palette override.
     override = {

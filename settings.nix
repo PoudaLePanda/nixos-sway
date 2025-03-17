@@ -20,9 +20,6 @@ rec {
     icons = "Nordzy";
     iconsPkg = pkgs.nordzy-icon-theme;
 
-    cursor = "Bibata-Modern-Ice";
-    cursorPkg = pkgs.bibata-cursors;
-
     # Session variables.
     editor = "zed";
     browser = "zen";

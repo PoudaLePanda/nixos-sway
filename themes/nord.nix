@@ -1,13 +1,13 @@
-{ dir, settings }:
+{ dir, settings, pkgs }:
 {
     themeName = "nord";
     wallpaper = ../assets/wallpapers/wave.png;
 
-    cursor = {
-        size = 32;
-        name = settings.cursor;
-        package = settings.cursorPkg;
-    };
+    # cursor = {
+    #   size = 32;
+    #   name = "Captaine Cursors (Nord)";
+    #   package = pkgs.capitaine-cursors-themed;
+    # };
 
     override = {
         base02 = "#445060";

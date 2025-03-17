@@ -17,8 +17,6 @@ in {
             popups = details.opacity;
         };
 
-        cursor = details.cursor;
-
         targets.btop.enable = lib.mkIf (settings.themeDetails.btopTheme != null) false;
     };
 }

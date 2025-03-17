@@ -1,5 +1,5 @@
 # ./host/pkgs/ghostty.nix
-{ settings, ... }:
+{ config, settings, ... }:
 {
     xdg.configFile."ghostty/config".text = ''
         # Font
@@ -12,8 +12,8 @@
         adjust-box-thickness = 1
 
         # Theme
-        theme = "nord"
-        background-opacity = 0.80
+        theme = ${config.lib.stylix.ghosttyTheme}
+        background-opacity = ${config.lib.stylix.opacity.terminal}
         background-blur = true
         unfocused-split-opacity = 0.96
 
