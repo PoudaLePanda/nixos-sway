@@ -1,9 +1,6 @@
 # ./host/gnome.nix
 { pkgs, ... }:
 {
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.excludePackages = with pkgs; [xterm];
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";

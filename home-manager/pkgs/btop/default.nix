@@ -1,4 +1,3 @@
-
 { lib, pkgs, settings, ... }:
 let
     details = settings.themeDetails;

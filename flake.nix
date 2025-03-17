@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,40 +23,36 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
-    basePkgs = import nixpkgs { system = "x86_64-linux"; };
-    settings = import ./settings.nix { pkgs = basePkgs; };
-    pkgs = import nixpkgs { system = settings.system; };
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    lib = nixpkgs.lib;
+    settings = import (./. + "/settings.nix") {inherit pkgs;};
   in
   {
     nixosConfigurations = {
-          ${settings.hostname} = nixpkgs.lib.nixosSystem {
+        ${settings.hostname} = lib.nixosSystem rec {
+            inherit system;
+            specialArgs = { inherit self inputs settings; };
             modules = [
-              ./host/configuration.nix
-              inputs.stylix.nixosModules.stylix
-              inputs.grub2-themes.nixosModules.default
-              # Add Home Manager as a NixOS module
-              home-manager.nixosModules.home-manager
-              {
-                home.activationPackage = null;
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.${settings.username} = {
-                  imports = [
-                    ./home-manager/home.nix
-                  ];
-                };
-                # Pass inputs and settings to Home Manager
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  inherit settings;
-                };
-              }
+                ./host/configuration.nix
+                inputs.stylix.nixosModules.stylix
+                inputs.grub2-themes.nixosModules.default
+                home-manager.nixosModules.home-manager
+                {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.${settings.username} = { config, ... }: {
+                      imports = [ ./home-manager/home.nix ];
+                      home.homeDirectory = lib.mkForce "/home/${settings.username}";
+                    };
+                    home-manager.extraSpecialArgs = specialArgs;
+                    home-manager.backupFileExtension = "backup";
+                }
             ];
-            specialArgs = {
-              inherit inputs;
-              inherit settings;
-            };
-          };
         };
+    };
   };
 }

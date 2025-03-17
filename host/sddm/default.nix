@@ -1,32 +1,20 @@
-# ./host/sddm/default.nix
-{ pkgs, lib, ... }:
+{ pkgs, settings }:
 let
-    image = ./background.png;
-  sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "sakura";
-    themeConfig = {
-      Background = "${toString image}";  # Utilise votre image locale
-    };
+    details = settings.themeDetails;
+in
+pkgs.stdenv.mkDerivation {
+  name = "sddm-theme";
+  src = pkgs.fetchFromGitHub {
+    owner = "MarianArlt";
+    repo = "sddm-sugar-dark";
+    rev = "ceb2c455663429be03ba62d9f898c571650ef7fe";
+    sha256 = "0153z1kylbhc9d12nxy9vpn0spxgrhgy36wy37pk6ysq7akaqlvy";
   };
-in {
-  services.displayManager = {
-    sddm = {
-      package = pkgs.kdePackages.sddm;
-      extraPackages = [ sddm-astronaut ];
-      enable = true;
-      wayland.enable = true;
-      theme = "sddm-astronaut-theme";
-    };
-  };
-
-  services.getty = {
-    autologinUser = null;
-    helpLine = lib.mkForce "";
-  };
-  systemd.services."getty@tty1".enable = false;
-
-  environment.systemPackages = [ sddm-astronaut ];
-
-  # To prevent getting stuck at shutdown
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
+  installPhase = ''
+    mkdir -p $out
+    cp -R ./* $out/
+    cd $out/
+    rm Background.jpg
+    cp -r ${details.wallpaper} $out/Background.jpg
+   '';
 }

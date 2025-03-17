@@ -1,6 +1,6 @@
 { dir }:
 {
-    themeName = "gruvbox-material-dark-medium";
+    themeName = "gruvbox";
     wallpaper = ../assets/wallpapers/gruvbox.png;
     override = null;
 

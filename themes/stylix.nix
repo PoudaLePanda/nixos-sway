@@ -23,7 +23,6 @@ in {
             package = settings.cursorPkg;
         };
 
-        targets.btop.enable =
-        lib.mkIf (settings.themeDetails.btopTheme != null) false;
+        targets.btop.enable = lib.mkIf (settings.themeDetails.btopTheme != null) false;
     };
 }

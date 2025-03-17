@@ -71,7 +71,8 @@ in
         displayManager.defaultSession = "gnome";
         xserver = {
           enable = true;
-          excludePackages = [ pkgs.xterm ];
+          desktopManager.gnome.enable = true;
+          excludePackages = with pkgs; [xterm];
           xkb = {
             layout = settings.keyMap;
             variant = settings.variant;
@@ -80,25 +81,9 @@ in
             gdm = {
                 enable = false;
             };
-            lightdm = {
-                enable = true;
-                background = details.wallpaper;
-                greeters = {
-                  gtk = {
-                    theme = {
-                        name = settings.theme;
-                            package = settings.themePkg;
-                        };
-                        iconTheme = {
-                            name = settings.icons;
-                            package = settings.iconsPkg;
-                        };
-                        cursorTheme = {
-                            name = settings.icons;
-                            package = settings.iconsPkg;
-                        };
-                    };
-                };
+            sddm = {
+              enable = true;
+              theme = "${import ./pkgs/sddm/default.nix {inherit pkgs;}}";
             };
           };
         };
@@ -119,6 +104,9 @@ in
     };
 
     environment.systemPackages = with pkgs; [
+        libsforqt5.qt5.qtquickcontrols2
+        libsforqt5.qt5.qtgraphicaleffects
+        blanket
         glib
         home-manager
         nix
@@ -157,7 +145,6 @@ in
     environment.localBinInPath = true;
     services.devmon.enable = true;
     security.rtkit.enable = true;
-    nixpkgs.config.allowUnfree = true;
 
     system.activationScripts = {
       script.text = ''
