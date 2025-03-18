@@ -11,7 +11,7 @@
 
   dotfilesDir = "/home/${username}/DOTFILES"; # Absolute path of the local repo
 
-  themeAdw = "everforest"; # everforest, catppuccin, nord, gruvbox, dracula, kanagawa
+  themeAdw = "dracula-dark"; # catppuccin, dracula-dark, everforest, gruvbox, kanagawa, nord
   themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
 
   font = "Noto Nerd Font";

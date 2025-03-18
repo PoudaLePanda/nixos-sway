@@ -8,7 +8,6 @@ bold-is-bright = false
 adjust-box-thickness = 1
 
 # Theme
-theme = light:nord-light,dark:nord
 background-opacity = 0.80
 background-blur = true
 unfocused-split-opacity = 0.96

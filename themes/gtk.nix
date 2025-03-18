@@ -31,7 +31,7 @@
         }
         else if settings.themeAdw == "catppuccin"
         then {
-          name = "Catppuccin cursors mocha";
+          name = "Breeze_Snow";
           package = pkgs.catppuccin-cursors;
         }
         else if settings.themeAdw == "everforest"
