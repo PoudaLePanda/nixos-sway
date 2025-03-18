@@ -22,7 +22,6 @@
         else if settings.themeAdw == "dracula"
         then {
           name = "Dracula-cursors";
-          package = pkgs.dracula-theme;
         }
         else if settings.themeAdw == "kanagawa"
         then {
@@ -46,7 +45,7 @@
         }
         else {
           name = "Adwaita";
-          package = pkgs.gnome.adwaita-icon-theme;
+          package = pkgs.adwaita-icon-theme;
         };
     in {
       inherit (cursorTheme) name package;
@@ -87,7 +86,7 @@
         }
         else {
           name = "Adwaita";
-          package = pkgs.gnome.adwaita-icon-theme;
+          package = pkgs.adwaita-icon-theme;
         };
     in {
       inherit (iconTheme) name package;
