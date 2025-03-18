@@ -21,7 +21,8 @@
         }
         else if settings.themeAdw == "dracula"
         then {
-          name = "Dracula-cursors";
+          name = "Bibata-Modern-Ice";
+          package = pkgs.bibata-cursors;
         }
         else if settings.themeAdw == "kanagawa"
         then {
@@ -30,12 +31,12 @@
         }
         else if settings.themeAdw == "catppuccin"
         then {
-          name = "Breeze_Snow";
-          package = pkgs.catppuccin-cursors;
+          name = "Bibata-Modern-Ice";
+          package = pkgs.bibata-cursors;
         }
         else if settings.themeAdw == "everforest"
         then {
-          name = "Capitaine Cursors";
+          name = "Capitaine Cursors (Gruvbox)";
           package = pkgs.capitaine-cursors-themed;
         }
         else if settings.themeAdw == "gruvbox"
@@ -76,8 +77,8 @@
         }
         else if settings.themeAdw == "everforest"
         then {
-          name = "Gruvbox-Plus-Dark";
-          package = pkgs.gruvbox-plus-icons;
+          name = "Kanagawa";
+          package = pkgs.kanagawa-icon-theme;
         }
         else if settings.themeAdw == "gruvbox"
         then {
