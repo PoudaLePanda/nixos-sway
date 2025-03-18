@@ -16,42 +16,56 @@
       url = "github:vinceliuice/grub2-themes";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
-
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
     lib = nixpkgs.lib;
-    settings = import (./. + "/settings.nix") {inherit pkgs;};
-  in
-  {
+    settings =
+      import (./. + "/settings.nix")
+      {inherit pkgs;};
+  in {
     nixosConfigurations = {
-        ${settings.hostname} = lib.nixosSystem rec {
-            inherit system;
-            specialArgs = { inherit self inputs settings; };
-            modules = [
-                ./host/configuration.nix
-                inputs.stylix.nixosModules.stylix
-                inputs.grub2-themes.nixosModules.default
-                home-manager.nixosModules.home-manager
-                {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users.${settings.username} = { config, ... }: {
-                      imports = [ ./home-manager/home.nix ];
-                      home.homeDirectory = lib.mkForce "/home/${settings.username}";
-                    };
-                    home-manager.extraSpecialArgs = specialArgs;
-                    home-manager.backupFileExtension = "backup";
-                }
-            ];
-        };
+      ${settings.hostname} = lib.nixosSystem rec {
+        inherit system;
+        specialArgs = {inherit self inputs settings;};
+        modules = [
+          ./host/configuration.nix
+          (import inputs.stylix.nixosModules.stylix {
+            inherit pkgs lib;
+            settings = specialArgs.settings;
+          })
+          inputs.grub2-themes.nixosModules.default
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = false;
+            home-manager.useUserPackages = true;
+            home-manager.users.${settings.username} = {config, ...}: {
+              imports = [./home-manager/home.nix];
+              home.homeDirectory = lib.mkForce "/home/${settings.username}";
+            };
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
+      };
     };
   };
 }

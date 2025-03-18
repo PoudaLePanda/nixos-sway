@@ -11,18 +11,18 @@
     "snippets",
     "base16",
     "superhtml",
-    "charmed-icons",
+    "charmed-icons"
   ],
   "auto_update": false,
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "context": "Workspace",
   "theme": {
     "mode": "system",
     "dark": "stylix-theme",
-    "light": "stylix-theme",
+    "light": "stylix-theme"
   },
   "icon_theme": "Charmed Icons",
   "current_line_highlight": "all",
@@ -33,7 +33,7 @@
   "buffer_font_family": "Noto Nerd Font",
   "buffer_font_fallbacks": ["Nerd Font"],
   "features": {
-    "edit_prediction_provider": "supermaven",
+    "edit_prediction_provider": "supermaven"
   },
   "edit_predictions": {
     "disabled_globs": [
@@ -43,8 +43,8 @@
       "**/*.cert",
       "**/*.crt",
       "**/secrets.yml",
-      "**/*.log",
-    ],
+      "**/*.log"
+    ]
   },
   "use_autoclose": false,
   "relative_line_numbers": false,
@@ -62,21 +62,21 @@
     "line_height": "standard",
     "font_family": "Noto Nerd Font",
     "toolbar": {
-      "title": true,
+      "title": true
     },
     "working_directory": "current_project_directory",
     "button": true,
-    "font_size": 14,
+    "font_size": 14
   },
   "syntax": {
     "comment": {
-      "font_style": "italic",
-    },
+      "font_style": "italic"
+    }
   },
   "languages": {
     "HTML": {
       "format_on_save": "on",
-      "language_servers": ["angular"],
+      "language_servers": ["angular"]
     },
     "Nix": {
       "format_on_save": "on",
@@ -84,83 +84,83 @@
       "formatter": {
         "external": {
           "command": "alejandra",
-          "arguments": ["--quiet", "--"],
-        },
-      },
+          "arguments": ["--quiet", "--"]
+        }
+      }
     },
     "JavaScript": {
       "format_on_save": "on",
       "code_actions_on_format": {
-        "source.fixAll.eslint": true,
+        "source.fixAll.eslint": true
       },
-      "language_servers": ["typescript-language-server", "!vtsls"],
+      "language_servers": ["typescript-language-server", "!vtsls"]
     },
     "TypeScript": {
       "format_on_save": "on",
       "language_servers": ["typescript-language-server", "!vtsls"],
-      "formatter": "language_server",
+      "formatter": "language_server"
     },
     "TSX": {
       "format_on_save": "on",
       "language_servers": ["typescript-language-server", "!vtsls"],
-      "formatter": "language_server",
+      "formatter": "language_server"
     },
     "Markdown": {
       "format_on_save": "on",
-      "enable_language_server": false,
-    },
+      "enable_language_server": false
+    }
   },
   "lsp": {
     "nil": {
       "initialization_options": {
         "formatting": {
-          "command": ["alejandra", "--quiet", "--"],
+          "command": ["alejandra", "--quiet", "--"]
         },
         "nix": {
           "flake": {
-            "autoArchive": true,
-          },
-        },
+            "autoArchive": true
+          }
+        }
       },
       "settings": {
         "diagnostics": {
-          "ignored": ["unused_binding"],
-        },
-      },
+          "ignored": ["unused_binding"]
+        }
+      }
     },
     "eslint": {
       "settings": {
         "codeActionOnSave": {
-          "rules": ["import/order"],
-        },
-      },
+          "rules": ["import/order"]
+        }
+      }
     },
     "typescript-language-server": {
       "initialization_options": {
         "preferences": {
           "strictNullChecks": true,
-          "target": "ES2020",
-        },
-      },
+          "target": "ES2020"
+        }
+      }
     },
     "deno": {
       "settings": {
         "deno": {
-          "enable": true,
-        },
-      },
+          "enable": true
+        }
+      }
     },
     "bash-language-server": {
       "binary": {
         "path": "/etc/profiles/per-user/myself/bin/bash-language-server",
-        "arguments": ["start"],
-      },
+        "arguments": ["start"]
+      }
     },
     "json-language-server": {
       "binary": {
         "path": "/etc/profiles/per-user/myself/bin/vscode-json-languageserver",
-        "arguments": ["--stdio"],
-      },
-    },
-  },
+        "arguments": ["--stdio"]
+      }
+    }
+  }
 }
