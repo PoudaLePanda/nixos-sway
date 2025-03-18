@@ -52,18 +52,5 @@
 
     xdg.enable = true;
 
-    gtk = {
-        enable = true;
-        ## import file
-        theme = {
-            name = lib.mkForce "adw-gtk3";
-            package = lib.mkForce pkgs.adw-gtk3;
-        };
-    };
-
-    home.file = {
-      ".icons/bibata".source = "${settings.iconsPkg}/share/icons/Bibata-Modern-Classic";
-    };
-
     home.stateVersion = "24.11";
 }

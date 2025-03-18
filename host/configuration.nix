@@ -79,27 +79,7 @@ in
           };
           displayManager = {
             gdm = {
-                enable = false;
-            };
-            lightdm = {
-              enable = true;
-              background = settings.backgroundImage;
-              greeters = {
-                gtk = {
-                  # theme = {
-                  #   name = settings.theme;
-                  #   package = settings.themePkg;
-                  # };
-                  iconTheme = {
-                    name = settings.icons;
-                    package = settings.iconsPkg;
-                  };
-                  cursorTheme = {
-                    name = settings.icons;
-                    package = settings.iconsPkg;
-                  };
-                };
-              };
+                enable = true;
             };
           };
         };
