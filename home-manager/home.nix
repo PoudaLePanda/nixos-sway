@@ -32,6 +32,7 @@
     };
 
     imports = [
+      (import ../themes/gtk.nix { inherit pkgs lib settings; })
       ./gnome.nix
       ../themes/stylix.nix
       ./pkgs/zed-editor/default.nix
@@ -53,10 +54,7 @@
 
     gtk = {
         enable = true;
-        iconTheme = {
-            name = settings.icons;
-            package = settings.iconsPkg;
-        };
+        ## import file
         theme = {
             name = lib.mkForce "adw-gtk3";
             package = lib.mkForce pkgs.adw-gtk3;
