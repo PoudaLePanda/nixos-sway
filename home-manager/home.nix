@@ -6,6 +6,8 @@
     };
 
     home = {
+        username = settings.username;
+        homeDirectory = "/home/${settings.username}";
         activation = {
             createDirectories = ''
                 $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \
@@ -32,14 +34,12 @@
     imports = [
       ./gnome.nix
       ../themes/stylix.nix
+      ./pkgs/zed-editor/default.nix
+      ./pkgs/ghostty/default.nix
       ./pkgs/nerdfetch/default.nix
       ./pkgs/starship/default.nix
       ./pkgs/conky/default.nix
-      ./pkgs/zed-editor.nix
       ./pkgs/cava.nix
-      # ./pkgs/superfile.nix
-      # ./pkgs/ghostty.nix
-      # ./pkgs/btop/default.nix
     ];
 
     home.packages = with pkgs; [
@@ -47,7 +47,6 @@
         nerd-fonts.noto
         nerd-fonts.hack
         nerd-fonts.jetbrains-mono
-        btop
     ];
 
     xdg.enable = true;

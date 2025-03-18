@@ -4,8 +4,8 @@ rec {
     keyMap = "us";
     variant = "mac";
 
-    username = "lmlab";
     hostname = "nixos";
+    username = "lmlab";
 
     name = "PoudaLePanda"; # Name (git config)
     email = "leo.meyniel@proton.me"; # Email (git config)
@@ -17,7 +17,6 @@ rec {
 
     font = "Noto Nerd Font";
     fontSize = 13;
-
 
     icons = "Nordzy";
     iconsPkg = pkgs.nordzy-icon-theme;

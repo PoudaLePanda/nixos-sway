@@ -1,0 +1,185 @@
+{
+    // System Settings
+    "extensions": [
+        "html",
+        "lua",
+        "log",
+        "scss",
+        "emmet",
+        "csv",
+        "nix",
+        "rainbow-csv",
+        "snippets",
+        "base16",
+        "superhtml",
+        "charmed-icons",
+    ],
+    "auto_update": false,
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+    "context": "Workspace",
+
+    // Theme & Visual Settings
+    "theme": {
+        "mode": "system",
+        "dark": "Base16 Nord",
+        "light": "Base16 Nord Light",
+    },
+    "icon_theme": "Charmed Icons",
+    "current_line_highlight": "all",
+
+    // Font Settings
+    "ui_font_size": 16,
+    "ui_font_family": "Noto Nerd Font",
+    "font_family": "Noto Nerd Font",
+    "buffer_font_size": 14,
+    "buffer_font_family": "Noto Nerd Font",
+    "buffer_font_fallbacks": ["Nerd Font"],
+
+    // IA
+    "features": {
+        "edit_prediction_provider": "supermaven",
+    },
+    "edit_predictions": {
+        // A list of globs representing files that edit predictions should be disabled for.
+        // There's a sensible default list of globs already included.
+        // Any addition to this list will be merged with the default list.
+        "disabled_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/*.key",
+            "**/*.cert",
+            "**/*.crt",
+            "**/secrets.yml",
+            "**/*.log",
+        ],
+    },
+
+    // Editor Behavior
+    "use_autoclose": false,
+    "relative_line_numbers": false,
+    "vim_mode": false,
+    "inlay_hints.enabled": true,
+    "soft_wrap": "preferred_line_length",
+    "preferred_line_length": 100,
+    "show_wrap_guides": true,
+    "tab_size": 4,
+    "show_edit_predictions": true,
+    "show_completions_on_input": true,
+
+    // Terminal Settings
+    "terminal": {
+        "blinking": "terminal_controlled",
+        "copy_on_select": true,
+        "line_height": "standard",
+        "font_family": "Noto Nerd Font",
+        "toolbar": {
+            "title": true,
+        },
+        "working_directory": "current_project_directory",
+        "button": true,
+        "font_size": 14,
+    },
+
+    // Syntax & Language Settings
+    "syntax": {
+        "comment": {
+            "font_style": "italic",
+        },
+    },
+
+    "languages": {
+        "HTML": {
+            "format_on_save": "on",
+            "language_servers": ["angular"],
+        },
+        "Nix": {
+            "format_on_save": "on",
+            "language_servers": ["nil", "!nixd"],
+            "formatter": {
+                "external": {
+                    "command": "alejandra",
+                    "arguments": ["--quiet", "--"],
+                },
+            },
+        },
+        "JavaScript": {
+            "format_on_save": "on",
+            "code_actions_on_format": {
+                "source.fixAll.eslint": true,
+            },
+            "language_servers": ["typescript-language-server", "!vtsls"],
+        },
+        "TypeScript": {
+            "format_on_save": "on",
+            "language_servers": ["typescript-language-server", "!vtsls"],
+            "formatter": "language_server",
+        },
+        "TSX": {
+            "format_on_save": "on",
+            "language_servers": ["typescript-language-server", "!vtsls"],
+            "formatter": "language_server",
+        },
+        "Markdown": {
+            "format_on_save": "on",
+            "enable_language_server": false,
+        },
+    },
+
+    // Language Server Protocol Settings
+    "lsp": {
+        "nil": {
+            "initialization_options": {
+                "formatting": {
+                    "command": ["alejandra", "--quiet", "--"],
+                },
+                "nix": {
+                    "flake": {
+                        "autoArchive": true,
+                    },
+                },
+            },
+            "settings": {
+                "diagnostics": {
+                    "ignored": ["unused_binding"],
+                },
+            },
+        },
+        "eslint": {
+            "settings": {
+                "codeActionOnSave": {
+                    "rules": ["import/order"],
+                },
+            },
+        },
+        "typescript-language-server": {
+            "initialization_options": {
+                "preferences": {
+                    "strictNullChecks": true,
+                    "target": "ES2020",
+                },
+            },
+        },
+        "deno": {
+            "settings": {
+                "deno": {
+                    "enable": true,
+                },
+            },
+        },
+        "bash-language-server": {
+            "binary": {
+                "path": "/etc/profiles/per-user/myself/bin/bash-language-server",
+                "arguments": ["start"],
+            },
+        },
+        "json-language-server": {
+            "binary": {
+                "path": "/etc/profiles/per-user/myself/bin/vscode-json-languageserver",
+                "arguments": ["--stdio"],
+            },
+        },
+    },
+}

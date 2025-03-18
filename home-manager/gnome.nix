@@ -13,12 +13,16 @@
     programs.bash = {
         enable = true;
         initExtra = ''
-            eval "$(starship init bash)"
+          eval "$(starship init bash)"
+          if [ -n "$IN_NIX_SHELL" ]; then
+            # Commandes spécifiques à l'environnement nix-shell
+            figlet nix-shell
+          else
+            # Commandes pour un shell standard
             nerdfetch
+          fi
         '';
     };
-
-    # home.file.".config/backgrounds/background.png".source = settings.backgroundImage;
 
     dconf.settings = {
         "org/gnome/shell" = {
@@ -38,23 +42,6 @@
                 "org.gnome.Nautilus.desktop"
             ];
         };
-
-        # "org/gnome/desktop/interface" = {
-        #     "color-scheme" = "prefer-dark";
-        #     "enable-animations" = false;
-        #     "enable-hot-corners" = true;
-        #     "font-antialiasing" = "grayscale";
-        #     "font-hinting" = "slight";
-        #     "toolkit-accessibility" = false;
-        #     "gtk-theme" = settings.theme;
-        #     "icon-theme" = settings.icons;
-        #     "cursor-theme" = settings.cursor;
-        #     "font-name" = "${settings.font} ${toString settings.fontSize}";
-        # };
-
-        # "org/gnome/shell/extensions/user-theme" = {
-        #     "name" = settings.theme;
-        # };
 
         "org/gnome/tweaks" = {
           "show-extensions-notice" = false;
@@ -89,12 +76,6 @@
             "search-filter-time-type" = "last_modified";
             "search-view" = "list-view";
         };
-
-        # "org/gnome/desktop/background" = {
-        #   "picture-uri" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-        #   "picture-uri-dark" = "file://${config.home.homeDirectory}/.config/backgrounds/background.png";
-        #   "picture-options" = "zoom";
-        # };
 
         "org/gnome/shell/extensions/dash-to-dock" = {
             dock-position = "BOTTOM";

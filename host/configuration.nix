@@ -79,12 +79,28 @@ in
           };
           displayManager = {
             gdm = {
-                enable = true;
+                enable = false;
             };
-            # sddm = {
-            #   enable = true;
-            #   theme = "${import ./pkgs/sddm-theme.nix {inherit pkgs settings;}}";
-            # };
+            lightdm = {
+              enable = true;
+              background = settings.backgroundImage;
+              greeters = {
+                gtk = {
+                  # theme = {
+                  #   name = settings.theme;
+                  #   package = settings.themePkg;
+                  # };
+                  iconTheme = {
+                    name = settings.icons;
+                    package = settings.iconsPkg;
+                  };
+                  cursorTheme = {
+                    name = settings.icons;
+                    package = settings.iconsPkg;
+                  };
+                };
+              };
+            };
           };
         };
         pulseaudio.enable = false;
@@ -97,7 +113,7 @@ in
         };
     };
 
-    users.users.lmlab = {
+    users.users.${settings.username} = {
         isNormalUser = true;
         description = settings.username;
         extraGroups = [ "networkmanager" "wheel" ];
@@ -108,11 +124,11 @@ in
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         blanket
+        figlet
+        typescript-language-server
         glib
         home-manager
         nix
-        nil
-        nixd
         package-version-server
         wget
         git
@@ -134,8 +150,6 @@ in
         killall
         mesa
         chromium
-        ghostty
-        zed-editor
         brave
         firefox
         inputs.zen-browser.packages."${system}".default

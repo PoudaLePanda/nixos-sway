@@ -13,17 +13,19 @@
 </p>
 
 ## ✨ Table des matières
-- [💻 Introduction](#introduction)
-- [⚙️ Configuration système](#configuration-système)
-- [📦 Gestion des paquets](#gestion-des-paquets)
-- [🛠️ Mises à jour](#mises-à-jour)
-- [❄️ Environnements de développement](#environnements-de-développement)
-- [🧊 Gestion de services](#gestion-de-services)
-- [🚧 Dépannage](#dépannage)
-- [📗 Ressources utiles](#ressources-utiles)
-- [🔥 Notice d'installation de NixOS FAF DEV avec dotfiles](#etapes-d-installation)
-- [🪛 Mise à jour future](#mise-à-jour-future)
-- [❗ Notes importantes](#notes-importantes)
+
+- [💻 Introduction](#user-content-️-introduction)
+- [⚙️ Configuration système](#user-content-️-configuration-systeme)
+- [📦 Gestion des paquets](#user-content-️-gestion-des-paquets)
+- [🛠️ Mises à jour](#user-content-️-mises-a-jour)
+- [❄️ Environnements de développement](#user-content-️-environnements-de-developpement")
+- [🧊 Gestion de services](#user-content-️-gestion-de-services)
+- [🚧 Dépannage](#user-content-️-depannage)
+- [📗 Ressources utiles](#user-content-️-ressources-utiles)
+- [🔥 Notice d'installation de NixOS FAF DEV avec dotfiles](#user-content-️-notice-dinstallation-de-nixos-faf-dev-avec-dotfiles)
+- [🪛 Mise à jour future](#user-content-️-mise-a-jour-future)
+- [❗ Notes importantes](#user-content-️-notes-importantes)
+- [🎛️ Packages Inclus](#user-content-️-packages-inclus)
 
 ![Screen](./assets/preview.png)
 
@@ -250,16 +252,16 @@ sudo nixos-rebuild switch
 
 ## 🎛️ Packages Inclus
 
-| **Catégorie**       | 🚀 **Logiciels** |
-|----------------------|----------------------------|
-| **Système**         | nix, home-manager, glib, nil, nixd, package-version-server, coreutils, cowsay, killall |
-| **Développement**   | git, git-lfs, gcc, gnumake, vscodium, [zed-editor](https://zed.dev/) |
-| **Outils CLI**      | wget, curl, zip, xz, dos2unix, jq, htop, playerctl, starship, nerdfetch |
-| **Navigateur Web**  | brave, firefox, chromium [zen-browser](https://zen-browser.app/) |
-| **Bureautique**     | zathura, gnome-screenshot |
-| **Productivité**    | protonvpn-gui, ['ghostty'](https://ghostty.org/), conky, ags |
-| **Thèmes & Icônes** | [colloid-gtk-theme](https://github.com/vinceliuice/Colloid-gtk-theme), [nordzy-icon-theme](https://github.com/alvatip/Nordzy-icon), [bibata-cursors](https://github.com/ful1e5/Bibata_Cursor),  [nerd-fonts.zed-mono, nerd-fonts.noto, nerd-fonts.hack, nerd-fonts.jetbrains-mono](https://www.nerdfonts.com/) |
-| **GNOME Extensions** | gnome-tweaks, gnomeExtensions.appindicator, gnomeExtensions.user-themes, gnomeExtensions.vitals, gnomeExtensions.caffeine, gnomeExtensions.dash-to-dock |
-| **Multimédia**      | blanket, mesa |
+| **Catégorie**        | 🚀 **Logiciels**                                                                                                                                                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Système**          | nix, home-manager, glib, package-version-server, coreutils, cowsay, killall                                                                                                                                                                                                                                   |
+| **Développement**    | git, git-lfs, gcc, gnumake, [zed-editor](https://zed.dev/)                                                                                                                                                                                                                                                    |
+| **Outils CLI**       | wget, curl, zip, xz, dos2unix, jq, htop, playerctl, starship, nerdfetch                                                                                                                                                                                                                                       |
+| **Navigateur Web**   | brave, firefox, chromium [zen-browser](https://zen-browser.app/)                                                                                                                                                                                                                                              |
+| **Bureautique**      | zathura, gnome-screenshot                                                                                                                                                                                                                                                                                     |
+| **Productivité**     | protonvpn-gui, ['ghostty'](https://ghostty.org/), conky, ags                                                                                                                                                                                                                                                  |
+| **Thèmes & Icônes**  | [colloid-gtk-theme](https://github.com/vinceliuice/Colloid-gtk-theme), [nordzy-icon-theme](https://github.com/alvatip/Nordzy-icon), [bibata-cursors](https://github.com/ful1e5/Bibata_Cursor), [nerd-fonts.zed-mono, nerd-fonts.noto, nerd-fonts.hack, nerd-fonts.jetbrains-mono](https://www.nerdfonts.com/) |
+| **GNOME Extensions** | gnome-tweaks, gnomeExtensions.appindicator, gnomeExtensions.user-themes, gnomeExtensions.vitals, gnomeExtensions.caffeine, gnomeExtensions.dash-to-dock                                                                                                                                                       |
+| **Multimédia**       | blanket, mesa                                                                                                                                                                                                                                                                                                 |
 
 📜 **Fichier de configuration** : [`configuration.nix`](./host/configuration.nix)

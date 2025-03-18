@@ -16,8 +16,6 @@
       url = "github:vinceliuice/grub2-themes";
     };
 
-    superfile.url = "github:yorukot/superfile";
-
     stylix.url = "github:danth/stylix";
   };
 
