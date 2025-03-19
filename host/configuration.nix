@@ -117,8 +117,6 @@ in {
     nix
     package-version-server
     wget
-    git
-    git-lfs
     cowsay
     htop
     curl
@@ -128,6 +126,8 @@ in {
     jq # Pour traiter le JSON (utilisé dans tes scripts)
     coreutils # Fournit cat, awk, etc.
     playerctl
+    git
+    git-lfs
     github-desktop
     ags
     gcc
