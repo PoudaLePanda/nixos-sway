@@ -23,6 +23,8 @@ in {
     targets = {
       qt.platform = "qtct";
       gnome.enable = true;
+      kitty.enable = true;
+      foot.enable = true;
       gtk.enable = true;
       ghostty.enable = true;
       gedit.enable = true;

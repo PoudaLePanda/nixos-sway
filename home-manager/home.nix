@@ -47,6 +47,7 @@
   };
 
   home.packages = with pkgs; [
+    foot
     nerd-fonts.zed-mono
     nerd-fonts.noto
     nerd-fonts.hack
