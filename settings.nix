@@ -5,11 +5,13 @@
 
   hostname = "nixos";
   username = "lmlab";
+  themeAdw = "catppuccin"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
+
+  dotfilesDir = "/home/${username}/.dotfiles"; # Absolute path of the local repo
+  themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
 
   name = "PoudaLePanda"; # Name (git config)
   email = "leo.meyniel@proton.me"; # Email (git config)
-
-  themeAdw = "kanagawa"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
 
   font = "Noto Nerd Font";
   fontSize = 13;

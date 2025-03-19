@@ -1,10 +1,10 @@
 # ./home/home.nix
 {
-  config,
   inputs,
-  lib,
   pkgs,
+  lib,
   settings,
+  config,
   ...
 }: {
   imports = [
@@ -19,26 +19,17 @@
     ./pkgs/cava.nix
   ];
 
+  stylix.targets.hyprland.enable = false;
+
   home = {
     username = settings.username;
     homeDirectory = "/home/${settings.username}";
     sessionVariables = {
       HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
     };
-    activation = {
-      createDirectories = ''
-        $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \
-        $HOME/DEV \
-      '';
-    };
-    file.".config/gtk-3.0/bookmarks".force = true;
-    file.".config/gtk-3.0/bookmarks".text = ''
-      file:///home/leodev/DEV DEV
-      file:///home/leodev/DOTFILES DOTFILES
-      file:///home/leodev/Téléchargements Téléchargements
-    '';
   };
 
+  programs.home-manager.enable = true;
   programs.git = {
     enable = true;
     userName = settings.name;

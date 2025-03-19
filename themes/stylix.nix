@@ -1,12 +1,12 @@
 {
+  inputs,
   pkgs,
   lib,
   settings,
   config,
   ...
 }: let
-  dotfilesDir = "/home/${settings.username}/DOTFILES";
-  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
+  themeDetails = settings.themeDetails;
 in {
   stylix = {
     enable = true;

@@ -4,8 +4,7 @@
   settings,
   ...
 }: let
-  dotfilesDir = "/home/${settings.username}/DOTFILES";
-  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
+  themeDetails = settings.themeDetails;
 in {
   imports = lib.optionals (themeDetails.btopTheme != null) [
     (./. + "/${settings.themeAdw}.nix")

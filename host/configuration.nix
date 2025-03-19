@@ -7,8 +7,7 @@
   settings,
   ...
 }: let
-  dotfilesDir = "/home/${settings.username}/DOTFILES";
-  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
+  themeDetails = settings.themeDetails;
 in {
   imports = [
     ./hardware-configuration.nix
@@ -77,14 +76,13 @@ in {
     displayManager.defaultSession = "gnome";
     xserver = {
       enable = true;
-      desktopManager.gnome.enable = true;
       excludePackages = with pkgs; [xterm];
       xkb = {
         layout = settings.keyMap;
         variant = settings.variant;
       };
       displayManager = {
-        gdm = {
+        startx = {
           enable = true;
         };
       };
@@ -141,6 +139,8 @@ in {
     inputs.zen-browser.packages."${system}".default
     zathura
     gnome-screenshot
+    wayland
+    wl-clipboard
   ];
 
   environment.localBinInPath = true;
