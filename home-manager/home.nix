@@ -9,6 +9,7 @@
 }: {
   imports = [
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
+    ../themes/stylix.nix
     ./gnome.nix
     ./pkgs/zed-editor/default.nix
     ./pkgs/ghostty/default.nix
@@ -16,16 +17,14 @@
     ./pkgs/starship/default.nix
     ./pkgs/conky/default.nix
     ./pkgs/cava.nix
-    ../themes/stylix.nix
   ];
-
-  home.sessionVariables = {
-    HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
-  };
 
   home = {
     username = settings.username;
     homeDirectory = "/home/${settings.username}";
+    sessionVariables = {
+      HOME_MANAGER_CONFIG = "$HOME/DOTFILES/home-manager/home.nix";
+    };
     activation = {
       createDirectories = ''
         $DRY_RUN_CMD mkdir -p $VERBOSE_ARG \

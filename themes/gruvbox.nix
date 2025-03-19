@@ -1,4 +1,4 @@
-{dir}: {
+{dir, ...}: {
   themeName = "gruvbox-material-dark-medium";
   wallpaper = ../assets/wallpapers/gruvbox.jpg;
 

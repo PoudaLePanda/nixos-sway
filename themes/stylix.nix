@@ -5,19 +5,20 @@
   config,
   ...
 }: let
-  details = settings.themeDetails;
+  dotfilesDir = "/home/${settings.username}/DOTFILES";
+  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
 in {
   stylix = {
     enable = true;
     polarity = "dark";
-    image = details.wallpaper;
-    base16Scheme = lib.mkIf (details.themeName != null) "${pkgs.base16-schemes}/share/themes/${details.themeName}.yaml";
-    override = lib.mkIf (details.override != null) details.override;
+    image = themeDetails.wallpaper;
+    base16Scheme = lib.mkIf (themeDetails.themeName != null) "${pkgs.base16-schemes}/share/themes/${themeDetails.themeName}.yaml";
+    override = lib.mkIf (themeDetails.override != null) themeDetails.override;
     opacity = {
-      terminal = details.opacity;
-      applications = details.opacity;
-      desktop = details.opacity;
-      popups = details.opacity;
+      terminal = themeDetails.opacity;
+      applications = themeDetails.opacity;
+      desktop = themeDetails.opacity;
+      popups = themeDetails.opacity;
     };
     targets = {
       qt.platform = "qtct";

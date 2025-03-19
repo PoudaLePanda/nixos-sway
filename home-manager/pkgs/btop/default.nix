@@ -1,20 +1,26 @@
-{ lib, pkgs, settings, ... }:
-let
-    details = settings.themeDetails;
+{
+  lib,
+  pkgs,
+  settings,
+  ...
+}: let
+  dotfilesDir = "/home/${settings.username}/DOTFILES";
+  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
 in {
-    imports = lib.optionals (details.btopTheme != null) [
-        (./. + "/${settings.themeAdw}.nix")
-    ];
+  imports = lib.optionals (themeDetails.btopTheme != null) [
+    (./. + "/${settings.themeAdw}.nix")
+  ];
 
-    programs.btop = {
-        enable = true;
-        package = pkgs.btop.override {rocmSupport = true; };
-        settings = {
-            color_theme = lib.mkIf (details.btopTheme != null)
-                "${details.btopTheme}.theme";
-            theme_background = false;
-            vim_keys = true;
-            update_ms = 500;
-        };
+  programs.btop = {
+    enable = true;
+    package = pkgs.btop.override {rocmSupport = true;};
+    settings = {
+      color_theme =
+        lib.mkIf (themeDetails.btopTheme != null)
+        "${themeDetails.btopTheme}.theme";
+      theme_background = false;
+      vim_keys = true;
+      update_ms = 500;
     };
+  };
 }

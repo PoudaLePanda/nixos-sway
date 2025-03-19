@@ -1,4 +1,4 @@
-{dir}: {
+{dir, ...}: {
   themeName = "catppuccin-mocha";
   wallpaper = ../assets/wallpapers/catppuccin.jpg;
 

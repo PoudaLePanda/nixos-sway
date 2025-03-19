@@ -9,10 +9,7 @@
   name = "PoudaLePanda"; # Name (git config)
   email = "leo.meyniel@proton.me"; # Email (git config)
 
-  dotfilesDir = "/home/${username}/DOTFILES"; # Absolute path of the local repo
-
-  themeAdw = "dracula"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
-  themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
+  themeAdw = "kanagawa"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
 
   font = "Noto Nerd Font";
   fontSize = 13;

@@ -21,7 +21,7 @@
         }
         else if settings.themeAdw == "dracula"
         then {
-          name = "Bibata-Modern-Ice";
+          name = "Bibata Modern Ice";
           package = pkgs.bibata-cursors;
         }
         else if settings.themeAdw == "kanagawa"

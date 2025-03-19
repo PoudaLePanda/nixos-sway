@@ -1,159 +1,165 @@
 # ./host/configuration.nix
-{ config, inputs, lib, pkgs, settings, ... }:
-let
-    details = settings.themeDetails;
-in
 {
-    imports = [
-        ./hardware-configuration.nix
-        ./gnome.nix
-        ./pkgs/nix.nix
-        ./pkgs/proton-vpn.nix
-        ./pkgs/amd-drivers.nix
-        ./pkgs/minecraft.nix
-        ./pkgs/steam.nix
-    ];
+  config,
+  inputs,
+  lib,
+  pkgs,
+  settings,
+  ...
+}: let
+  dotfilesDir = "/home/${settings.username}/DOTFILES";
+  themeDetails = import (dotfilesDir + "/themes/${settings.themeAdw}.nix") {dir = dotfilesDir;};
+in {
+  imports = [
+    ./hardware-configuration.nix
+    ./gnome.nix
+    ./pkgs/nix.nix
+    ./pkgs/proton-vpn.nix
+    ./pkgs/amd-drivers.nix
+    ./pkgs/minecraft.nix
+    ./pkgs/steam.nix
+  ];
 
-    boot = {
-        initrd.kernelModules = [ "amdgpu" ];
-        loader = {
-            timeout = 10;
-            efi.canTouchEfiVariables = true;
-            grub = {
-                enable = true;
-                device = "nodev";
-                efiSupport = true;
-                useOSProber = false;
-            };
-            grub2-theme = {
-                enable = true;
-                theme = "stylish";
-                footer = true;
-                customResolution = "3440x1440";
-                splashImage = "${details.wallpaper}";
-            };
-        };
-        plymouth.enable = true;
+  boot = {
+    initrd.kernelModules = ["amdgpu"];
+    loader = {
+      timeout = 10;
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = false;
+      };
+      grub2-theme = {
+        enable = true;
+        theme = "stylish";
+        footer = true;
+        customResolution = "3440x1440";
+        splashImage = "${themeDetails.wallpaper}";
+      };
     };
+    plymouth.enable = true;
+  };
 
-    networking = {
-      hostName = "nixos";
-      networkmanager.enable = true;
-      firewall.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+    firewall.enable = true;
+  };
+
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+    graphics = {
+      enable = true;
+      extraPackages = [pkgs.amdvlk];
     };
+  };
 
-    hardware = {
-        cpu.amd.updateMicrocode = true;
-        graphics = {
-            enable = true;
-            extraPackages = [ pkgs.amdvlk ];
-        };
-    };
+  time.timeZone = "Europe/Paris";
+  console.keyMap = settings.keyMap;
+  i18n.defaultLocale = settings.locale;
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
+  };
 
-    time.timeZone = "Europe/Paris";
-    console.keyMap = settings.keyMap;
-    i18n.defaultLocale = settings.locale;
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "fr_FR.UTF-8";
-        LC_IDENTIFICATION = "fr_FR.UTF-8";
-        LC_MEASUREMENT = "fr_FR.UTF-8";
-        LC_MONETARY = "fr_FR.UTF-8";
-        LC_NAME = "fr_FR.UTF-8";
-        LC_NUMERIC = "fr_FR.UTF-8";
-        LC_PAPER = "fr_FR.UTF-8";
-        LC_TELEPHONE = "fr_FR.UTF-8";
-        LC_TIME = "fr_FR.UTF-8";
-    };
-
-    services = {
-        dbus.enable = true;
-        printing.enable = true;
-        displayManager.defaultSession = "gnome";
-        xserver = {
+  services = {
+    dbus.enable = true;
+    printing.enable = true;
+    displayManager.defaultSession = "gnome";
+    xserver = {
+      enable = true;
+      desktopManager.gnome.enable = true;
+      excludePackages = with pkgs; [xterm];
+      xkb = {
+        layout = settings.keyMap;
+        variant = settings.variant;
+      };
+      displayManager = {
+        gdm = {
           enable = true;
-          desktopManager.gnome.enable = true;
-          excludePackages = with pkgs; [xterm];
-          xkb = {
-            layout = settings.keyMap;
-            variant = settings.variant;
-          };
-          displayManager = {
-            gdm = {
-                enable = true;
-            };
-          };
         };
-        pulseaudio.enable = false;
-        pipewire = {
-            enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            pulse.enable = true;
-            wireplumber.enable = true;
-        };
+      };
     };
-
-    users.users.${settings.username} = {
-        isNormalUser = true;
-        description = settings.username;
-        extraGroups = [ "networkmanager" "wheel" ];
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
     };
+  };
 
-    environment.systemPackages = with pkgs; [
-        capitaine-cursors-themed
-        libsForQt5.qt5.qtquickcontrols2
-        libsForQt5.qt5.qtgraphicaleffects
-        blanket
-        figlet
-        typescript-language-server
-        glib
-        home-manager
-        nix
-        package-version-server
-        wget
-        git
-        git-lfs
-        cowsay
-        htop
-        curl
-        zip
-        xz
-        dos2unix
-        jq         # Pour traiter le JSON (utilisé dans tes scripts)
-        coreutils  # Fournit cat, awk, etc.
-        playerctl
-        github-desktop
-        ags
-        gcc
-        glib
-        gnumake
-        killall
-        mesa
-        chromium
-        brave
-        firefox
-        inputs.zen-browser.packages."${system}".default
-        zathura
-        gnome-screenshot
-    ];
+  users.users.${settings.username} = {
+    isNormalUser = true;
+    description = settings.username;
+    extraGroups = ["networkmanager" "wheel"];
+  };
 
-    environment.localBinInPath = true;
-    services.devmon.enable = true;
-    security.rtkit.enable = true;
+  environment.systemPackages = with pkgs; [
+    capitaine-cursors-themed
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    blanket
+    figlet
+    typescript-language-server
+    glib
+    home-manager
+    nix
+    package-version-server
+    wget
+    git
+    git-lfs
+    cowsay
+    htop
+    curl
+    zip
+    xz
+    dos2unix
+    jq # Pour traiter le JSON (utilisé dans tes scripts)
+    coreutils # Fournit cat, awk, etc.
+    playerctl
+    github-desktop
+    ags
+    gcc
+    glib
+    gnumake
+    killall
+    mesa
+    chromium
+    brave
+    firefox
+    inputs.zen-browser.packages."${system}".default
+    zathura
+    gnome-screenshot
+  ];
 
-    system.activationScripts = {
-      script.text = ''
-        mkdir -p /var/lib/AccountsService/{icons,users}
-        cp ${settings.avatarImage} /var/lib/AccountsService/icons/lmlab
-        touch /var/lib/AccountsService/users/lmlab
-        if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
-            if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
-            echo "[User]" >> /var/lib/AccountsService/users/lmlab
-            fi
-            echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
-        fi
-      '';
-    };
+  environment.localBinInPath = true;
+  services.devmon.enable = true;
+  security.rtkit.enable = true;
 
-    system.stateVersion = "24.11";
+  system.activationScripts = {
+    script.text = ''
+      mkdir -p /var/lib/AccountsService/{icons,users}
+      cp ${settings.avatarImage} /var/lib/AccountsService/icons/lmlab
+      touch /var/lib/AccountsService/users/lmlab
+      if ! grep -q "^Icon=" /var/lib/AccountsService/users/lmlab; then
+          if ! grep -q "^\[User\]" /var/lib/AccountsService/users/lmlab; then
+          echo "[User]" >> /var/lib/AccountsService/users/lmlab
+          fi
+          echo "Icon=/var/lib/AccountsService/icons/lmlab" >> /var/lib/AccountsService/users/lmlab
+      fi
+    '';
+  };
+
+  system.stateVersion = "24.11";
 }

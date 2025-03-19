@@ -1,4 +1,4 @@
-{dir}: {
+{dir, ...}: {
   themeName = "nord";
   wallpaper = ../assets/wallpapers/wave.png;
 
