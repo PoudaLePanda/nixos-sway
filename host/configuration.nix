@@ -12,6 +12,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./gnome.nix
+    # ./hyprland.nix
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
     ./pkgs/amd-drivers.nix
@@ -104,10 +105,10 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    capitaine-cursors-themed
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     blanket
+    nix-index
     figlet
     typescript-language-server
     glib
@@ -115,6 +116,11 @@ in {
     nix
     package-version-server
     wget
+    pciutils
+    go-mtpfs
+    ntfs3g
+    inetutils
+    lsof
     cowsay
     htop
     curl
@@ -134,6 +140,7 @@ in {
     killall
     mesa
     chromium
+    spotify-player
     brave
     firefox
     inputs.zen-browser.packages."${system}".default
@@ -141,11 +148,15 @@ in {
     gnome-screenshot
     wayland
     wl-clipboard
+    kitty
+    vscode
   ];
 
   environment.localBinInPath = true;
   services.devmon.enable = true;
   security.rtkit.enable = true;
+  # A lot of mpris packages require it.
+  services.gvfs.enable = true;
 
   system.activationScripts = {
     script.text = ''

@@ -11,12 +11,19 @@
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
     ../themes/stylix.nix
     ./gnome.nix
-    ./pkgs/zed-editor/default.nix
-    ./pkgs/ghostty/default.nix
-    ./pkgs/nerdfetch/default.nix
-    ./pkgs/starship/default.nix
+    # ./hyprland.nix
+    ./pkgs/btop/default.nix
     ./pkgs/conky/default.nix
+    ./pkgs/fastfetch/default.nix
+    ./pkgs/ghostty/default.nix
+    ./pkgs/lazy-docker/default.nix
+    ./pkgs/nerdfetch/default.nix
+    ./pkgs/posting/default.nix
+    ./pkgs/starship/default.nix
+    ./pkgs/yazi/default.nix
+    ./pkgs/zed-editor/default.nix
     ./pkgs/cava.nix
+    ./pkgs/spicetify.nix
   ];
 
   stylix.targets.hyprland.enable = false;
