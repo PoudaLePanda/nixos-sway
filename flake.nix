@@ -16,14 +16,7 @@
       url = "github:vinceliuice/grub2-themes";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
-
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -48,14 +41,11 @@
         specialArgs = {inherit self inputs settings;};
         modules = [
           ./host/configuration.nix
-          (import inputs.stylix.nixosModules.stylix {
-            inherit pkgs lib;
-            settings = specialArgs.settings;
-          })
+          inputs.stylix.nixosModules.stylix
           inputs.grub2-themes.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = false;
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${settings.username} = {config, ...}: {
               imports = [./home-manager/home.nix];
