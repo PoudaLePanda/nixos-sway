@@ -82,11 +82,11 @@ in {
         layout = settings.keyMap;
         variant = settings.variant;
       };
-      displayManager = {
-        startx = {
-          enable = true;
-        };
-      };
+      # displayManager = {
+      #   startx = {
+      #     enable = true;
+      #   };
+      # };
     };
     pulseaudio.enable = false;
     pipewire = {

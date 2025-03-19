@@ -23,7 +23,6 @@
     ./pkgs/yazi/default.nix
     ./pkgs/zed-editor/default.nix
     ./pkgs/cava.nix
-    ./pkgs/spicetify.nix
   ];
 
   stylix.targets.hyprland.enable = false;
