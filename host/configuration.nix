@@ -115,8 +115,6 @@ in {
     htop
     cowsay
     git
-    git-lfs
-    github-desktop
     chromium
     spotify-player
     brave

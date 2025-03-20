@@ -40,6 +40,8 @@
   home.packages = with pkgs; [
 	  eyedropper
     foot
+    git-lfs
+    github-desktop
 	  bemenu #App launcher
     nerd-fonts.zed-mono
     nerd-fonts.noto
