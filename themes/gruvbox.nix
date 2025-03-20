@@ -1,6 +1,6 @@
 {dir, ...}: {
   themeName = "gruvbox-material-dark-medium";
-  wallpaper = ../assets/wallpapers/gruvbox.jpg;
+  wallpaper = ../assets/wallpapers/gruvbox-uw2.png;
 
   # Stylix palette override.
   override = null;

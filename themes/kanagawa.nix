@@ -1,6 +1,6 @@
 {dir, ...}: {
   themeName = "kanagawa";
-  wallpaper = ../assets/wallpapers/kanagawa.jpg;
+  wallpaper = ../assets/wallpapers/kanagawa.png;
 
   # Stylix palette override.
   override = null;

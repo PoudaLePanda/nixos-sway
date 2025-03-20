@@ -100,7 +100,7 @@
                 "actions": [
                     {
                         "label": "  Lock",
-                        "command": "swaylock"
+                        "command": "hyprctl dispatch exit"
                     },
                     {
                         "label": "  Reboot",

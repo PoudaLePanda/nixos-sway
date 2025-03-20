@@ -1,6 +1,6 @@
 {dir, ...}: {
   themeName = "dracula";
-  wallpaper = ../assets/wallpapers/dracula.png;
+  wallpaper = ../assets/wallpapers/dracula-uw.png;
 
   # Stylix palette override.
   override = {

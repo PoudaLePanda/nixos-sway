@@ -1,6 +1,6 @@
 {dir, ...}: {
   themeName = "nord";
-  wallpaper = ../assets/wallpapers/wave.png;
+  wallpaper = ../assets/wallpapers/nord-uw.png;
 
   # Stylix palette override.
   override = {

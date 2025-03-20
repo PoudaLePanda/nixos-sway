@@ -1,6 +1,6 @@
 {dir, ...}: {
   themeName = "everforest-dark-hard";
-  wallpaper = ../assets/wallpapers/mist_forest_2.png;
+  wallpaper = ../assets/wallpapers/gruvbox-uw.png;
 
   # Stylix palette override.
   override = null;
