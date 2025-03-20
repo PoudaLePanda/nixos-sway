@@ -11,6 +11,7 @@
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
     ../themes/stylix.nix
     ./gnome.nix
+    ./sway.nix
     # ./hyprland.nix
     ./pkgs/btop/default.nix
     ./pkgs/conky/default.nix
@@ -25,7 +26,7 @@
     ./pkgs/cava.nix
   ];
 
-  stylix.targets.hyprland.enable = false;
+  # stylix.targets.hyprland.enable = false;
 
   home = {
     username = settings.username;

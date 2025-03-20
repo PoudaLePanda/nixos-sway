@@ -12,6 +12,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./gnome.nix
+    ./sway.nix
     # ./hyprland.nix
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
@@ -72,9 +73,17 @@ in {
   };
 
   services = {
-    dbus.enable = true;
+    # GTK theme config
+    dbus = {
+      enable = true;
+      packages = [pkgs.dconf];
+    };
+
+    # User's credentials manager
+    gnome.gnome-keyring.enable = true;
     printing.enable = true;
-    displayManager.defaultSession = "gnome";
+
+    # displayManager.defaultSession = "gnome";
     xserver = {
       enable = true;
       excludePackages = with pkgs; [xterm];
@@ -82,12 +91,8 @@ in {
         layout = settings.keyMap;
         variant = settings.variant;
       };
-      # displayManager = {
-      #   startx = {
-      #     enable = true;
-      #   };
-      # };
     };
+
     pulseaudio.enable = false;
     pipewire = {
       enable = true;
@@ -101,7 +106,7 @@ in {
   users.users.${settings.username} = {
     isNormalUser = true;
     description = settings.username;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "video"];
   };
 
   environment.systemPackages = with pkgs; [

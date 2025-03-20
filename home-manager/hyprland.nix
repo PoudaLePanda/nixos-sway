@@ -21,6 +21,8 @@
     hyprcursor
   ];
 
+  wayland.windowManager.hyprland.settings.input.kb_options = "terminate:ctrl_alt_bksp";
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;

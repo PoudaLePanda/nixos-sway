@@ -14,23 +14,25 @@
     };
     stylix.url = "github:danth/stylix";
 
+    # sway
+
     # add hyprland
-    ags.url = "git+https://github.com/Aylur/ags?rev=60180a184cfb32b61a1d871c058b31a3b9b0743d";
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors";
-      inputs.hyprland.follows = "hyprland";
-    };
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    aagl.inputs.nixpkgs.follows = "nixpkgs";
+    # ags.url = "git+https://github.com/Aylur/ags?rev=60180a184cfb32b61a1d871c058b31a3b9b0743d";
+    # hyprland = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/Hyprland";
+    #   submodules = true;
+    # };
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    # hypr-dynamic-cursors = {
+    #   url = "github:VirtCode/hypr-dynamic-cursors";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    # aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = {
     self,

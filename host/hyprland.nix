@@ -1,7 +1,7 @@
 {
   inputs,
   config,
-  pkgs,
+  pkgs,lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -15,17 +15,19 @@
       package = inputs.hyprland.packages.${pkgs.system}.default;
       portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
+    dconf.enable = true;
   };
 
-  #    programs.hyprland.package = let
-  #      patch = ./displaylink-custom.patch;
-  #    in
-  #    inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (self: super: {
-  #      postUnpack = ''
-  #        rm $sourceRoot/subprojects/wlroots-hyprland/patches/nvidia-hardware-cursors.patch
-  #        cp ${patch} $sourceRoot/subprojects/wlroots-hyprland/patches
-  #      '';
-  #    });
+  # tty service config
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
@@ -43,5 +45,32 @@
     extraPortals = [
       # pkgs.xdg-desktop-portal-gtk
     ];
+  };
+
+  services = {
+    # Bluetooth manager
+    blueman.enable = true;
+    # Init session with hyprland
+    greetd = {
+      enable = true;
+      settings = rec {
+        regreet_session = {
+        command = "${pkgs.cage}/bin/cage -s -- ${pkgs.greetd.regreet}/bin/regreet";
+        user = "greeter";
+        };
+        tuigreet_session =
+          let
+          session = "${pkgs.hyprland}/bin/Hyprland";
+          tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+          in
+          {
+          command = "${tuigreet} --time --remember --cmd ${session}";
+          user = "greeter";
+          };
+        default_session = tuigreet_session;
+      };
+    };
+    # Allows Hyprland to run without root privileges
+    seatd.enable = true;
   };
 }
