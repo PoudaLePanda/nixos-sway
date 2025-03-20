@@ -13,7 +13,7 @@
     after = ["linkGeneration"];
     before = [];
     data = ''
-      if [ ! -f "$HOME/.config/btop/nord.theme" ]; then
+      if [ ! -f "$HOME/.config/btop" ]; then
       mkdir -p "$HOME/.config/btop"
       cp ${./nord.theme} "$HOME/.config/btop/themes/nord.theme"
       cp ${./btop.conf} "$HOME/.config/btop/btop.conf"

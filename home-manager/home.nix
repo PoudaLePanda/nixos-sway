@@ -12,6 +12,7 @@
     ../themes/stylix.nix
     ./pkgs/gnome/default.nix
     ./pkgs/sway/default.nix
+    ./pkgs/waybar/default.nix
     ./pkgs/bashrc.nix
     ./pkgs/git.nix
     ./pkgs/btop/default.nix

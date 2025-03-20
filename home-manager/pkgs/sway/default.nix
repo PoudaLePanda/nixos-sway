@@ -7,7 +7,7 @@
     config = {
       terminal = "${pkgs.foot}/bin/foot";  # Vous pouvez remplacer par votre terminal préféré
       menu = "${pkgs.wofi}/bin/wofi --show drun";
-      modifier = "Mod4";  # Touche Windows/Super
+      modifier = "Mod4";  # Touche Windows/Super (Command sur Mac)
       
       # Configuration de base des espaces de travail
       workspaceOutputAssign = [
@@ -17,11 +17,9 @@
       ];
       
       # Configuration des barres de statut
-      bars = [{
-        command = "${pkgs.waybar}/bin/waybar";
-      }];
+      bars = [];  # Nous utilisons Waybar au lieu de la barre par défaut
       
-      # Raccourcis clavier
+      # Raccourcis clavier pour Mac US
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
@@ -55,6 +53,19 @@
         "${modifier}+Shift+j" = "move down";
         "${modifier}+Shift+k" = "move up";
         "${modifier}+Shift+l" = "move right";
+        
+        # Capture d'écran
+        "${modifier}+Print" = "exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') ~/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png";
+        "${modifier}+Shift+Print" = "exec grim -g \"$(slurp)\" ~/Screenshots/$(date +'%Y-%m-%d-%H%M%S').png";
+        
+        # Contrôle du volume - adaptez selon votre clavier Mac
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        
+        # Contrôle de la luminosité - adaptez selon votre clavier Mac
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
       };
       
       # Apparence
@@ -63,9 +74,18 @@
         outer = 2;
       };
       
+      # Configuration des fenêtres
+      window = {
+        border = 2;
+        titlebar = false;
+      };
+      
+      # Disposition clavier US Mac
       input = {
         "type:keyboard" = {
-          xkb_layout = "fr";  # Ajustez selon votre disposition de clavier
+          xkb_layout = "us";
+          xkb_variant = "mac";  # Disposition Mac US
+          xkb_options = "ctrl:nocaps";  # Optionnel: transformer Caps Lock en Ctrl
         };
         "type:touchpad" = {
           tap = "enabled";
@@ -78,6 +98,15 @@
       # Règles de mise en page personnalisées
       for_window [app_id="pavucontrol"] floating enable
       for_window [app_id="nm-connection-editor"] floating enable
+      
+      # Démarrer Waybar
+      exec_always --no-startup-id ${pkgs.waybar}/bin/waybar
+      
+      # Créer le dossier Screenshots s'il n'existe pas
+      exec mkdir -p ~/Screenshots
+      
+      # Fond d'écran (nécessite swaybg)
+      exec ${pkgs.swaybg}/bin/swaybg -i ${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath} -m fill
     '';
   };
   
@@ -93,5 +122,8 @@
     wl-clipboard # Presse-papiers pour Wayland
     mako        # Notifications
     kanshi      # Gestion automatique des moniteurs
+    brightnessctl # Contrôle de la luminosité
+    swaybg      # Fond d'écran
+    jq          # Nécessaire pour le script de capture d'écran
   ];
 }
