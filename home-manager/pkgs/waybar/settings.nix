@@ -89,8 +89,8 @@
         };
       };
       memory = {
-        format = "<span foreground='#${config.lib.stylix.colors.base0C}'>󰟜 </span>{}%";
-        format-alt = "<span foreground='#${config.lib.stylix.colors.base0C}'>󰟜 </span>{used} GiB"; #
+        format = "<span foreground='#${config.lib.stylix.colors.base00}'>󰟜 </span>{}%";
+        format-alt = "<span foreground='#${config.lib.stylix.colors.base00}'>󰟜 </span>{used} GiB"; #
         interval = 2;
         on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
       };

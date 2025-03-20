@@ -35,12 +35,14 @@
       modifier = "Mod4"; # Touche Windows/Super (Command sur Mac)
 
       startup = [
+        {command = "waybar";}
         {command = "zen";}
+        {command = "swaync";}
       ];
 
-      client = {
-        focused = "#999999 #5f676a #999999 #999999   #999999";
-      };
+      # client = {
+      #   focused = "#999999 #5f676a #999999 #999999   #999999";
+      # };
 
       # Configuration des barres de statut
       bars = []; # Nous utilisons Waybar au lieu de la barre par défaut

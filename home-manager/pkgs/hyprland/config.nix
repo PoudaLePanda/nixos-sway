@@ -1,6 +1,6 @@
-{...}: {
+{lib, ...}: {
   wayland.windowManager.hyprland = {
-    settings = {
+    settings = lib.mkForce {
       # autostart
       exec-once = [
         # "hash dbus-update-activation-environment 2>/dev/null"
@@ -13,10 +13,11 @@
         "wl-paste --watch cliphist store &"
         "waybar &"
         "swaync &"
-        # "hyprctl setcursor Bibata-Modern-Ice 24 &"
+        "hyprctl setcursor Bibata-Modern-Ice 24 &"
         "swww-daemon &"
+        "wofi &"
 
-        # "hyprlock"
+        "hyprlock"
       ];
 
       input = {
@@ -34,7 +35,7 @@
       };
 
       general = {
-        "$mainMod" = "SUPER";
+        "$modifier" = "Mod4"; # Touche Windows/Super (Command sur Mac)
         layout = "dwindle";
         gaps_in = 6;
         gaps_out = 12;
@@ -136,117 +137,117 @@
 
       bind = [
         # show keybinds list
-        "$mainMod, F1, exec, show-keybinds"
+        "$modifier, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, ghostty"
+        "$modifier, Return, exec, ghostty"
         "ALT, Return, exec, [float; size 1111 700] ghostty"
-        "$mainMod SHIFT, Return, exec, [fullscreen] ghostty"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] zen'"
-        "$mainMod, Q, killactive,"
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod SHIFT, F, fullscreen, 1"
-        "$mainMod, Space, exec, toggle_float"
-        "$mainMod, D, exec, rofi -show drun || pkill rofi"
-        "$mainMod SHIFT, D, exec, webcord --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "$mainMod SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
-        "$mainMod, Escape, exec, swaylock"
+        "$modifier SHIFT, Return, exec, [fullscreen] ghostty"
+        "$modifier, B, exec, hyprctl dispatch exec '[workspace 1 silent] zen'"
+        "$modifier, Q, killactive,"
+        "$modifier, F, fullscreen, 0"
+        "$modifier SHIFT, F, fullscreen, 1"
+        "$modifier, Space, exec, toggle_float"
+        "$modifier, D, exec, wofi -show drun || pkill wofi"
+        "$modifier SHIFT, D, exec, webcord --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "$modifier SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
+        "$modifier, Escape, exec, swaylock"
         # "ALT, Escape, exec, hyprlock"
-        "$mainMod SHIFT, Escape, exec, power-menu"
-        "$mainMod, P, pseudo,"
-        "$mainMod, X, togglesplit,"
-        "$mainMod, T, exec, toggle_oppacity"
-        "$mainMod, E, exec, nemo"
+        "$modifier SHIFT, Escape, exec, power-menu"
+        "$modifier, P, pseudo,"
+        "$modifier, X, togglesplit,"
+        "$modifier, T, exec, toggle_oppacity"
+        "$modifier, E, exec, nemo"
         "ALT, E, exec, hyprctl dispatch exec '[float; size 1111 700] nemo'"
-        "$mainMod SHIFT, E, exec, hyprctl dispatch exec '[float; size 1111 700] ghostty -e yazi'"
-        "$mainMod SHIFT, B, exec, toggle_waybar"
-        "$mainMod, C ,exec, hyprpicker -a"
-        "$mainMod, W,exec, wallpaper-picker"
-        "$mainMod SHIFT, W,exec, hyprctl dispatch exec '[float; size 925 615] waypaper'"
-        "$mainMod, N, exec, swaync-client -t -sw"
+        "$modifier SHIFT, E, exec, hyprctl dispatch exec '[float; size 1111 700] ghostty -e yazi'"
+        "$modifier SHIFT, B, exec, toggle_waybar"
+        "$modifier, C ,exec, hyprpicker -a"
+        "$modifier, W,exec, wallpaper-picker"
+        "$modifier SHIFT, W,exec, hyprctl dispatch exec '[float; size 925 615] waypaper'"
+        "$modifier, N, exec, swaync-client -t -sw"
         "CTRL SHIFT, Escape, exec, hyprctl dispatch exec '[workspace 9] missioncenter'"
-        "$mainMod, equal, exec, woomer"
-        # "$mainMod SHIFT, W, exec, vm-start"
+        "$modifier, equal, exec, woomer"
+        # "$modifier SHIFT, W, exec, vm-start"
 
         # screenshot
         ",Print, exec, screenshot --copy"
-        "$mainMod, Print, exec, screenshot --save"
-        "$mainMod SHIFT, Print, exec, screenshot --swappy"
+        "$modifier, Print, exec, screenshot --save"
+        "$modifier SHIFT, Print, exec, screenshot --swappy"
 
         # switch focus
-        "$mainMod, left,  movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up,    movefocus, u"
-        "$mainMod, down,  movefocus, d"
-        "$mainMod, h, movefocus, l"
-        "$mainMod, j, movefocus, d"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, l, movefocus, r"
+        "$modifier, left,  movefocus, l"
+        "$modifier, right, movefocus, r"
+        "$modifier, up,    movefocus, u"
+        "$modifier, down,  movefocus, d"
+        "$modifier, h, movefocus, l"
+        "$modifier, j, movefocus, d"
+        "$modifier, k, movefocus, u"
+        "$modifier, l, movefocus, r"
 
-        "$mainMod, left,  alterzorder, top"
-        "$mainMod, right, alterzorder, top"
-        "$mainMod, up,    alterzorder, top"
-        "$mainMod, down,  alterzorder, top"
-        "$mainMod, h, alterzorder, top"
-        "$mainMod, j, alterzorder, top"
-        "$mainMod, k, alterzorder, top"
-        "$mainMod, l, alterzorder, top"
+        "$modifier, left,  alterzorder, top"
+        "$modifier, right, alterzorder, top"
+        "$modifier, up,    alterzorder, top"
+        "$modifier, down,  alterzorder, top"
+        "$modifier, h, alterzorder, top"
+        "$modifier, j, alterzorder, top"
+        "$modifier, k, alterzorder, top"
+        "$modifier, l, alterzorder, top"
 
         "CTRL ALT, up, exec, hyprctl dispatch focuswindow floating"
         "CTRL ALT, down, exec, hyprctl dispatch focuswindow tiled"
 
         # switch workspace
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        "$modifier, 1, workspace, 1"
+        "$modifier, 2, workspace, 2"
+        "$modifier, 3, workspace, 3"
+        "$modifier, 4, workspace, 4"
+        "$modifier, 5, workspace, 5"
+        "$modifier, 6, workspace, 6"
+        "$modifier, 7, workspace, 7"
+        "$modifier, 8, workspace, 8"
+        "$modifier, 9, workspace, 9"
+        "$modifier, 0, workspace, 10"
 
         # same as above, but switch to the workspace
-        "$mainMod SHIFT, 1, movetoworkspacesilent, 1" # movetoworkspacesilent
-        "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-        "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-        "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-        "$mainMod CTRL, c, movetoworkspace, empty"
+        "$modifier SHIFT, 1, movetoworkspacesilent, 1" # movetoworkspacesilent
+        "$modifier SHIFT, 2, movetoworkspacesilent, 2"
+        "$modifier SHIFT, 3, movetoworkspacesilent, 3"
+        "$modifier SHIFT, 4, movetoworkspacesilent, 4"
+        "$modifier SHIFT, 5, movetoworkspacesilent, 5"
+        "$modifier SHIFT, 6, movetoworkspacesilent, 6"
+        "$modifier SHIFT, 7, movetoworkspacesilent, 7"
+        "$modifier SHIFT, 8, movetoworkspacesilent, 8"
+        "$modifier SHIFT, 9, movetoworkspacesilent, 9"
+        "$modifier SHIFT, 0, movetoworkspacesilent, 10"
+        "$modifier CTRL, c, movetoworkspace, empty"
 
         # window control
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, j, movewindow, d"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, l, movewindow, r"
+        "$modifier SHIFT, left, movewindow, l"
+        "$modifier SHIFT, right, movewindow, r"
+        "$modifier SHIFT, up, movewindow, u"
+        "$modifier SHIFT, down, movewindow, d"
+        "$modifier SHIFT, h, movewindow, l"
+        "$modifier SHIFT, j, movewindow, d"
+        "$modifier SHIFT, k, movewindow, u"
+        "$modifier SHIFT, l, movewindow, r"
 
-        "$mainMod CTRL, left, resizeactive, -80 0"
-        "$mainMod CTRL, right, resizeactive, 80 0"
-        "$mainMod CTRL, up, resizeactive, 0 -80"
-        "$mainMod CTRL, down, resizeactive, 0 80"
-        "$mainMod CTRL, h, resizeactive, -80 0"
-        "$mainMod CTRL, j, resizeactive, 0 80"
-        "$mainMod CTRL, k, resizeactive, 0 -80"
-        "$mainMod CTRL, l, resizeactive, 80 0"
+        "$modifier CTRL, left, resizeactive, -80 0"
+        "$modifier CTRL, right, resizeactive, 80 0"
+        "$modifier CTRL, up, resizeactive, 0 -80"
+        "$modifier CTRL, down, resizeactive, 0 80"
+        "$modifier CTRL, h, resizeactive, -80 0"
+        "$modifier CTRL, j, resizeactive, 0 80"
+        "$modifier CTRL, k, resizeactive, 0 -80"
+        "$modifier CTRL, l, resizeactive, 80 0"
 
-        "$mainMod ALT, left, moveactive,  -80 0"
-        "$mainMod ALT, right, moveactive, 80 0"
-        "$mainMod ALT, up, moveactive, 0 -80"
-        "$mainMod ALT, down, moveactive, 0 80"
-        "$mainMod ALT, h, moveactive,  -80 0"
-        "$mainMod ALT, j, moveactive, 0 80"
-        "$mainMod ALT, k, moveactive, 0 -80"
-        "$mainMod ALT, l, moveactive, 80 0"
+        "$modifier ALT, left, moveactive,  -80 0"
+        "$modifier ALT, right, moveactive, 80 0"
+        "$modifier ALT, up, moveactive, 0 -80"
+        "$modifier ALT, down, moveactive, 0 80"
+        "$modifier ALT, h, moveactive,  -80 0"
+        "$modifier ALT, j, moveactive, 0 80"
+        "$modifier ALT, k, moveactive, 0 -80"
+        "$modifier ALT, l, moveactive, 80 0"
 
         # media and volume controls
         # ",XF86AudioMute,exec, pamixer -t"
@@ -255,11 +256,11 @@
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop,exec, playerctl stop"
 
-        "$mainMod, mouse_down, workspace, e-1"
-        "$mainMod, mouse_up, workspace, e+1"
+        "$modifier, mouse_down, workspace, e-1"
+        "$modifier, mouse_up, workspace, e+1"
 
         # clipboard manager
-        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
+        "$modifier, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;} listview {columns: 1;}' | cliphist decode | wl-copy"
       ];
 
       # # binds active in lockscreen
@@ -267,8 +268,8 @@
       #   # laptop brigthness
       #   ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       #   ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-      #   "$mainMod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-      #   "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
+      #   "$modifier, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
+      #   "$modifier, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
       # ];
 
       # # binds that repeat when held
@@ -279,8 +280,8 @@
 
       # mouse binding
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "$modifier, mouse:272, movewindow"
+        "$modifier, mouse:273, resizewindow"
       ];
 
       # windowrule

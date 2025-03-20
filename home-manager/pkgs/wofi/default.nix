@@ -37,7 +37,7 @@
         margin: 0px;
         border: 2px solid ${config.lib.stylix.colors.base0C};
         border-radius: 10px;
-        background-color: transparent;
+        background-color: ${config.lib.stylix.colors.base00};
         font-family: "Noto Nerd Font";
       }
 
