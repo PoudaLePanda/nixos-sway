@@ -27,9 +27,10 @@
     # sway
     ./pkgs/sway/default.nix
     # hyprland
-    ./pkgs/hyprland/default.nix
+    ./pkgs/hyprland
     # wayland
-    ./pkgs/waybar/default.nix
+    ./pkgs/swaync/swaync.nix
+    ./pkgs/waybar
     ./pkgs/wofi/default.nix
   ];
 
