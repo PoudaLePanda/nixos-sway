@@ -49,14 +49,14 @@
         tooltip = false;
         format = "{icon} ";
         format-icons = {
-          notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          notification = "<span foreground='#fe8019'><sup></sup></span>  <span foreground='#fe8019'></span>";
+          none = "  <span foreground='#fe8019'></span>";
+          dnd-notification = "<span foreground='#fe8019'><sup></sup></span>  <span foreground='#fe8019'></span>";
+          dnd-none = "  <span foreground='#fe8019'></span>";
+          inhibited-notification = "<span foreground='#fe8019'><sup></sup></span>  <span foreground='#fe8019'></span>";
+          inhibited-none = "  <span foreground='#fe8019'></span>";
+          dnd-inhibited-notification = "<span foreground='#fe8019'><sup></sup></span>  <span foreground='#fe8019'></span>";
+          dnd-inhibited-none = "  <span foreground='#fe8019'></span>";
         };
         return-type = "json";
         exec-if = "which swaync-client";
@@ -137,8 +137,8 @@
         };
       };
       memory = {
-        format = "<span foreground='#${config.lib.stylix.colors.base00}'>󰟜 </span>{}%";
-        format-alt = "<span foreground='#${config.lib.stylix.colors.base00}'>󰟜 </span>{used} GiB"; #
+        format = "<span foreground='#928374'>󰟜 </span>{}%";
+        format-alt = "<span foreground='#282828'>󰟜 </span>{used} GiB"; #
         interval = 2;
         on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
       };

@@ -1,15 +1,18 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  programs.rofi = {
-    enable = true;
-    plugins = with pkgs; [rofi-calc rofi-emoji];
-    terminal = "${pkgs.alacritty}/bin/alacritty";
-    theme = lib.mkForce ./theme.rafi;
-  };
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    rofi
+  ];
 
-  # for rofi-emoji to insert emojis directly
-  home.packages = [pkgs.xdotool];
+  home.activation.setupRofiConfig = {
+    after = ["linkGeneration"];
+    before = [];
+    data = ''
+      if [ ! -f "$HOME/.config/rofi/theme.rasi" ]; then
+      mkdir -p "$HOME/.config/rofi"
+      cp ${./theme.rasi} "$HOME/.config/rofi/theme.rasi"
+      # S'assurer que l'utilisateur a les droits complets sur le fichier
+      chmod 644 "$HOME/.config/rofi/theme.rasi"
+      fi
+    '';
+  };
 }

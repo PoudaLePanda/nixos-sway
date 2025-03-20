@@ -38,8 +38,8 @@
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "${pkgs.rofi}/bin/rofi --show drun";
+      terminal = "${pkgs.foot}/bin/foot";
+      menu = "${pkgs.wofi}/bin/wofi --show drun";
       modifier = "Mod4"; # Touche Windows/Super (Command sur Mac)
 
       startup = [
@@ -61,8 +61,8 @@
         modifier = config.wayland.windowManager.sway.config.modifier;
       in
         lib.mkOptionDefault {
-          "${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
-          "${modifier}+d" = "exec ${config.wayland.windowManager.sway.config.menu}";
+          "${modifier}+t" = "exec ${config.wayland.windowManager.sway.config.terminal}";
+          "${modifier}+w" = "exec ${config.wayland.windowManager.sway.config.menu}";
           "${modifier}+Shift+q" = "kill";
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+e" = "exec swaynag -t warning -m 'Voulez-vous quitter Sway?' -b 'Oui' 'swaymsg exit'";

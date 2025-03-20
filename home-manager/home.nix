@@ -10,7 +10,6 @@
   imports = [
     ./pkgs/bashrc.nix
     ./pkgs/btop/default.nix
-    ./pkgs/conky/default.nix
     ./pkgs/fastfetch/default.nix
     ./pkgs/ghostty/default.nix
     ./pkgs/lazy-docker/default.nix

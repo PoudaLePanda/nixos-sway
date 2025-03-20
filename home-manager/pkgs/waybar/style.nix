@@ -18,17 +18,17 @@
     }
 
     tooltip {
-      background: #${config.lib.stylix.colors.base00};
-      border: 1px solid #${config.lib.stylix.colors.base03};
+      background: #282828;
+      border: 1px solid #504945;
     }
     tooltip label {
       margin: 5px;
-      color: #${config.lib.stylix.colors.base05};
+      color: #ebdbb2;
     }
 
     window#waybar {
     background-color: rgba(0, 0, 0, 0.5);
-    color: #${config.lib.stylix.colors.base05};
+    color: #ebdbb2;
     font-family: Noto Nerd Font;
     font-size: 10pt;
     transition-duration: 0.5s;
@@ -42,7 +42,7 @@
 
     #custom-launcher {
       font-size: 20px;
-      color: #${config.lib.stylix.colors.base05};
+      color: #ebdbb2;
       font-weight: bold;
       margin-left: 15px;
       padding-right: 10px;
@@ -86,45 +86,45 @@
     #cpu.warning,
     #temperature.warning,
     #battery.warning.discharging {
-    color: #${config.lib.stylix.colors.base0A};
+    color: #d79921;
     }
 
     #mode,
     #custom-power,
     #custom-nixlogo {
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base00};
+    color: #ebdbb2;
+    background: #282828;
     }
 
     #workspaces button {
     padding-left: 2pt;
     padding-right: 2pt;
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base00};
+    color: #ebdbb2;
+    background: #282828;
     }
 
     #workspaces button.empty {
-    color: #${config.lib.stylix.colors.base05};
+    color: #ebdbb2;
     }
     #workspaces button.visible {
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base00};
+    color: #ebdbb2;
+    background: #282828;
     }
 
     #workspaces button.focused {
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base00};
+    color: #ebdbb2;
+    background: #282828;
     box-shadow: inset 0 -3px transparent;
     }
 
     #workspaces button.urgent {
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base00};
+    color: #ebdbb2;
+    background: #282828;
     }
 
     #workspaces button:hover {
-    background: #${config.lib.stylix.colors.base0C};
-    color: #${config.lib.stylix.colors.base00};
+    background: #689d6a;
+    color: #282828;
     }
 
     #window {
@@ -133,111 +133,111 @@
     }
 
     #pulseaudio {
-    background: #${config.lib.stylix.colors.base0E};
-    color: #${config.lib.stylix.colors.base00};
+    background: #d3869b;
+    color: #282828;
     }
 
     #network {
-    background: #${config.lib.stylix.colors.base0E};
-    color: #${config.lib.stylix.colors.base00};
+    background: #d3869b;
+    color: #282828;
     }
 
     #memory {
-    background: #${config.lib.stylix.colors.base0C};
-    color: #${config.lib.stylix.colors.base00};
+    background: #689d6a;
+    color: #282828;
     }
 
     #cpu {
-    background: #${config.lib.stylix.colors.base0B};
-    color: #${config.lib.stylix.colors.base00};
+    background: #98971a;
+    color: #282828;
     }
 
     #temperature {
-    background: #${config.lib.stylix.colors.base0B};
-    color: #${config.lib.stylix.colors.base00};
+    background: #98971a;
+    color: #282828;
     }
 
     #language {
-    background: #${config.lib.stylix.colors.base0A};
-    color: #${config.lib.stylix.colors.base00};
+    background: #d79921;
+    color: #282828;
     }
 
     #battery {
-    background: #${config.lib.stylix.colors.base0C};
-    color: #${config.lib.stylix.colors.base05};
+    background: #689d6a;
+    color: #ebdbb2;
     }
 
     #tray {
-    background: #${config.lib.stylix.colors.base00};
+    background: #282828;
     }
 
     #clock.date {
-    background: #${config.lib.stylix.colors.base0A};
-    color: #${config.lib.stylix.colors.base00};
+    background: #d79921;
+    color: #282828;
     }
 
     #clock.time {
-    background: #${config.lib.stylix.colors.base05};
-    color: #${config.lib.stylix.colors.base00};
+    background: #ebdbb2;
+    color: #282828;
     }
 
     #custom-arrow1 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base05};
-    background: #${config.lib.stylix.colors.base0A};
+    color: #ebdbb2;
+    background: #d79921;
     }
 
     #custom-arrow2 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base00};
-    background: #${config.lib.stylix.colors.base05};
+    color: #282828;
+    background: #ebdbb2;
     }
 
     #custom-arrow3 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0A};
-    background: #${config.lib.stylix.colors.base0C};
+    color: #d79921;
+    background: #689d6a;
     }
 
     #custom-arrow4 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0C};
-    background: #${config.lib.stylix.colors.base0B};
+    color: #689d6a;
+    background: #98971a;
     }
 
     #custom-arrow5 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0B};
-    background: #${config.lib.stylix.colors.base0B};
+    color: #98971a;
+    background: #98971a;
     }
 
     #custom-arrow6 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0B};
-    background: #${config.lib.stylix.colors.base0C};
+    color: #98971a;
+    background: #689d6a;
     }
 
     #custom-arrow7 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0C};
-    background: #${config.lib.stylix.colors.base0E};
+    color: #689d6a;
+    background: #d3869b;
     }
 
     #custom-arrow8 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0E};
-    background: #${config.lib.stylix.colors.base0E};
+    color: #d3869b;
+    background: #d3869b;
     }
 
     #custom-arrow9 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base0E};
+    color: #d3869b;
     background: transparent;
     }
 
     #custom-arrow10 {
     font-size: 11pt;
-    color: #${config.lib.stylix.colors.base00};
+    color: #282828;
     background: transparent;
     }
   '';
