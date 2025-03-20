@@ -27,7 +27,6 @@
         "temperature"
         "custom/arrow4"
         "custom/arrow3"
-        "tray"
         "clock#date"
         "custom/arrow1"
         "clock#time"
@@ -39,20 +38,33 @@
       "custom/nixlogo" = {
         format = "";
         tooltip = false;
+        on-click = "swaync-client -t -sw";
       };
 
-      "clock#time" = {
-        interval = 10;
-        format = "{:%H:%M}";
-        tooltip = false;
+      "custom/power" = {
+        format = "⏻ ";
+        on-click = "swaynag -t warning -m 'Power options' -b 'Shutdown' 'shutdown now' -b 'Restart' 'reboot' -b 'Logout' 'swaymsg exit'";
       };
 
-      "clock#date" = {
-        interval = 20;
-        format = "{:%e %b %Y}";
+      "custom/notification" = {
         tooltip = false;
-        on-click = "gnome-calendar";
-        # tooltip-format = "{:%e %B %Y}"
+        format = "{icon} ";
+        format-icons = {
+          notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          dnd-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          dnd-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          dnd-inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+          dnd-inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
+        };
+        return-type = "json";
+        exec-if = "which swaync-client";
+        exec = "swaync-client -swb";
+        on-click = "swaync-client -t -sw";
+        on-click-right = "swaync-client -d -sw";
+        escape = true;
       };
 
       "hyprland/workspaces" = {
@@ -78,6 +90,43 @@
           "6" = [];
         };
       };
+
+      "sway/workspaces" = {
+        all-outputs = true;
+        format = "{icon}";
+        format-icons = {
+          "1" = "1";
+          "2" = "2";
+          "3" = "3";
+          "4" = "4";
+          "5" = "5";
+          "6" = "6";
+          sort-by-number = true;
+        };
+        persistent-workspaces = {
+          "1" = [];
+          "2" = [];
+          "3" = [];
+          "4" = [];
+          "5" = [];
+          "6" = [];
+        };
+      };
+
+      "clock#time" = {
+        interval = 10;
+        format = "{:%H:%M}";
+        tooltip = false;
+      };
+
+      "clock#date" = {
+        interval = 20;
+        format = "{:%e %b %Y}";
+        tooltip = false;
+        on-click = "gnome-calendar";
+        # tooltip-format = "{:%e %B %Y}"
+      };
+
       cpu = {
         interval = 5;
         tooltip = false;
@@ -93,26 +142,6 @@
         format-alt = "<span foreground='#${config.lib.stylix.colors.base00}'>󰟜 </span>{used} GiB"; #
         interval = 2;
         on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
-      };
-      "custom/notification" = {
-        tooltip = false;
-        format = "{icon} ";
-        format-icons = {
-          notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-inhibited-notification = "<span foreground='#${config.lib.stylix.colors.base08}'><sup></sup></span>  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-          dnd-inhibited-none = "  <span foreground='#${config.lib.stylix.colors.base08}'></span>";
-        };
-        return-type = "json";
-        exec-if = "which swaync-client";
-        exec = "swaync-client -swb";
-        on-click = "swaync-client -t -sw";
-        on-click-right = "swaync-client -d -sw";
-        escape = true;
       };
 
       network = {
@@ -134,19 +163,6 @@
         format = "{}";
         max-length = 50;
         tooltip = false;
-      };
-
-      "sway/workspaces" = {
-        all-outputs = true;
-        format = "{icon}";
-        format-icons = {
-          "1" = "1";
-          "2" = "2";
-          "3" = "3";
-          "4" = "4";
-          "5" = "5";
-          "6" = "6";
-        };
       };
 
       pulseaudio = {
@@ -183,11 +199,6 @@
           ""
         ];
         tooltip = false;
-      };
-
-      "custom/power" = {
-        format = "⏻ ";
-        on-click = "swaynag -t warning -m 'Power options' -b 'Shutdown' 'shutdown now' -b 'Restart' 'reboot' -b 'Logout' 'swaymsg exit'";
       };
 
       tray = {
