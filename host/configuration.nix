@@ -13,7 +13,6 @@ in {
     ./hardware-configuration.nix
     ./gnome.nix
     ./sway.nix
-    # ./hyprland.nix
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
     ./pkgs/amd-drivers.nix

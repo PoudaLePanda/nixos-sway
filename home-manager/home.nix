@@ -10,9 +10,8 @@
   imports = [
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
     ../themes/stylix.nix
-    ./gnome.nix
-    ./sway.nix
-    # ./hyprland.nix
+    ./pkgs/gnome/default.nix
+    ./pkgs/sway/default.nix
     ./pkgs/bashrc.nix
     ./pkgs/git.nix
     ./pkgs/btop/default.nix
@@ -28,8 +27,6 @@
     ./pkgs/cava.nix
   ];
 
-  # stylix.targets.hyprland.enable = false;
-
   home = {
     username = settings.username;
     homeDirectory = "/home/${settings.username}";
@@ -39,16 +36,11 @@
   };
 
   programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName = settings.name;
-    userEmail = settings.email;
-  };
 
   home.packages = with pkgs; [
-	eyedropper
+	  eyedropper
     foot
-	bemenu #App launcher
+	  bemenu #App launcher
     nerd-fonts.zed-mono
     nerd-fonts.noto
     nerd-fonts.hack

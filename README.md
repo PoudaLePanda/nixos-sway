@@ -265,3 +265,52 @@ sudo nixos-rebuild switch
 | **Multimédia**       | blanket, mesa                                                                                                                                                                                                                                                                                                 |
 
 📜 **Fichier de configuration** : [`configuration.nix`](./host/configuration.nix)
+
+
+📦DOTFILES
+┣ 📦home-manager
+┃ ┣ 📂pkgs
+┃ ┃ ┣ 📂btop
+┃ ┃ ┃ ┣ 📜btop.conf
+┃ ┃ ┃ ┣ 📜default.nix
+┃ ┃ ┃ ┗ 📜nord.theme
+┃ ┃ ┣ 📂conky
+┃ ┃ ┃ ┣ 📜conky.conf
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂fastfetch
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂ghostty
+┃ ┃ ┃ ┣ 📜config
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂lazy-docker
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂nerdfetch
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂posting
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂starship
+┃ ┃ ┃ ┣ 📜default.nix
+┃ ┃ ┃ ┗ 📜starship.toml
+┃ ┃ ┣ 📂yazi
+┃ ┃ ┃ ┗ 📜default.nix
+┃ ┃ ┣ 📂zed-editor
+┃ ┃ ┃ ┣ 📜default.nix
+┃ ┃ ┃ ┗ 📜settings.json
+┃ ┃ ┣ 📜bashrc
+┃ ┃ ┣ 📜bashrc.nix
+┃ ┃ ┣ 📜cava.nix
+┃ ┃ ┗ 📜git.nix
+┃ ┣ 📜gnome.nix
+┃ ┣ 📜home.nix
+┣ 📦host
+┃ ┣ 📂pkgs
+┃ ┃ ┣ 📜amd-drivers.nix
+┃ ┃ ┣ 📜minecraft.nix
+┃ ┃ ┣ 📜nix.nix
+┃ ┃ ┣ 📜proton-vpn.nix
+┃ ┃ ┗ 📜steam.nix
+┃ ┣ 📜configuration.nix
+┃ ┣ 📜gnome.nix
+┃ ┣ 📜hardware-configuration.nix
+┣ 📜flake.nix
+┗ 📜settings.nix
