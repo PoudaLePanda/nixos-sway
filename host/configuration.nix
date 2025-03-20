@@ -15,6 +15,7 @@ in {
     ./windowManager-common.nix
     ./gnome.nix
     ./sway.nix
+    ./hyprland.nix
 
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
@@ -116,6 +117,7 @@ in {
     libsForQt5.qt5.qtgraphicaleffects
     blanket
     htop
+    kitty
     cowsay
     git
     git-lfs
@@ -152,10 +154,10 @@ in {
     gnumake
     killall
     mesa
+    gnome-calendar
     gnome-screenshot
     wayland
     wl-clipboard
-    kitty
   ];
 
   environment.localBinInPath = true;

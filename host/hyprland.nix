@@ -6,7 +6,6 @@
   pkgs,
   ...
 }: {
-  programs.kitty.enable = true; # required for the default Hyprland config
   # Activer Hyprland au niveau du système
   programs.hyprland = {
     enable = true;
