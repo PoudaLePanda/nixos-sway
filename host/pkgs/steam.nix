@@ -25,7 +25,8 @@
           xorg.libXi
           xorg.libXinerama
           xorg.libXScrnSaver
-          # adwsteamgtk # bug gtk
+          # Thème Adwaita pour Steam
+          # adwsteamgtk # bug gtk et gnome
         ];
 
       # Application du thème via les options de lancement
@@ -48,10 +49,10 @@
     };
   };
 
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     (mangohud.override {lowerBitnessSupport = true;})
     gamescope
-    # adwsteamgtk
+    # adwsteamgtk  # Gardons-le dans les paquets système aussi
   ];
 
   # Configuration dconf sans l'option gtk.enable
