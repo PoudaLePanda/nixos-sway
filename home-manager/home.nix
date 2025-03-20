@@ -24,6 +24,8 @@
     ./pkgs/yazi/default.nix
     ./pkgs/zed-editor/default.nix
     ./pkgs/cava.nix
+    ./pkgs/minecraft.nix
+    ./pkgs/steam.nix
     # sway
     ./pkgs/sway/default.nix
     # hyprland
@@ -31,7 +33,9 @@
     # wayland
     ./pkgs/swaync/swaync.nix
     ./pkgs/waybar/default.nix
-    ./pkgs/wofi/default.nix
+    ./pkgs/anyrun/default.nix
+    # ./pkgs/wofi/default.nix
+    # ./pkgs/rofi/default.nix
   ];
 
   home = {

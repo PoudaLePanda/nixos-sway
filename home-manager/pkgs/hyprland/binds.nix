@@ -1,10 +1,18 @@
-{lib, ...}: {
+{lib, ...}: let
+  toggle = program: let
+    prog = builtins.substring 0 14 program;
+  in "pkill ${prog} || uwsm app -- ${program}";
+in {
   wayland.windowManager.hyprland = {
     settings = lib.mkForce {
       binds = {
         movefocus_cycles_fullscreen = true;
       };
 
+      bindr = [
+        # launcher
+        "$modifier, D, exec, ${toggle "anyrun"}"
+      ];
       bind = [
         # show keybinds list
         "$modifier, F1, exec, show-keybinds"
@@ -18,7 +26,7 @@
         "$modifier, F, fullscreen, 0"
         "$modifier SHIFT, F, fullscreen, 1"
         "$modifier, Space, exec, toggle_float"
-        "$modifier, D, exec, wofi -show drun || pkill wofi"
+        # "$modifier, D, exec, ${toggle "anyrun"}"
         "$modifier SHIFT, D, exec, webcord --enable-features=UseOzonePlatform --ozone-platform=wayland"
         "$modifier SHIFT, S, exec, hyprctl dispatch exec '[workspace 5 silent] SoundWireServer'"
         "$modifier, Escape, exec, swaylock"

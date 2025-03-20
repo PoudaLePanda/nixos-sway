@@ -38,12 +38,11 @@
       "custom/nixlogo" = {
         format = "";
         tooltip = false;
-        on-click = "swaync-client -t -sw";
       };
 
       "custom/power" = {
         format = "⏻ ";
-        on-click = "swaynag -t warning -m 'Power options' -b 'Shutdown' 'shutdown now' -b 'Restart' 'reboot' -b 'Logout' 'swaymsg exit'";
+        on-click = "swaync-client -t -sw";
       };
 
       "custom/notification" = {

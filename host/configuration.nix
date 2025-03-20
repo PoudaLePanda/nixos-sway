@@ -20,8 +20,6 @@ in {
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
     ./pkgs/amd-drivers.nix
-    ./pkgs/minecraft.nix
-    ./pkgs/steam.nix
   ];
 
   boot = {

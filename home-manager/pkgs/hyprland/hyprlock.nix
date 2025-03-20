@@ -1,128 +1,92 @@
 {
+  config,
+  inputs,
   pkgs,
-  host,
   ...
-}: let
-  text = "rgb(251, 241, 199)";
-in {
-  home.packages = [pkgs.hyprlock];
-  xdg.configFile."hypr/hyprlock.conf".text = ''
-    # BACKGROUND
-    background {
-      monitor =
-      path = ${../../../wallpapers/otherWallpaper/gruvbox/forest_road.jpg}
-      blur_passes = 2
-      contrast = 0.8916
-      brightness = 0.8172
-      vibrancy = 0.1696
-      vibrancy_darkness = 0.0
-    }
+}: {
+  programs.hyprlock = {
+    enable = true;
 
-    # GENERAL
-    general {
-      hide_cursor = true
-      no_fade_in = false
-      grace = 0
-      disable_loading_bar = false
-      ignore_empty_input = true
-      fractional_scaling = 0
-    }
+    package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
 
-    # Time
-    label {
-      monitor =
-      text = cmd[update:1000] echo "$(date +"%k:%M")"
-      color = rgba(235, 219, 178, .9)
-      font_size = 115
-      font_family = Maple Mono Bold
-      shadow_passes = 3
-      position = 0, ${
-      if (host == "laptop")
-      then "-25"
-      else "-150"
-    }
-      halign = center
-      valign = top
-    }
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        immediate_render = true;
+        hide_cursor = false;
+        no_fade_in = true;
+      };
 
-    # Day
-    label {
-      monitor =
-      text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
-      color = rgba(235, 219, 178, .9)
-      font_size = 18
-      font_family = Maple Mono
-      shadow_passes = 3
-      position = 0, ${
-      if (host == "laptop")
-      then "-225"
-      else "-350"
-    }
-      halign = center
-      valign = top
-    }
+      background = [
+        {
+          monitor = "";
+          path = config.theme.wallpaper;
+        }
+      ];
 
+      input-field = [
+        {
+          monitor = "eDP-1";
 
-    # USER-BOX
-    shape {
-      monitor =
-      size = 300, 50
-      color = rgba(102, 92, 84, .33)
-      rounding = 10
-      border_size = 0
-      border_color = rgba(255, 255, 255, 0)
-      rotate = 0
+          size = "300, 50";
+          valign = "bottom";
+          position = "0%, 10%";
 
-      position = 0, ${
-      if (host == "laptop")
-      then "120"
-      else "270"
-    }
-      halign = center
-      valign = bottom
-    }
+          outline_thickness = 1;
 
-    # USER
-    label {
-      monitor =
-      text =   $USER
-      color = rgba(235, 219, 178, 1)
-      font_size = 15
-      font_family = Maple Mono Bold
-      position = 0, ${
-      if (host == "laptop")
-      then "131"
-      else "281"
-    }
-      halign = center
-      valign = bottom
-    }
+          font_color = config.lib.stylix.colors.base05;
+          outer_color = "#${config.lib.stylix.colors.base00}80";
+          inner_color = "#${config.lib.stylix.colors.base01}1A";
+          check_color = "#${config.lib.stylix.colors.base0B}80";
+          fail_color = "#${config.lib.stylix.colors.base08}80";
 
-    # INPUT FIELD
-    input-field {
-      monitor =
-      size = 300, 50
-      outline_thickness = 1
-      rounding = 10
-      dots_size = 0.25 # Scale of input-field height, 0.2 - 0.8
-      dots_spacing = 0.4 # Scale of dots' absolute size, 0.0 - 1.0
-      dots_center = true
-      outer_color = rgba(102, 92, 84, .33)
-      inner_color = rgba(102, 92, 84, .33)
-      color = rgba(235, 219, 178, .9)
-      font_color = rgba(235, 219, 178, .9)
-      font_size = 14
-      font_family = Maple Mono Bold
-      fade_on_empty = false
-      placeholder_text = <i><span foreground="##fbf1c7">Enter Password</span></i>
-      hide_input = false
-      position = 0, ${
-      if (host == "laptop")
-      then "50"
-      else "200"
-    }
-      halign = center
-      valign = bottom
-    }
-  '';
+          fade_on_empty = false;
+          placeholder_text = "Enter Password";
+
+          dots_spacing = 0.2;
+          dots_center = true;
+          dots_fade_time = 100;
+
+          shadow_color = "rgba(0, 0, 0, 0.1)";
+          shadow_size = 7;
+          shadow_passes = 2;
+        }
+      ];
+
+      label = [
+        {
+          monitor = "";
+          text = "$TIME";
+          font_size = 150;
+          color = config.lib.stylix.colors.base05;
+
+          position = "0%, 30%";
+
+          valign = "center";
+          halign = "center";
+
+          shadow_color = "rgba(0, 0, 0, 0.1)";
+          shadow_size = 20;
+          shadow_passes = 2;
+          shadow_boost = 0.3;
+        }
+        {
+          monitor = "";
+          text = "cmd[update:3600000] date +'%a %b %d'";
+          font_size = 20;
+          color = config.lib.stylix.colors.base05;
+
+          position = "0%, 40%";
+
+          valign = "center";
+          halign = "center";
+
+          shadow_color = "rgba(0, 0, 0, 0.1)";
+          shadow_size = 20;
+          shadow_passes = 2;
+          shadow_boost = 0.3;
+        }
+      ];
+    };
+  };
 }

@@ -5,7 +5,8 @@
     ./binds.nix
     ./animations.nix
     ./windowrules.nix
-    # ./hyprlock.nix
+    ./hyprlock.nix
+    ./wlogout.nix
     ./variables.nix
     inputs.hyprland.homeManagerModules.default
   ];
