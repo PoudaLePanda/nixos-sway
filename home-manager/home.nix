@@ -43,8 +43,6 @@
   home.packages = with pkgs; [
 	  eyedropper
     foot
-    git-lfs
-    github-desktop
     nerd-fonts.zed-mono
     nerd-fonts.noto
     nerd-fonts.hack

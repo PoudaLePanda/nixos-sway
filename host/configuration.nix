@@ -115,6 +115,8 @@ in {
     htop
     cowsay
     git
+    git-lfs
+    github-desktop
     chromium
     spotify-player
     brave
@@ -144,7 +146,6 @@ in {
     playerctl
     ags
     gcc
-    glib
     gnumake
     killall
     mesa

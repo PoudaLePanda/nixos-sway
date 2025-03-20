@@ -1,8 +1,11 @@
 # home-manager/pkgs/wofi/default.nix
-{ config, lib, pkgs, ... }:
-
 {
-  programs.wofi =  lib.mkForce{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  programs.wofi = lib.mkForce {
     enable = true;
     settings = {
       show = "drun";
@@ -28,13 +31,13 @@
       gtk_dark = true;
       dynamic_lines = true;
     };
-    
+
     style = ''
       window {
         margin: 0px;
-        border: 2px solid #88c0d0;
+        border: 2px solid ${config.lib.stylix.colors.base0C};
         border-radius: 10px;
-        background-color: #2e3440;
+        background-color: ${config.lib.stylix.colors.base00};
         font-family: "Noto Nerd Font";
       }
 
@@ -43,21 +46,21 @@
         padding: 10px;
         border: none;
         border-radius: 10px;
-        color: #eceff4;
-        background-color: #3b4252;
+        color: ${config.lib.stylix.colors.base05};
+        background-color: ${config.lib.stylix.colors.base01};
       }
 
       #inner-box {
         margin: 5px;
         border: none;
-        background-color: #2e3440;
+        background-color: ${config.lib.stylix.colors.base00};
         border-radius: 10px;
       }
 
       #outer-box {
         margin: 5px;
         border: none;
-        background-color: #2e3440;
+        background-color: ${config.lib.stylix.colors.base00};
         border-radius: 10px;
       }
 
@@ -69,7 +72,7 @@
       #text {
         margin: 5px;
         border: none;
-        color: #eceff4;
+        color: ${config.lib.stylix.colors.base05};
       }
 
       #entry {
@@ -79,7 +82,7 @@
       }
 
       #entry:selected {
-        background-color: #5e81ac;
+        background-color: ${config.lib.stylix.colors.base0D};
         border-radius: 10px;
       }
 
@@ -88,7 +91,7 @@
       }
 
       #selected {
-        background-color: #5e81ac;
+        background-color: ${config.lib.stylix.colors.base0D};
         border-radius: 10px;
       }
     '';
@@ -98,9 +101,9 @@
   home.file.".config/wofi/style-dark.css".text = ''
     window {
       margin: 0px;
-      border: 2px solid #88c0d0;
+      border: 2px solid ${config.lib.stylix.colors.base0C};
       border-radius: 10px;
-      background-color: #2e3440;
+      background-color: ${config.lib.stylix.colors.base00};
       font-family: "Noto Nerd Font";
     }
 
@@ -109,21 +112,21 @@
       padding: 10px;
       border: none;
       border-radius: 10px;
-      color: #eceff4;
-      background-color: #3b4252;
+      color: ${config.lib.stylix.colors.base05};
+      background-color: ${config.lib.stylix.colors.base01};
     }
 
     #inner-box {
       margin: 5px;
       border: none;
-      background-color: #2e3440;
+      background-color: ${config.lib.stylix.colors.base00};
       border-radius: 10px;
     }
 
     #outer-box {
       margin: 5px;
       border: none;
-      background-color: #2e3440;
+      background-color: ${config.lib.stylix.colors.base00};
       border-radius: 10px;
     }
 
@@ -135,7 +138,7 @@
     #text {
       margin: 5px;
       border: none;
-      color: #eceff4;
+      color: ${config.lib.stylix.colors.base05};
     }
 
     #entry {
@@ -145,7 +148,7 @@
     }
 
     #entry:selected {
-      background-color: #5e81ac;
+      background-color: ${config.lib.stylix.colors.base0D};
       border-radius: 10px;
     }
 
@@ -154,7 +157,7 @@
     }
 
     #selected {
-      background-color: #5e81ac;
+      background-color: ${config.lib.stylix.colors.base0D};
       border-radius: 10px;
     }
   '';
@@ -162,9 +165,9 @@
   home.file.".config/wofi/style-light.css".text = ''
     window {
       margin: 0px;
-      border: 2px solid #5e81ac;
+      border: 2px solid ${config.lib.stylix.colors.base0D};
       border-radius: 10px;
-      background-color: #eceff4;
+      background-color: ${config.lib.stylix.colors.base00};
       font-family: "Noto Nerd Font";
     }
 
@@ -173,21 +176,21 @@
       padding: 10px;
       border: none;
       border-radius: 10px;
-      color: #2e3440;
-      background-color: #d8dee9;
+      color: ${config.lib.stylix.colors.base05};
+      background-color: ${config.lib.stylix.colors.base01};
     }
 
     #inner-box {
       margin: 5px;
       border: none;
-      background-color: #eceff4;
+      background-color: ${config.lib.stylix.colors.base00};
       border-radius: 10px;
     }
 
     #outer-box {
       margin: 5px;
       border: none;
-      background-color: #eceff4;
+      background-color: ${config.lib.stylix.colors.base00};
       border-radius: 10px;
     }
 
@@ -199,7 +202,7 @@
     #text {
       margin: 5px;
       border: none;
-      color: #2e3440;
+      color: ${config.lib.stylix.colors.base05};
     }
 
     #entry {
@@ -209,7 +212,7 @@
     }
 
     #entry:selected {
-      background-color: #88c0d0;
+      background-color: ${config.lib.stylix.colors.base0C};
       border-radius: 10px;
     }
 
@@ -218,7 +221,7 @@
     }
 
     #selected {
-      background-color: #88c0d0;
+      background-color: ${config.lib.stylix.colors.base0C};
       border-radius: 10px;
     }
   '';
