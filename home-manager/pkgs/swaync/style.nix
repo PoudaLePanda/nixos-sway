@@ -33,7 +33,7 @@
     }
 
     .notification button:hover {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: @insensitive_bg_color; */
     }
 
@@ -45,8 +45,8 @@
     }
 
     .close-button {
-        background: #${config.lib.stylix.colors.base2};
-        color: #${config.lib.stylix.colors.base3};
+        background: #${config.lib.stylix.colors.base02};
+        color: #${config.lib.stylix.colors.base03};
     }
 
     .notification-default-action,
@@ -124,7 +124,7 @@
 
     .control-center {
         /* background: transparent; */
-        background: #${config.lib.stylix.colors.base2};
+        background: #${config.lib.stylix.colors.base02};
         /* background: @theme_bg_color; */
         border: 2px solid ${config.lib.stylix.colors.base03};
         border-radius: 0px;
@@ -141,9 +141,9 @@
 
     .control-center-list {
         /* background: @base; */
-        background: #${config.lib.stylix.colors.base2};
+        background: #${config.lib.stylix.colors.base02};
         min-height: 5px;
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-top: none;
         border-radius: 0px 0px 4px 4px;
     }
@@ -168,7 +168,7 @@
 
     .notification-group > box {
         all: unset;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.072); */
         padding: 8px;
         margin: 0px;
@@ -181,9 +181,9 @@
     .notification-row {
         outline: none;
         transition: all 1s ease;
-        background: #${config.lib.stylix.colors.base0};
+        background: #${config.lib.stylix.colors.base00};
         /* background: @theme_bg_color; */
-        border: 1px solid #${config.lib.stylix.colors.base2};
+        border: 1px solid #${config.lib.stylix.colors.base02};
         margin: 10px 5px 0px 5px;
         border-radius: 4px;
         /* box-shadow: 0px 0px 4px black; */
@@ -222,7 +222,7 @@
         background: inherit;
         /* background: @theme_bg_color; */
         border-radius: 4px 4px 0px 0px;
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-bottom: none;
         padding-bottom: 20px;
     }
@@ -237,7 +237,7 @@
         font-weight: 700;
         padding: 7px 3px;
         margin-right: 10px;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         color: #${config.lib.stylix.colors.base06};
         /* color: @theme_text_color; */
         /* border: none; */
@@ -245,7 +245,7 @@
     }
 
     .widget-title > button:hover {
-        background: #${config.lib.stylix.colors.base0};
+        background: #${config.lib.stylix.colors.base00};
         /* background: alpha(currentColor, 0.1); */
     }
 
@@ -254,10 +254,10 @@
         margin: 0px;
         padding: 0px;
         min-height: 5px;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: @theme_bg_color; */
         border-radius: 0px 0px 4px 4px;
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-top: none;
     }
 
@@ -270,7 +270,7 @@
     .widget-menubar {
         background: inherit;
         /* background: @theme_bg_color; */
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-top: none;
         border-bottom: none;
     }
@@ -283,7 +283,7 @@
     }
 
     .widget-menubar > box > box > button {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         min-width: 85px;
         min-height: 50px;
@@ -301,14 +301,14 @@
     }
 
     .widget-menubar button:focus:hover {
-        background: #${config.lib.stylix.colors.base0};
+        background: #${config.lib.stylix.colors.base00};
         /* background: alpha(currentColor,0.1); */
         box-shadow: none;
     }
 
     .widget-menubar > box > revealer > box {
         margin: 5px 10px 5px 10px;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         border-radius: 4px;
     }
@@ -323,8 +323,8 @@
     /* Buttons grid */
     .widget-buttons-grid {
         /* background-color: @theme_bg_color; */
-        background-color: #${config.lib.stylix.colors.base1};
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        background-color: #${config.lib.stylix.colors.base01};
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-top: none;
         border-bottom: none;
         font-size: 14px;
@@ -335,7 +335,7 @@
     }
 
     .widget-buttons-grid > flowbox > flowboxchild {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         border-radius: 4px;
         min-height: 50px;
@@ -353,7 +353,7 @@
     }
 
     .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.1); */
     }
 
@@ -371,7 +371,7 @@
         padding: 0px;
         border-radius: 4px;
         /* background: alpha(currentColor, 0.05); */
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
     }
 
     .widget-mpris > box > button:nth-child(1),
@@ -443,9 +443,9 @@
     /* Backlight and volume widgets */
     .widget-backlight,
     .widget-volume {
-        background-color: #${config.lib.stylix.colors.base2};
+        background-color: #${config.lib.stylix.colors.base02};
         /* background-color: @theme_bg_color; */
-        /* border: 1px solid #${config.lib.stylix.colors.base2}; */
+        /* border: 1px solid #${config.lib.stylix.colors.base02}; */
         border-top: none;
         border-bottom: none;
         font-size: 13px;
@@ -456,7 +456,7 @@
     }
 
     .widget-volume > box {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         border-radius: 4px;
         margin: 5px 10px 5px 10px;
@@ -476,11 +476,11 @@
 
     .widget-volume > box > button:hover {
         /* background: alpha(currentColor, 0.05); */
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
     }
 
     .widget-volume > revealer > list {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         border-radius: 4px;
         margin-top: 5px;
@@ -500,7 +500,7 @@
     }
 
     .widget-backlight > scale {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         border-radius: 0px 4px 4px 0px;
         margin: 5px 10px 5px 0px;
@@ -509,7 +509,7 @@
     }
 
     .widget-backlight > label {
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.05); */
         margin: 5px 0px 5px 10px;
         border-radius: 4px 0px 0px 4px;
@@ -528,13 +528,13 @@
     .widget-dnd > switch {
         font-size: initial;
         border-radius: 12px;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         border: 1px solid #${config.lib.stylix.colors.base0B};
         box-shadow: none;
     }
 
     .widget-dnd > switch:checked {
-        background: #${config.lib.stylix.colors.base3};
+        background: #${config.lib.stylix.colors.base03};
     }
 
     .widget-dnd > switch slider {
@@ -544,7 +544,7 @@
 
     /* Toggles */
     .toggle:checked {
-        background: #${config.lib.stylix.colors.base2};
+        background: #${config.lib.stylix.colors.base02};
         /* background: @theme_selected_bg_color; */
     }
 
@@ -552,7 +552,7 @@
         color: rgba(128, 128, 128, 0.5);
     }*/
     .toggle:checked:hover {
-        background: #${config.lib.stylix.colors.base3};
+        background: #${config.lib.stylix.colors.base03};
         /* background: alpha(@theme_selected_bg_color, 0.75); */
     }
 
@@ -564,7 +564,7 @@
 
     scale trough {
         border-radius: 4px;
-        background: #${config.lib.stylix.colors.base1};
+        background: #${config.lib.stylix.colors.base01};
         /* background: alpha(currentColor, 0.1); */
     }
 

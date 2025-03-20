@@ -9,7 +9,7 @@
 }: {
   imports = [
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
-    ../themes/stylix.nix
+    (import ../themes/stylix.nix {inherit inputs pkgs lib settings config;})
     ./pkgs/gnome/default.nix
     ./pkgs/bashrc.nix
     ./pkgs/git.nix
@@ -32,9 +32,8 @@
     # wayland
     ./pkgs/swaync/swaync.nix
     ./pkgs/waybar/default.nix
-    ./pkgs/anyrun/default.nix
     # ./pkgs/wofi/default.nix
-    # ./pkgs/rofi/default.nix
+    ./pkgs/rofi/default.nix
   ];
 
   home = {

@@ -5,7 +5,7 @@
 
   hostname = "nixos";
   username = "lmlab";
-  themeAdw = "nord"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
+  themeAdw = "gruvbox"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
 
   dotfilesDir = "/home/${username}/.dotfiles"; # Absolute path of the local repo
   themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
