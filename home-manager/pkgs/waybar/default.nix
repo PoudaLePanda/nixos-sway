@@ -4,145 +4,12 @@
 {
   programs.waybar = {
     enable = true;
-    style = ''
-      * {
-        border: none;
-        border-radius: 0;
-        font-family: "Noto Nerd Font";
-        font-size: 13px;
-        min-height: 0;
-      }
-
-      window#waybar {
-        background: rgba(21, 18, 27, 0.8);
-        color: #cdd6f4;
-      }
-
-      tooltip {
-        background: #1e1e2e;
-        border-radius: 10px;
-        border-width: 2px;
-        border-style: solid;
-        border-color: #11111b;
-      }
-
-      #workspaces button {
-        padding: 5px;
-        color: #cdd6f4;
-        margin-right: 5px;
-      }
-
-      #workspaces button.active {
-        color: #a6adc8;
-        background: #eba0ac;
-        border-radius: 10px;
-      }
-
-      #workspaces button:hover {
-        background: #11111b;
-        color: #cdd6f4;
-        border-radius: 10px;
-      }
-
-      #custom-language,
-      #custom-updates,
-      #custom-caffeine,
-      #custom-power,
-      #clock,
-      #battery,
-      #pulseaudio,
-      #network,
-      #workspaces,
-      #tray,
-      #backlight {
-        background: #1e1e2e;
-        padding: 0px 10px;
-        margin: 3px 0px;
-        border-radius: 10px;
-      }
-
-      #tray {
-        border-radius: 10px;
-        margin-right: 10px;
-      }
-
-      #workspaces {
-        background: #1e1e2e;
-        border-radius: 10px;
-        margin-left: 10px;
-        padding-right: 0px;
-        padding-left: 5px;
-      }
-
-      #custom-caffeine {
-        color: #89dceb;
-        border-radius: 10px 0px 0px 10px;
-        border-right: 0px;
-        margin-left: 10px;
-      }
-
-      #custom-language {
-        color: #f38ba8;
-        border-left: 0px;
-        border-right: 0px;
-      }
-
-      #custom-updates {
-        color: #f5c2e7;
-        border-radius: 10px 0px 0px 10px;
-        border-left: 0px;
-        border-right: 0px;
-      }
-
-      #clock {
-        color: #fab387;
-        border-radius: 10px;
-        margin-left: 5px;
-        margin-right: 5px;
-      }
-
-      #network {
-        color: #f9e2af;
-        border-radius: 10px 0px 0px 10px;
-        border-left: 0px;
-        border-right: 0px;
-      }
-
-      #pulseaudio {
-        color: #89b4fa;
-        border-radius: 0px 10px 10px 0px;
-        border-left: 0px;
-        border-right: 0px;
-        margin-right: 5px;
-      }
-
-      #battery {
-        color: #a6e3a1;
-        border-radius: 0 10px 10px 0;
-        margin-right: 10px;
-        border-left: 0px;
-      }
-
-      #custom-power {
-        color: #f38ba8;
-        border-radius: 10px;
-        margin-right: 10px;
-        border-left: 0px;
-      }
-
-      #backlight {
-        color: #cba6f7;
-        border-radius: 10px 0px 0px 10px;
-        border-left: 0px;
-        border-right: 0px;
-      }
-    '';
     
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        spacing = 5;
+        spacing = 10;
         
         modules-left = [
           "sway/workspaces"
@@ -227,7 +94,7 @@
         };
         
         "tray" = {
-          spacing = 10;
+          spacing = 20;
         };
       };
     };
@@ -235,7 +102,18 @@
   
   # Dépendances pour Waybar
   home.packages = with pkgs; [
-    pavucontrol
-    networkmanager_dmenu
+    pavucontrol # Contrôle du volume audio
+    networkmanager_dmenu # interface pour NetworkManager
+    blueman # Gestionnaire Bluetooth graphique
+    dunst # Gestionnaires de notifications
+    swaylock # Verrouillage d'écran pour Sway
+    swayidle # Gestion de l'inactivité
+    swaybg # Gestionnaire de fond d'écran
+    swaylock-effects # Version de swaylock avec effets visuels
+    grim # Utilitaire de capture d'écran
+    slurp # Sélection de zone pour capture d'écran
+    brightnessctl # Contrôle de la luminosité
+    playerctl # Contrôle des lecteurs multimédia
+    rofi-wayland # Version Wayland de rofi
   ];
 }

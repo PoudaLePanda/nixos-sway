@@ -22,15 +22,28 @@ in {
     };
     targets = {
       qt.platform = "qtct";
+      vscode.enable = true;
+      btop.enable = true;
+      cava.enable = true;
       gnome.enable = true;
       kitty.enable = true;
       foot.enable = true;
+      yazi.enable = true;
       gtk.enable = true;
       ghostty.enable = true;
       gedit.enable = true;
       zed.enable = true;
-      spicetify.enable = false;
-      zathura.enable = false;
+      # spicetify.enable = true;
+      # zathura.enable = true;
+
+      # sway
+      dunst.enable = true;
+      wofy.enable = true;
+      sway.enable = true;
+      sway.useWallpaper = true;
+      waybar.addCss = true;
+      swaylock.enable = true;
+      swaylock.useWallpaper = true;
     };
   };
 }

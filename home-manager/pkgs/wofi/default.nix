@@ -2,7 +2,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.wofi = {
+  programs.wofi =  lib.mkForce{
     enable = true;
     settings = {
       show = "drun";
