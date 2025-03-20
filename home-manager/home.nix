@@ -23,6 +23,10 @@
     ./pkgs/bat.nix
     # sway
     ./pkgs/sway/default.nix
+    ./pkgs/sway/swayidle.nix
+    ./pkgs/sway/swaylock.nix
+    ./pkgs/sway/swayosd.nix
+    ./pkgs/sway/waypaper.nix
     # wayland
     ./pkgs/swaync/swaync.nix
     ./pkgs/waybar/default.nix
