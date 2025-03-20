@@ -8,7 +8,7 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: "JetBrainsMono Nerd Font";
+        font-family: "Noto Nerd Font";
         font-size: 13px;
         min-height: 0;
       }
@@ -235,7 +235,6 @@
   
   # Dépendances pour Waybar
   home.packages = with pkgs; [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     pavucontrol
     networkmanager_dmenu
   ];

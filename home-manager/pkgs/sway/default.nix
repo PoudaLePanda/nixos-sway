@@ -6,8 +6,7 @@
     enable = true;
     config = {
       terminal = "${pkgs.foot}/bin/foot";  # Vous pouvez remplacer par votre terminal préféré
-      menu = "${pkgs.wofi}/bin/wofi --show drun";
-      modifier = "Mod4";  # Touche Windows/Super (Command sur Mac)
+      menu = "${pkgs.wofi}/bin/wofi --show drun";      modifier = "Mod4";  # Touche Windows/Super (Command sur Mac)
       
       # Configuration de base des espaces de travail
       workspaceOutputAssign = [
