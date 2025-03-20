@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     settings = lib.mkForce {
       # autostart
@@ -39,8 +43,10 @@
         gaps_in = 6;
         gaps_out = 12;
         border_size = 2;
-        "col.active_border" = "$base0A $base08 45deg";
-        "col.inactive_border" = "$base02";
+        "col.active_border" = "rgba(${config.lib.stylix.colors.base0C}ff)";
+        "col.inactive_border" = "rgba(${config.lib.stylix.colors.base03}88)";
+        allow_tearing = true;
+        resize_on_border = true;
         # border_part_of_window = false;
         no_border_on_floating = false;
       };
@@ -72,31 +78,32 @@
       };
 
       decoration = {
-        rounding = 0;
-        # active_opacity = 0.90;
-        # inactive_opacity = 0.90;
-        # fullscreen_opacity = 1.0;
-
+        rounding = 10;
+        rounding_power = 3;
         blur = {
           enabled = true;
-          size = 3;
-          passes = 2;
-          brightness = 1;
-          contrast = 1.4;
-          ignore_opacity = true;
-          noise = 0;
-          new_optimizations = true;
-          xray = true;
+          brightness = 1.0;
+          contrast = 1.0;
+          noise = 0.01;
+
+          vibrancy = 0.2;
+          vibrancy_darkness = 0.5;
+
+          passes = 4;
+          size = 7;
+
+          popups = true;
+          popups_ignorealpha = 0.2;
         };
 
         shadow = {
           enabled = true;
-
+          color = "rgba(${config.lib.stylix.colors.base00}55)";
           ignore_window = true;
-          offset = "0 2";
-          range = 20;
-          render_power = 3;
-          color = "rgba(00000055)";
+          offset = "0 15";
+          range = 100;
+          render_power = 2;
+          scale = 0.97;
         };
       };
 
