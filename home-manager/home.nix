@@ -26,6 +26,9 @@
     ./pkgs/cava.nix
     # sway
     ./pkgs/sway/default.nix
+    # hyprland
+    ./pkgs/hyprland/default.nix
+    # wayland
     ./pkgs/waybar/default.nix
     ./pkgs/wofi/default.nix
   ];
@@ -41,7 +44,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-	  eyedropper
+    eyedropper
     foot
     nerd-fonts.zed-mono
     nerd-fonts.noto

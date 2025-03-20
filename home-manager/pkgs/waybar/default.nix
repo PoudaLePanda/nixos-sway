@@ -14,6 +14,7 @@
         position = "top";
 
         modules-left = [
+          "custom/nixlogo"
           "sway/mode"
           "sway/workspaces"
           "custom/arrow10"
@@ -41,6 +42,11 @@
           "tray"
           "custom/power"
         ];
+
+        "custom/nixlogo" = {
+          format = "";
+          tooltip = false;
+        };
 
         "clock#time" = {
           interval = 10;
@@ -223,17 +229,19 @@
         padding: 0;
         box-shadow: none;
         text-shadow: none;
-        icon-shadow: none;
+        -gtk-icon-shadow: none;
       }
 
       window#waybar {
-        background-color: rgba(00, 00, 00, 0.1);
+        background-color: rgba(0, 0, 0, 0.5);
         color: #${config.lib.stylix.colors.base05};
         font-family: Noto Nerd Font;
         font-size: 10pt;
         transition-duration: 0.5s;
       }
 
+      #custom-nixlogo,
+      #custom-power,
       #battery,
       #clock,
       #cpu,
@@ -273,7 +281,9 @@
         color: #${config.lib.stylix.colors.base0A};
       }
 
-      #mode {
+      #mode,
+      #custom-power,
+      #custom-nixlogo {
         color: #${config.lib.stylix.colors.base05};
         background: #${config.lib.stylix.colors.base00};
       }
@@ -281,29 +291,29 @@
       #workspaces button {
         padding-left: 2pt;
         padding-right: 2pt;
-        color: #${config.lib.stylix.colors.base00};
-        background: #${config.lib.stylix.colors.base0C};
+        color: #${config.lib.stylix.colors.base05};
+        background: #${config.lib.stylix.colors.base00};
       }
 
       #workspaces button.visible {
-          color: #${config.lib.stylix.colors.base00};
-          background: #${config.lib.stylix.colors.base0C};
+          color: #${config.lib.stylix.colors.base05};
+          background: #${config.lib.stylix.colors.base00};
       }
 
       #workspaces button.focused {
-        color: #${config.lib.stylix.colors.base00};
-        background: #${config.lib.stylix.colors.base0C};
+          color: #${config.lib.stylix.colors.base05};
+          background: #${config.lib.stylix.colors.base00};
         box-shadow: inset 0 -3px transparent;
       }
 
       #workspaces button.urgent {
-        color: #${config.lib.stylix.colors.base00};
-        background: #${config.lib.stylix.colors.base0C};
+          color: #${config.lib.stylix.colors.base05};
+          background: #${config.lib.stylix.colors.base00};
       }
 
       #workspaces button:hover {
-        background: #${config.lib.stylix.colors.base00};
-        color: #${config.lib.stylix.colors.base0C};
+        background: #${config.lib.stylix.colors.base0C};
+        color: #${config.lib.stylix.colors.base00};
       }
 
       #window {
@@ -416,7 +426,7 @@
 
       #custom-arrow10 {
         font-size: 11pt;
-        color: #${config.lib.stylix.colors.base0C};
+        color: #${config.lib.stylix.colors.base00};
         background: transparent;
       }
     '';

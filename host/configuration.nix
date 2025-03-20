@@ -11,8 +11,11 @@
 in {
   imports = [
     ./hardware-configuration.nix
+
+    ./windowManager-common.nix
     ./gnome.nix
     ./sway.nix
+
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
     ./pkgs/amd-drivers.nix
