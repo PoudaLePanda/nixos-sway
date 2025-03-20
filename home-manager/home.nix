@@ -25,7 +25,6 @@
     ./pkgs/zed-editor/default.nix
     ./pkgs/cava.nix
     ./pkgs/minecraft.nix
-    ./pkgs/steam.nix
     # sway
     ./pkgs/sway/default.nix
     # hyprland

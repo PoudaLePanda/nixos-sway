@@ -2,14 +2,18 @@
   config,
   inputs,
   pkgs,
+  settings,
+  lib,
   ...
-}: {
+}: let
+  themeDetails = settings.themeDetails;
+in {
   programs.hyprlock = {
     enable = true;
 
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
 
-    settings = {
+    settings = lib.mkForce {
       general = {
         disable_loading_bar = true;
         immediate_render = true;
@@ -20,7 +24,7 @@
       background = [
         {
           monitor = "";
-          path = config.theme.wallpaper;
+          path = toString themeDetails.wallpaper;
         }
       ];
 
