@@ -11,9 +11,6 @@
     (import ../themes/gtk.nix {inherit pkgs lib settings;})
     ../themes/stylix.nix
     ./pkgs/gnome/default.nix
-    ./pkgs/sway/default.nix
-    ./pkgs/waybar/default.nix
-    ./pkgs/wofi/default.nix
     ./pkgs/bashrc.nix
     ./pkgs/git.nix
     ./pkgs/btop/default.nix
@@ -27,6 +24,10 @@
     ./pkgs/yazi/default.nix
     ./pkgs/zed-editor/default.nix
     ./pkgs/cava.nix
+    # sway
+    ./pkgs/sway/default.nix
+    ./pkgs/waybar/default.nix
+    ./pkgs/wofi/default.nix
   ];
 
   home = {
@@ -44,7 +45,6 @@
     foot
     git-lfs
     github-desktop
-	  bemenu #App launcher
     nerd-fonts.zed-mono
     nerd-fonts.noto
     nerd-fonts.hack

@@ -38,7 +38,7 @@ in {
 
       # sway
       dunst.enable = true;
-      wofy.enable = true;
+      wofi.enable = true;
       sway.enable = true;
       sway.useWallpaper = true;
       waybar.addCss = true;
