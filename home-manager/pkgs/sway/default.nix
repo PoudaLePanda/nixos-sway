@@ -30,12 +30,11 @@
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      terminal = "${pkgs.ghostty}/bin/ghostty"; # Vous pouvez remplacer par votre terminal préféré
+      terminal = "${pkgs.ghostty}/bin/ghostty";
       menu = "${pkgs.wofi}/bin/wofi --show drun";
       modifier = "Mod4"; # Touche Windows/Super (Command sur Mac)
 
       startup = [
-        # Launch Firefox on start
         {command = "zen";}
       ];
 
