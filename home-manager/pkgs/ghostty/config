@@ -8,7 +8,7 @@ bold-is-bright = false
 adjust-box-thickness = 1
 
 # Theme
-theme = nord
+theme = GruvboxDark
 background-opacity = 0.80
 background-blur = true
 unfocused-split-opacity = 0.96

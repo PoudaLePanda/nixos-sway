@@ -14,8 +14,8 @@
     playerctl # Contrôle des lecteurs multimédia
     # rofi-wayland # Version Wayland de rofi
     # swaylock    # Verrouillage d'écran
-    # swaylock-effects # Version de swaylock avec effets visuels
-    # swayidle    # Gestion de l'écran de veille
+    swaylock-effects # Version de swaylock avec effets visuels
+    swayidle # Gestion de l'écran de veille
     # foot        # Terminal léger pour Wayland
     # grim        # Capture d'écran
     # slurp       # Sélection de zone pour capture d'écran
@@ -25,19 +25,28 @@
     # brightnessctl # Contrôle de la luminosité
     # swaybg      # Fond d'écran
     # jq          # Nécessaire pour le script de capture d'écran
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.symbols-only
+    twemoji-color-font
+    noto-fonts-emoji
+    fantasque-sans-mono
+    maple-mono
   ];
 
   wayland.windowManager.sway = {
     enable = true;
     config = {
       terminal = "${pkgs.ghostty}/bin/ghostty";
-      menu = "${pkgs.wofi}/bin/wofi --show drun";
+      menu = "${pkgs.rofi}/bin/rofi --show drun";
       modifier = "Mod4"; # Touche Windows/Super (Command sur Mac)
 
       startup = [
         {command = "waybar";}
         {command = "zen";}
         {command = "swaync";}
+        {command = "swayidle -w timeout 300 'swaylock' timeout 600 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"' before-sleep 'swaylock'";}
       ];
 
       # client = {
@@ -57,6 +66,9 @@
           "${modifier}+Shift+q" = "kill";
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+e" = "exec swaynag -t warning -m 'Voulez-vous quitter Sway?' -b 'Oui' 'swaymsg exit'";
+
+          # Ajoutez un raccourci pour verrouiller l'écran
+          "${modifier}+backslash" = "exec swaylock"; # Vous pouvez choisir une autre touche si vous préférez
 
           # Navigation entre les espaces de travail
           "${modifier}+1" = "workspace number 1";

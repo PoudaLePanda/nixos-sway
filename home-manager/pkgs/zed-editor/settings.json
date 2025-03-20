@@ -1,166 +1,166 @@
 {
-  "extensions": [
-    "html",
-    "lua",
-    "log",
-    "scss",
-    "emmet",
-    "csv",
-    "nix",
-    "rainbow-csv",
-    "snippets",
-    "base16",
-    "superhtml",
-    "charmed-icons"
-  ],
-  "auto_update": false,
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "context": "Workspace",
-  "theme": {
-    "mode": "system",
-    "dark": "stylix-theme",
-    "light": "stylix-theme"
-  },
-  "icon_theme": "Charmed Icons",
-  "current_line_highlight": "all",
-  "ui_font_size": 16,
-  "ui_font_family": "Noto Nerd Font",
-  "font_family": "Noto Nerd Font",
-  "buffer_font_size": 14,
-  "buffer_font_family": "Noto Nerd Font",
-  "buffer_font_fallbacks": ["Nerd Font"],
-  "features": {
-    "edit_prediction_provider": "supermaven"
-  },
-  "edit_predictions": {
-    "disabled_globs": [
-      "**/.env*",
-      "**/*.pem",
-      "**/*.key",
-      "**/*.cert",
-      "**/*.crt",
-      "**/secrets.yml",
-      "**/*.log"
-    ]
-  },
-  "use_autoclose": false,
-  "relative_line_numbers": false,
-  "vim_mode": false,
-  "inlay_hints.enabled": true,
-  "soft_wrap": "preferred_line_length",
-  "preferred_line_length": 100,
-  "show_wrap_guides": true,
-  "tab_size": 4,
-  "show_edit_predictions": true,
-  "show_completions_on_input": true,
-  "terminal": {
-    "blinking": "terminal_controlled",
-    "copy_on_select": true,
-    "line_height": "standard",
+    "extensions": [
+        "html",
+        "lua",
+        "log",
+        "scss",
+        "emmet",
+        "csv",
+        "nix",
+        "rainbow-csv",
+        "snippets",
+        "base16",
+        "superhtml",
+        "charmed-icons"
+    ],
+    "auto_update": false,
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+    "context": "Workspace",
+    "theme": {
+        "mode": "system",
+        "dark": "Gruvbox ish Dark Soft",
+        "light": "Gruvbox ish Dark Soft"
+    },
+    "icon_theme": "VSCode Icons (Dark)",
+    "current_line_highlight": "all",
+    "ui_font_size": 16,
+    "ui_font_family": "Noto Nerd Font",
     "font_family": "Noto Nerd Font",
-    "toolbar": {
-      "title": true
+    "buffer_font_size": 14,
+    "buffer_font_family": "Noto Nerd Font",
+    "buffer_font_fallbacks": ["Nerd Font"],
+    "features": {
+        "edit_prediction_provider": "supermaven"
     },
-    "working_directory": "current_project_directory",
-    "button": true,
-    "font_size": 14
-  },
-  "syntax": {
-    "comment": {
-      "font_style": "italic"
-    }
-  },
-  "languages": {
-    "HTML": {
-      "format_on_save": "on",
-      "language_servers": ["angular"]
+    "edit_predictions": {
+        "disabled_globs": [
+            "**/.env*",
+            "**/*.pem",
+            "**/*.key",
+            "**/*.cert",
+            "**/*.crt",
+            "**/secrets.yml",
+            "**/*.log"
+        ]
     },
-    "Nix": {
-      "format_on_save": "on",
-      "language_servers": ["nil", "!nixd"],
-      "formatter": {
-        "external": {
-          "command": "alejandra",
-          "arguments": ["--quiet", "--"]
-        }
-      }
-    },
-    "JavaScript": {
-      "format_on_save": "on",
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      },
-      "language_servers": ["typescript-language-server", "!vtsls"]
-    },
-    "TypeScript": {
-      "format_on_save": "on",
-      "language_servers": ["typescript-language-server", "!vtsls"],
-      "formatter": "language_server"
-    },
-    "TSX": {
-      "format_on_save": "on",
-      "language_servers": ["typescript-language-server", "!vtsls"],
-      "formatter": "language_server"
-    },
-    "Markdown": {
-      "format_on_save": "on",
-      "enable_language_server": false
-    }
-  },
-  "lsp": {
-    "nil": {
-      "initialization_options": {
-        "formatting": {
-          "command": ["alejandra", "--quiet", "--"]
+    "use_autoclose": false,
+    "relative_line_numbers": false,
+    "vim_mode": false,
+    "inlay_hints.enabled": true,
+    "soft_wrap": "preferred_line_length",
+    "preferred_line_length": 100,
+    "show_wrap_guides": true,
+    "tab_size": 4,
+    "show_edit_predictions": true,
+    "show_completions_on_input": true,
+    "terminal": {
+        "blinking": "terminal_controlled",
+        "copy_on_select": true,
+        "line_height": "standard",
+        "font_family": "Noto Nerd Font",
+        "toolbar": {
+            "title": true
         },
-        "nix": {
-          "flake": {
-            "autoArchive": true
-          }
-        }
-      },
-      "settings": {
-        "diagnostics": {
-          "ignored": ["unused_binding"]
-        }
-      }
+        "working_directory": "current_project_directory",
+        "button": true,
+        "font_size": 14
     },
-    "eslint": {
-      "settings": {
-        "codeActionOnSave": {
-          "rules": ["import/order"]
+    "syntax": {
+        "comment": {
+            "font_style": "italic"
         }
-      }
     },
-    "typescript-language-server": {
-      "initialization_options": {
-        "preferences": {
-          "strictNullChecks": true,
-          "target": "ES2020"
+    "languages": {
+        "HTML": {
+            "format_on_save": "on",
+            "language_servers": ["angular"]
+        },
+        "Nix": {
+            "format_on_save": "on",
+            "language_servers": ["nil", "!nixd"],
+            "formatter": {
+                "external": {
+                    "command": "alejandra",
+                    "arguments": ["--quiet", "--"]
+                }
+            }
+        },
+        "JavaScript": {
+            "format_on_save": "on",
+            "code_actions_on_format": {
+                "source.fixAll.eslint": true
+            },
+            "language_servers": ["typescript-language-server", "!vtsls"]
+        },
+        "TypeScript": {
+            "format_on_save": "on",
+            "language_servers": ["typescript-language-server", "!vtsls"],
+            "formatter": "language_server"
+        },
+        "TSX": {
+            "format_on_save": "on",
+            "language_servers": ["typescript-language-server", "!vtsls"],
+            "formatter": "language_server"
+        },
+        "Markdown": {
+            "format_on_save": "on",
+            "enable_language_server": false
         }
-      }
     },
-    "deno": {
-      "settings": {
+    "lsp": {
+        "nil": {
+            "initialization_options": {
+                "formatting": {
+                    "command": ["alejandra", "--quiet", "--"]
+                },
+                "nix": {
+                    "flake": {
+                        "autoArchive": true
+                    }
+                }
+            },
+            "settings": {
+                "diagnostics": {
+                    "ignored": ["unused_binding"]
+                }
+            }
+        },
+        "eslint": {
+            "settings": {
+                "codeActionOnSave": {
+                    "rules": ["import/order"]
+                }
+            }
+        },
+        "typescript-language-server": {
+            "initialization_options": {
+                "preferences": {
+                    "strictNullChecks": true,
+                    "target": "ES2020"
+                }
+            }
+        },
         "deno": {
-          "enable": true
+            "settings": {
+                "deno": {
+                    "enable": true
+                }
+            }
+        },
+        "bash-language-server": {
+            "binary": {
+                "path": "/etc/profiles/per-user/myself/bin/bash-language-server",
+                "arguments": ["start"]
+            }
+        },
+        "json-language-server": {
+            "binary": {
+                "path": "/etc/profiles/per-user/myself/bin/vscode-json-languageserver",
+                "arguments": ["--stdio"]
+            }
         }
-      }
-    },
-    "bash-language-server": {
-      "binary": {
-        "path": "/etc/profiles/per-user/myself/bin/bash-language-server",
-        "arguments": ["start"]
-      }
-    },
-    "json-language-server": {
-      "binary": {
-        "path": "/etc/profiles/per-user/myself/bin/vscode-json-languageserver",
-        "arguments": ["--stdio"]
-      }
     }
-  }
 }

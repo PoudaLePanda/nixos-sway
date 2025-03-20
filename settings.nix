@@ -5,13 +5,12 @@
 
   hostname = "nixos";
   username = "lmlab";
-  themeAdw = "gruvbox"; # catppuccin, dracula, everforest, gruvbox, kanagawa, nord
-
-  dotfilesDir = "/home/${username}/.dotfiles"; # Absolute path of the local repo
-  themeDetails = import (./. + "/themes/${themeAdw}.nix") {dir = dotfilesDir;};
 
   name = "PoudaLePanda"; # Name (git config)
   email = "leo.meyniel@proton.me"; # Email (git config)
+
+  avatarImage = ./assets/avatar.png;
+  wallpaperImage = ./assets/wallpapers/gruvbox-uw.png;
 
   font = "Noto Nerd Font";
   fontSize = 13;
@@ -20,5 +19,4 @@
   editor = "zed";
   browser = "zen";
   term = "ghostty";
-  avatarImage = ./assets/avatar.png;
 }

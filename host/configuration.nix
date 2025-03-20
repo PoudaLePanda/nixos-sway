@@ -6,21 +6,62 @@
   pkgs,
   settings,
   ...
-}: let
-  themeDetails = settings.themeDetails;
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
-
-    ./windowManager-common.nix
-    ./gnome.nix
     ./sway.nix
-    ./hyprland.nix
-
     ./pkgs/nix.nix
     ./pkgs/proton-vpn.nix
     ./pkgs/amd-drivers.nix
     ./pkgs/steam.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+    blanket
+    htop
+    kitty
+    cowsay
+    git
+    git-lfs
+    github-desktop
+    chromium
+    spotify-player
+    brave
+    firefox
+    inputs.zen-browser.packages."${system}".default
+    zathura
+    vscode
+    figlet
+    nix-index
+    typescript-language-server
+    glib
+    home-manager
+    nix
+    package-version-server
+    wget
+    pciutils
+    go-mtpfs
+    ntfs3g
+    inetutils
+    lsof
+    curl
+    zip
+    xz
+    dos2unix
+    jq # Pour traiter le JSON (utilisé dans tes scripts)
+    coreutils # Fournit cat, awk, etc.
+    playerctl
+    ags
+    gcc
+    gnumake
+    killall
+    mesa
+    gnome-calendar
+    gnome-screenshot
+    wayland
+    wl-clipboard
   ];
 
   boot = {
@@ -39,7 +80,7 @@ in {
         theme = "stylish";
         footer = true;
         customResolution = "3440x1440";
-        splashImage = "${themeDetails.wallpaper}";
+        splashImage = "${settings.wallpaperImage}";
       };
     };
     plymouth.enable = true;
@@ -111,59 +152,19 @@ in {
     extraGroups = ["networkmanager" "wheel" "video"];
   };
 
-  environment.systemPackages = with pkgs; [
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    blanket
-    htop
-    kitty
-    cowsay
-    git
-    git-lfs
-    github-desktop
-    chromium
-    spotify-player
-    brave
-    firefox
-    inputs.zen-browser.packages."${system}".default
-    zathura
-    vscode
-    figlet
-    nix-index
-    typescript-language-server
-    glib
-    home-manager
-    nix
-    package-version-server
-    wget
-    pciutils
-    go-mtpfs
-    ntfs3g
-    inetutils
-    lsof
-    curl
-    zip
-    xz
-    dos2unix
-    jq # Pour traiter le JSON (utilisé dans tes scripts)
-    coreutils # Fournit cat, awk, etc.
-    playerctl
-    ags
-    gcc
-    gnumake
-    killall
-    mesa
-    gnome-calendar
-    gnome-screenshot
-    wayland
-    wl-clipboard
-  ];
-
   environment.localBinInPath = true;
   services.devmon.enable = true;
   security.rtkit.enable = true;
+  security.sudo.enable = true;
+  security.pam.services.swaylock = {};
+
   # A lot of mpris packages require it.
   services.gvfs.enable = true;
+
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
 
   system.activationScripts = {
     script.text = ''
