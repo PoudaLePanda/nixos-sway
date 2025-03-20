@@ -113,8 +113,20 @@ in {
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
     blanket
-    nix-index
+    htop
+    cowsay
+    git
+    git-lfs
+    github-desktop
+    chromium
+    spotify-player
+    brave
+    firefox
+    inputs.zen-browser.packages."${system}".default
+    zathura
+    vscode
     figlet
+    nix-index
     typescript-language-server
     glib
     home-manager
@@ -126,8 +138,6 @@ in {
     ntfs3g
     inetutils
     lsof
-    cowsay
-    htop
     curl
     zip
     xz
@@ -135,26 +145,16 @@ in {
     jq # Pour traiter le JSON (utilisé dans tes scripts)
     coreutils # Fournit cat, awk, etc.
     playerctl
-    git
-    git-lfs
-    github-desktop
     ags
     gcc
     glib
     gnumake
     killall
     mesa
-    chromium
-    spotify-player
-    brave
-    firefox
-    inputs.zen-browser.packages."${system}".default
-    zathura
     gnome-screenshot
     wayland
     wl-clipboard
     kitty
-    vscode
   ];
 
   environment.localBinInPath = true;

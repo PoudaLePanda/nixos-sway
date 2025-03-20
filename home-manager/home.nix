@@ -13,6 +13,8 @@
     ./gnome.nix
     ./sway.nix
     # ./hyprland.nix
+    ./pkgs/bashrc.nix
+    ./pkgs/git.nix
     ./pkgs/btop/default.nix
     ./pkgs/conky/default.nix
     ./pkgs/fastfetch/default.nix
@@ -41,13 +43,12 @@
     enable = true;
     userName = settings.name;
     userEmail = settings.email;
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
   };
 
   home.packages = with pkgs; [
+	eyedropper
     foot
+	bemenu #App launcher
     nerd-fonts.zed-mono
     nerd-fonts.noto
     nerd-fonts.hack

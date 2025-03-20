@@ -7,6 +7,7 @@
 }: {
   # Sway on Home Manager
   security.polkit.enable = true;
+  
   programs = {
     sway = {
       enable = true;
